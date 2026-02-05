@@ -14,6 +14,78 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
 
+    <!-- Preload gallery images for faster lightbox opening -->
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770321111/20220601_141158_nzotoa.jpg"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770316854/IMG20220612035857_dohxpm.jpg"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770320673/IMG_20210204_165331-01_uhm2ni.jpg"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770318022/IMG_20210527_000613_375_vjdtcb.jpg"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770318856/IMG_20200820_130753_bfuzej.jpg"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770319224/20210406_174942_amcwic.jpg"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770319516/backupPreview_q35prt.png"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770319882/IMG20220622090549_navqma.jpg"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770320176/20210530_143554_d3rqd2.jpg"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770321410/20230103_153546_lhxau5.jpg"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770321830/IMG20221030094856_o3zotg.jpg"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770321827/IMG20220925120350_bscbpz.jpg"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770321832/IMG20221030093923_vszgob.jpg"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770321832/IMG20221118163135_jwta1r.jpg"
+    />
+
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-database-compat.js"></script>
@@ -463,7 +535,7 @@
             role="button"
           >
             <img
-              src="LOGO PNG.png"
+              src="https://res.cloudinary.com/duzr2cnth/image/upload/v1770315207/LOGO_PNG_......tinyPNG_700kb_zwbbab.png"
               alt="Smart Digital logo"
               class="w-full h-full object-contain"
             />
@@ -479,9 +551,19 @@
             >Home</a
           >
           <a
+            href="#notifications"
+            class="text-gray-700 hover:text-blue-600 font-semibold transition"
+            >Updates</a
+          >
+          <a
             href="#actual-services"
             class="text-gray-700 hover:text-blue-600 font-semibold transition"
             >Services</a
+          >
+          <a
+            href="#gallery"
+            class="text-gray-700 hover:text-blue-600 font-semibold transition"
+            >Gallery</a
           >
           <a
             href="#games"
@@ -491,12 +573,7 @@
           <a
             href="#demo-websites"
             class="text-gray-700 hover:text-blue-600 font-semibold transition"
-            >Demo Websites</a
-          >
-          <a
-            href="#notifications"
-            class="text-gray-700 hover:text-blue-600 font-semibold transition"
-            >Updates</a
+            >Websites</a
           >
           <a
             href="#location"
@@ -572,9 +649,19 @@
           >Home</a
         >
         <a
+          href="#notifications"
+          class="block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
+          >Updates</a
+        >
+        <a
           href="#actual-services"
           class="block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
           >Services</a
+        >
+        <a
+          href="#gallery"
+          class="block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
+          >Gallery</a
         >
         <a
           href="#games"
@@ -584,12 +671,7 @@
         <a
           href="#demo-websites"
           class="block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
-          >Demo Websites</a
-        >
-        <a
-          href="#notifications"
-          class="block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
-          >Updates</a
+          >Websites</a
         >
         <a
           href="#location"
@@ -886,12 +968,12 @@
               class="bg-white border-2 border-blue-200 rounded-xl p-4 text-center hover:shadow-xl transition overflow-hidden cursor-pointer group"
               onclick="
                 openCertificateModal(
-                  'UC-c4fd8c29-b30c-4d38-bbf3-0afd42d46292.jpg',
+                  'https://res.cloudinary.com/duzr2cnth/image/upload/v1770315598/UC-c4fd8c29-b30c-4d38-bbf3-0afd42d46292_d8z3ty.jpg',
                 )
               "
             >
               <img
-                src="UC-c4fd8c29-b30c-4d38-bbf3-0afd42d46292.jpg"
+                src="https://res.cloudinary.com/duzr2cnth/image/upload/v1770315598/UC-c4fd8c29-b30c-4d38-bbf3-0afd42d46292_d8z3ty.jpg"
                 alt="Udemy Certificate"
                 class="w-full h-64 object-cover rounded-lg group-hover:scale-105 transition"
               />
@@ -1457,7 +1539,7 @@
           </div>
           <div class="w-full flex items-center justify-center p-4">
             <img
-              src="main poster resize small png.png"
+              src="https://res.cloudinary.com/duzr2cnth/image/upload/v1770315232/main_poster_resize_small_png_1mb_tinyPNG_dsrpoj.png"
               alt="Services design overview"
               class="max-w-full max-h-[70vh] object-contain"
             />
@@ -1526,7 +1608,7 @@
           </div>
           <div class="w-full flex items-center justify-center p-4">
             <img
-              src="LOGO PNG.png"
+              src="https://res.cloudinary.com/duzr2cnth/image/upload/v1770315207/LOGO_PNG_......tinyPNG_700kb_zwbbab.png"
               alt="Smart Digital logo enlarged"
               class="max-h-[520px] object-contain"
             />
@@ -2413,6 +2495,751 @@
       </div>
     </section>
 
+    <!-- ======================== GALLERY SECTION ======================== -->
+    <section
+      id="gallery"
+      class="py-20 px-4 bg-gradient-to-b from-blue-50 to-white"
+    >
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+            <i class="fas fa-images text-blue-600 mr-3"></i>Our Portfolio
+          </h2>
+          <p class="text-lg text-gray-600">
+            Explore our creative digital masterpieces
+          </p>
+        </div>
+
+        <!-- To update photos later: replace each img src and title below, or duplicate a card and change data-category. -->
+
+        <!-- Gallery Filter -->
+        <div
+          class="flex flex-wrap justify-center gap-3 mb-10"
+          id="galleryFilters"
+        >
+          <button
+            type="button"
+            class="js-gallery-filter px-5 py-2 rounded-full border-2 border-blue-200 text-gray-700 font-semibold transition hover:bg-blue-600 hover:text-white"
+            data-filter="all"
+          >
+            All
+          </button>
+          <button
+            type="button"
+            class="js-gallery-filter px-5 py-2 rounded-full border-2 border-blue-200 text-gray-700 font-semibold transition hover:bg-blue-600 hover:text-white"
+            data-filter="graphic"
+          >
+            Graphic Designs
+          </button>
+          <button
+            type="button"
+            class="js-gallery-filter px-5 py-2 rounded-full border-2 border-blue-200 text-gray-700 font-semibold transition hover:bg-blue-600 hover:text-white"
+            data-filter="digital"
+          >
+            Digital Art
+          </button>
+          <button
+            type="button"
+            class="js-gallery-filter px-5 py-2 rounded-full border-2 border-blue-200 text-gray-700 font-semibold transition hover:bg-blue-600 hover:text-white"
+            data-filter="canvas"
+          >
+            Canvas Art
+          </button>
+          <button
+            type="button"
+            class="js-gallery-filter px-5 py-2 rounded-full border-2 border-blue-200 text-gray-700 font-semibold transition hover:bg-blue-600 hover:text-white"
+            data-filter="wall"
+          >
+            Wall Art
+          </button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Graphic Designs Items -->
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="graphic"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=900&q=80"
+              alt="Brand Identity Design"
+              class="w-full h-56 object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">Brand Identity Design</h4>
+                <p class="text-sm text-white/80 mb-4">Graphic Design</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="graphic"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=900&q=80"
+              alt="Creative Logo Design"
+              class="w-full h-56 object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">Creative Logo Design</h4>
+                <p class="text-sm text-white/80 mb-4">Graphic Design</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="graphic"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1600132806608-231446b2e7af?w=900&q=80"
+              alt="Event Poster Design"
+              class="w-full h-56 object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">Event Poster Design</h4>
+                <p class="text-sm text-white/80 mb-4">Graphic Design</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Digital Art Items -->
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="digital"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=900&q=80"
+              alt="Abstract Digital Art"
+              class="w-full h-56 object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">Abstract Digital Art</h4>
+                <p class="text-sm text-white/80 mb-4">Digital Art</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="digital"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1634986666676-ec8fd927c23d?w=900&q=80"
+              alt="Digital Illustration"
+              class="w-full h-56 object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">Digital Illustration</h4>
+                <p class="text-sm text-white/80 mb-4">Digital Art</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="digital"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1550859492-d5da9d8e45f3?w=900&q=80"
+              alt="3D Digital Artwork"
+              class="w-full h-56 object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">3D Digital Artwork</h4>
+                <p class="text-sm text-white/80 mb-4">Digital Art</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Canvas Art Items -->
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="canvas"
+            data-gallery-images='[{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770321830/IMG20221030094856_o3zotg.jpg","alt":"Winter Sunset Art"}]'
+          >
+            <img
+              src="https://res.cloudinary.com/duzr2cnth/image/upload/w_900,h_600,c_fill,f_auto,q_auto/v1770321830/IMG20221030094856_o3zotg.jpg"
+              alt="Winter Sunset"
+              class="w-full h-56 object-cover"
+              loading="eager"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">Winter Sunset</h4>
+                <p class="text-sm text-white/80 mb-4">Canvas Art</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="canvas"
+            data-gallery-images='[{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770321827/IMG20220925120350_bscbpz.jpg","alt":"Sunny Day Art 1"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770321828/IMG20220925220718_bmq0lz.jpg","alt":"Sunny Day Art 2"}]'
+          >
+            <img
+              src="https://res.cloudinary.com/duzr2cnth/image/upload/w_900,h_600,c_fill,f_auto,q_auto/v1770321827/IMG20220925120350_bscbpz.jpg"
+              alt="Sunny Day"
+              class="w-full h-56 object-cover"
+              loading="eager"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">Sunny Day</h4>
+                <p class="text-sm text-white/80 mb-4">Canvas Art - 2 Images</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View Gallery
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="canvas"
+            data-gallery-images='[{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770321832/IMG20221030093923_vszgob.jpg","alt":"River Sunset Art"}]'
+          >
+            <img
+              src="https://res.cloudinary.com/duzr2cnth/image/upload/w_900,h_600,c_fill,f_auto,q_auto/v1770321832/IMG20221030093923_vszgob.jpg"
+              alt="River Sunset"
+              class="w-full h-56 object-cover"
+              loading="eager"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">River Sunset</h4>
+                <p class="text-sm text-white/80 mb-4">Canvas Art</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="canvas"
+            data-gallery-images='[{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770321832/IMG20221118163135_jwta1r.jpg","alt":"Lachit Barphkon Art"}]'
+          >
+            <img
+              src="https://res.cloudinary.com/duzr2cnth/image/upload/w_900,h_600,c_fill,f_auto,q_auto/v1770321832/IMG20221118163135_jwta1r.jpg"
+              alt="Lachit Barphkon"
+              class="w-full h-56 object-cover"
+              loading="eager"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">Lachit Barphkon</h4>
+                <p class="text-sm text-white/80 mb-4">Canvas Art</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="canvas"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=900&q=80"
+              alt="Modern Canvas Print"
+              class="w-full h-56 object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">Modern Canvas Print</h4>
+                <p class="text-sm text-white/80 mb-4">Canvas Art</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="canvas"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=900&q=80"
+              alt="Abstract Canvas Art"
+              class="w-full h-56 object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">Abstract Canvas Art</h4>
+                <p class="text-sm text-white/80 mb-4">Canvas Art</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="canvas"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1513519245088-0e12902e35ca?w=900&q=80"
+              alt="Vibrant Canvas Print"
+              class="w-full h-56 object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">Vibrant Canvas Print</h4>
+                <p class="text-sm text-white/80 mb-4">Canvas Art</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Wall Art Items -->
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="wall"
+            data-gallery-images='[{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770321111/20220601_141158_nzotoa.jpg","alt":"Space Underwater Room Mural Art 1"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770321112/20211028_140808_grei88.jpg","alt":"Space Underwater Room Mural Art 2"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770321111/IMG_20230320_234018_177_npcqlt.webp","alt":"Space Underwater Room Mural Art 3"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770321291/20211227_232420_toq2xm.jpg","alt":"Space Underwater Room Mural Art 4"}]'
+          >
+            <img
+              src="https://res.cloudinary.com/duzr2cnth/image/upload/w_900,h_600,c_fill,f_auto,q_auto/v1770321111/20220601_141158_nzotoa.jpg"
+              alt="Space Underwater Room Mural Art"
+              class="w-full h-56 object-cover"
+              loading="eager"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">
+                  Space Underwater Room Mural Art
+                </h4>
+                <p class="text-sm text-white/80 mb-4">Wall Art - 4 Images</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View Gallery
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="wall"
+            data-gallery-images='[{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770316854/IMG20220612035857_dohxpm.jpg","alt":"Custom Wall Art Piece 1"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770316855/IMG20220612151506_ompbyn.jpg","alt":"Custom Wall Art Piece 2"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770316856/IMG20220612151448_blgogd.jpg","alt":"Custom Wall Art Piece 3"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770317569/IMG20220606194904_a5ytfk.jpg","alt":"Custom Wall Art Piece 4"}]'
+          >
+            <img
+              src="https://res.cloudinary.com/duzr2cnth/image/upload/w_900,h_600,c_fill,f_auto,q_auto/v1770316854/IMG20220612035857_dohxpm.jpg"
+              alt="Happy Family"
+              class="w-full h-56 object-cover"
+              loading="eager"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">Happy Family</h4>
+                <p class="text-sm text-white/80 mb-4">Wall Art - 4 Images</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View Gallery
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="wall"
+            data-gallery-images='[{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770320673/IMG_20210204_165331-01_uhm2ni.jpg","alt":"Rhino Elephant Black n White Art 1"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770320642/IMG_20201108_112939-01_xqmtke.jpg","alt":"Rhino Elephant Black n White Art 2"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770320731/IMG_20201106_164324_zqoe26.jpg","alt":"Rhino Elephant Black n White Art 3"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770320733/IMG_20201103_161926_acfmgh.jpg","alt":"Rhino Elephant Black n White Art 4"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770320729/IMG_20201030_155748_yuzmjq.jpg","alt":"Rhino Elephant Black n White Art 5"}]'
+          >
+            <img
+              src="https://res.cloudinary.com/duzr2cnth/image/upload/w_900,h_600,c_fill,f_auto,q_auto/v1770320673/IMG_20210204_165331-01_uhm2ni.jpg"
+              alt="Rhino Elephant Black n White"
+              class="w-full h-56 object-cover"
+              loading="eager"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">Rhino Elephant Black n White</h4>
+                <p class="text-sm text-white/80 mb-4">Wall Art - 5 Images</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View Gallery
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="wall"
+            data-gallery-images='[{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770318022/IMG_20210527_000613_375_vjdtcb.jpg","alt":"Bholenath Art 1"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770318025/20210525_202925_wm6mkv.jpg","alt":"Bholenath Art 2"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770318024/20210525_202816_dq9a7j.jpg","alt":"Bholenath Art 3"}]'
+          >
+            <img
+              src="https://res.cloudinary.com/duzr2cnth/image/upload/w_900,h_600,c_fill,f_auto,q_auto/v1770318022/IMG_20210527_000613_375_vjdtcb.jpg"
+              alt="Bholenath"
+              class="w-full h-56 object-cover"
+              loading="eager"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">Bholenath</h4>
+                <p class="text-sm text-white/80 mb-4">Wall Art - 3 Images</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View Gallery
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="wall"
+            data-gallery-images='[{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770318856/IMG_20200820_130753_bfuzej.jpg","alt":"Mushrooms Forest Art 1"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770318481/IMG_20200820_130712mmm_yib2cm.jpg","alt":"Mushrooms Forest Art 2"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770318857/IMG_20200820_130940_s01tsg.jpg","alt":"Mushrooms Forest Art 3"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770318858/IMG_20200820_130726_jinoy4.jpg","alt":"Mushrooms Forest Art 4"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770318859/IMG_20200820_130743_g2mq86.jpg","alt":"Mushrooms Forest Art 5"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770318859/IMG_20200820_130734_imlduo.jpg","alt":"Mushrooms Forest Art 6"}]'
+          >
+            <img
+              src="https://res.cloudinary.com/duzr2cnth/image/upload/w_900,h_600,c_fill,f_auto,q_auto/v1770318856/IMG_20200820_130753_bfuzej.jpg"
+              alt="Mushrooms Forest"
+              class="w-full h-56 object-cover"
+              loading="eager"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">Mushrooms Forest</h4>
+                <p class="text-sm text-white/80 mb-4">Wall Art - 6 Images</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View Gallery
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="wall"
+            data-gallery-images='[{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770319224/20210406_174942_amcwic.jpg","alt":"Fantasy Kingdom Art 1"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770319221/20210406_160626_czd5nt.jpg","alt":"Fantasy Kingdom Art 2"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770319232/bbbb_bzuybo.jpg","alt":"Fantasy Kingdom Art 3"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770319219/20210406_153544_tnnyin.jpg","alt":"Fantasy Kingdom Art 4"}]'
+          >
+            <img
+              src="https://res.cloudinary.com/duzr2cnth/image/upload/w_900,h_600,c_fill,f_auto,q_auto/v1770319224/20210406_174942_amcwic.jpg"
+              alt="Fantasy Kingdom"
+              class="w-full h-56 object-cover"
+              loading="eager"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">Fantasy Kingdom</h4>
+                <p class="text-sm text-white/80 mb-4">Wall Art - 4 Images</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View Gallery
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="wall"
+            data-gallery-images='[{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770319516/backupPreview_q35prt.png","alt":"Deer Abstract Art 1"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770319518/20201210_120624_v1twdj.jpg","alt":"Deer Abstract Art 2"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770319518/20201209_135956_hzbeo1.jpg","alt":"Deer Abstract Art 3"}]'
+          >
+            <img
+              src="https://res.cloudinary.com/duzr2cnth/image/upload/w_900,h_600,c_fill,f_auto,q_auto/v1770319516/backupPreview_q35prt.png"
+              alt="Deer Abstract"
+              class="w-full h-56 object-cover"
+              loading="eager"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">Deer Abstract</h4>
+                <p class="text-sm text-white/80 mb-4">Wall Art - 3 Images</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View Gallery
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="wall"
+            data-gallery-images='[{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770319882/IMG20220622090549_navqma.jpg","alt":"Waterfall Landscape Art 1"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770319880/IMG20220621003252_pieteh.jpg","alt":"Waterfall Landscape Art 2"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770319879/IMG20220617041455_bvd4f2.jpg","alt":"Waterfall Landscape Art 3"}]'
+          >
+            <img
+              src="https://res.cloudinary.com/duzr2cnth/image/upload/w_900,h_600,c_fill,f_auto,q_auto/v1770319882/IMG20220622090549_navqma.jpg"
+              alt="Waterfall Landscape"
+              class="w-full h-56 object-cover"
+              loading="eager"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">Waterfall Landscape</h4>
+                <p class="text-sm text-white/80 mb-4">Wall Art - 3 Images</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View Gallery
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="wall"
+            data-gallery-images='[{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770320176/20210530_143554_d3rqd2.jpg","alt":"Iron Man Art 1"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770320173/20210530_014453_w4kovr.jpg","alt":"Iron Man Art 2"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770320172/20210530_014234_k7w9al.jpg","alt":"Iron Man Art 3"}]'
+          >
+            <img
+              src="https://res.cloudinary.com/duzr2cnth/image/upload/w_900,h_600,c_fill,f_auto,q_auto/v1770320176/20210530_143554_d3rqd2.jpg"
+              alt="Iron Man"
+              class="w-full h-56 object-cover"
+              loading="eager"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">Iron Man</h4>
+                <p class="text-sm text-white/80 mb-4">Wall Art - 3 Images</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View Gallery
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="wall"
+            data-gallery-images='[{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770321410/20230103_153546_lhxau5.jpg","alt":"Room Mural Art 1"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770321408/20221106_141204_fnlcic.jpg","alt":"Room Mural Art 2"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770321406/20220312_105242_vemi42.jpg","alt":"Room Mural Art 3"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770321403/20220312_105224_jdbehl.jpg","alt":"Room Mural Art 4"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770321403/20220309_193407_mizuoo.jpg","alt":"Room Mural Art 5"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770321400/20220221_232830_b3scqe.jpg","alt":"Room Mural Art 6"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770321411/IMG-20220603-WA0000_gdxcf2.jpg","alt":"Room Mural Art 7"},{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/w_1200,f_auto,q_auto/v1770321412/20230401_164517_hiddt5.jpg","alt":"Room Mural Art 8"}]'
+          >
+            <img
+              src="https://res.cloudinary.com/duzr2cnth/image/upload/w_900,h_600,c_fill,f_auto,q_auto/v1770321410/20230103_153546_lhxau5.jpg"
+              alt="Other Wall Arts"
+              class="w-full h-56 object-cover"
+              loading="eager"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">Other Wall Arts</h4>
+                <p class="text-sm text-white/80 mb-4">Wall Art - 8 Images</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View Gallery
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div
+      id="galleryLightbox"
+      class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50 px-4"
+      aria-hidden="true"
+    >
+      <button
+        type="button"
+        class="absolute top-6 right-6 text-white text-3xl hover:text-orange-400 transition"
+        onclick="closeLightbox()"
+        aria-label="Close gallery"
+      >
+        &times;
+      </button>
+      <button
+        type="button"
+        class="absolute left-4 md:left-8 text-white text-4xl hover:text-orange-400 transition"
+        onclick="changeLightboxImage(-1)"
+        aria-label="Previous image"
+      >
+        &#10094;
+      </button>
+      <button
+        type="button"
+        class="absolute right-4 md:right-8 text-white text-4xl hover:text-orange-400 transition"
+        onclick="changeLightboxImage(1)"
+        aria-label="Next image"
+      >
+        &#10095;
+      </button>
+      <div class="max-w-4xl w-full">
+        <img
+          id="galleryLightboxImage"
+          src=""
+          alt=""
+          class="w-full max-h-[75vh] object-contain rounded-xl shadow-2xl"
+        />
+        <p
+          id="galleryLightboxCaption"
+          class="text-center text-white mt-4 text-lg font-semibold"
+        ></p>
+        <!-- Image indicators (dots) -->
+        <div
+          id="galleryImageIndicators"
+          class="flex justify-center gap-2 mt-4"
+        ></div>
+      </div>
+    </div>
+
     <!-- ======================== GAMES & PROJECTS SECTION ======================== -->
     <section
       id="games"
@@ -2672,7 +3499,6 @@
         </div>
       </div>
     </section>
-
     <!-- ======================== DEMO WEBSITES SECTION ======================== -->
     <section
       id="demo-websites"
@@ -3645,6 +4471,190 @@
         document.getElementById("totalPrice").textContent = total;
       }
 
+      // ===================== GALLERY FILTER & LIGHTBOX =====================
+      const galleryState = {
+        items: [],
+        currentIndex: 0,
+        currentImageIndex: 0,
+      };
+
+      function initGallery() {
+        const galleryItems = Array.from(
+          document.querySelectorAll(".js-gallery-item"),
+        );
+        const filterButtons = Array.from(
+          document.querySelectorAll(".js-gallery-filter"),
+        );
+
+        if (!galleryItems.length) return;
+
+        galleryState.items = galleryItems.map((item, index) => {
+          const image = item.querySelector("img");
+          const title = item.querySelector("h4");
+          const galleryImagesAttr = item.dataset.galleryImages;
+
+          item.dataset.index = index;
+
+          // Check if item has multiple images
+          let images = [];
+          if (galleryImagesAttr) {
+            try {
+              images = JSON.parse(galleryImagesAttr);
+            } catch (e) {
+              images = [
+                {
+                  src: image ? image.src : "",
+                  alt: image ? image.alt : "Gallery image",
+                },
+              ];
+            }
+          } else {
+            images = [
+              {
+                src: image ? image.src : "",
+                alt: image ? image.alt : "Gallery image",
+              },
+            ];
+          }
+
+          return {
+            images: images,
+            title: title ? title.textContent.trim() : "Gallery image",
+          };
+        });
+
+        galleryItems.forEach((item, index) => {
+          const openButton = item.querySelector(
+            "[data-action='open-lightbox']",
+          );
+          if (openButton) {
+            openButton.addEventListener("click", function (event) {
+              event.preventDefault();
+              openLightbox(index);
+            });
+          }
+        });
+
+        filterButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            const filter = button.getAttribute("data-filter");
+
+            filterButtons.forEach((btn) => {
+              btn.classList.remove("bg-blue-600", "text-white");
+              btn.classList.add("text-gray-700", "border-blue-200");
+            });
+            button.classList.add("bg-blue-600", "text-white");
+            button.classList.remove("text-gray-700");
+
+            galleryItems.forEach((item) => {
+              const category = item.getAttribute("data-category");
+              const isMatch = filter === "all" || category === filter;
+              item.classList.toggle("hidden", !isMatch);
+            });
+          });
+        });
+
+        if (filterButtons[0]) {
+          filterButtons[0].click();
+        }
+
+        const lightbox = document.getElementById("galleryLightbox");
+        if (lightbox) {
+          lightbox.addEventListener("click", function (event) {
+            if (event.target === lightbox) {
+              closeLightbox();
+            }
+          });
+        }
+      }
+
+      function openLightbox(index, imageIndex = 0) {
+        const lightbox = document.getElementById("galleryLightbox");
+        const lightboxImage = document.getElementById("galleryLightboxImage");
+        const lightboxCaption = document.getElementById(
+          "galleryLightboxCaption",
+        );
+        const indicatorsContainer = document.getElementById(
+          "galleryImageIndicators",
+        );
+
+        if (!lightbox || !lightboxImage || !galleryState.items[index]) return;
+
+        const item = galleryState.items[index];
+        galleryState.currentIndex = index;
+        galleryState.currentImageIndex = imageIndex;
+
+        const currentImage = item.images[imageIndex];
+
+        // Show lightbox immediately
+        lightbox.classList.remove("hidden");
+        lightbox.classList.add("flex");
+        document.body.classList.add("overflow-hidden");
+
+        // Then load content
+        lightboxImage.src = currentImage.src;
+        lightboxImage.alt = currentImage.alt;
+
+        if (lightboxCaption) {
+          const imageCount =
+            item.images.length > 1
+              ? ` (${imageIndex + 1}/${item.images.length})`
+              : "";
+          lightboxCaption.textContent = item.title + imageCount;
+        }
+
+        // Create image indicators if multiple images exist
+        if (indicatorsContainer) {
+          indicatorsContainer.innerHTML = "";
+          if (item.images.length > 1) {
+            item.images.forEach((img, idx) => {
+              const dot = document.createElement("button");
+              dot.type = "button";
+              dot.className = `w-3 h-3 rounded-full transition ${idx === imageIndex ? "bg-blue-500" : "bg-white/50 hover:bg-white/80"}`;
+              dot.setAttribute("aria-label", `View image ${idx + 1}`);
+              dot.addEventListener("click", () => openLightbox(index, idx));
+              indicatorsContainer.appendChild(dot);
+            });
+          }
+        }
+      }
+
+      function closeLightbox() {
+        const lightbox = document.getElementById("galleryLightbox");
+        if (!lightbox) return;
+        lightbox.classList.add("hidden");
+        lightbox.classList.remove("flex");
+        document.body.classList.remove("overflow-hidden");
+      }
+
+      function changeLightboxImage(direction) {
+        if (!galleryState.items.length) return;
+
+        const currentItem = galleryState.items[galleryState.currentIndex];
+        if (!currentItem || !currentItem.images.length) return;
+
+        // Navigate within images of current gallery item
+        const totalImages = currentItem.images.length;
+        const nextImageIndex =
+          (galleryState.currentImageIndex + direction + totalImages) %
+          totalImages;
+
+        openLightbox(galleryState.currentIndex, nextImageIndex);
+      }
+
+      document.addEventListener("keydown", function (event) {
+        const lightbox = document.getElementById("galleryLightbox");
+        if (!lightbox || lightbox.classList.contains("hidden")) return;
+
+        if (event.key === "Escape") {
+          closeLightbox();
+        } else if (event.key === "ArrowRight") {
+          changeLightboxImage(1);
+        } else if (event.key === "ArrowLeft") {
+          changeLightboxImage(-1);
+        }
+      });
+
       // Appointment system removed - customers visit physical shop
 
       // ===================== LANGUAGE TRANSLATION SYSTEM =====================
@@ -3655,6 +4665,8 @@
           Home: "Home",
           Services: "Services",
           Games: "Games",
+          Gallery: "Gallery",
+          Websites: "Websites",
           Updates: "Updates",
           "Call Now": "Call Now",
 
@@ -3670,6 +4682,17 @@
           "Explore Games": "Explore Games",
           "Currently helping": "Currently helping",
           customers: "customers",
+
+          // Gallery
+          "Our Portfolio": "Our Portfolio",
+          "Explore our creative digital masterpieces":
+            "Explore our creative digital masterpieces",
+          All: "All",
+          "Graphic Designs": "Graphic Designs",
+          "Digital Art": "Digital Art",
+          "Canvas Art": "Canvas Art",
+          "Wall Art": "Wall Art",
+          View: "View",
 
           // Statistics
           "Happy Customers": "Happy Customers",
@@ -3776,6 +4799,8 @@
           Home: "होम",
           Services: "सेवाएं",
           Games: "गेम्स",
+          Gallery: "गैलरी",
+          Websites: "वेबसाइट्स",
           Updates: "अपडेट",
           "Call Now": "कॉल करें",
 
@@ -3791,6 +4816,17 @@
           "Explore Games": "गेम्स देखें",
           "Currently helping": "वर्तमान में सहायता कर रहे हैं",
           customers: "ग्राहकों को",
+
+          // Gallery
+          "Our Portfolio": "हमारा पोर्टफोलियो",
+          "Explore our creative digital masterpieces":
+            "हमारी रचनात्मक डिजिटल कृतियों को देखें",
+          All: "सभी",
+          "Graphic Designs": "ग्राफिक डिज़ाइन",
+          "Digital Art": "डिजिटल आर्ट",
+          "Canvas Art": "कैनवास आर्ट",
+          "Wall Art": "वॉल आर्ट",
+          View: "देखें",
 
           // Statistics
           "Happy Customers": "खुश ग्राहक",
@@ -3906,6 +4942,8 @@
           Home: "ঘৰ",
           Services: "সেৱাসমূহ",
           Games: "গেমছ",
+          Gallery: "গেলাৰী",
+          Websites: "ৱেবছাইটসমূহ",
           Updates: "আপডেট",
           "Call Now": "কল কৰক",
 
@@ -3921,6 +4959,17 @@
           "Explore Games": "গেমছ চাওক",
           "Currently helping": "বৰ্তমান সহায় কৰি আছে",
           customers: "গ্ৰাহকক",
+
+          // Gallery
+          "Our Portfolio": "আমাৰ পোর্টফোলিও",
+          "Explore our creative digital masterpieces":
+            "আমাৰ সৃজনশীল ডিজিটেল সৃষ্টি চাওক",
+          All: "সকলো",
+          "Graphic Designs": "গ্ৰাফিক ডিজাইন",
+          "Digital Art": "ডিজিটেল আৰ্ট",
+          "Canvas Art": "কেনভাছ আৰ্ট",
+          "Wall Art": "ওৱাল আৰ্ট",
+          View: "চাওক",
 
           // Statistics
           "Happy Customers": "সুখী গ্ৰাহক",
@@ -4035,6 +5084,8 @@
           Home: "হোম",
           Services: "সেবা",
           Games: "গেমস",
+          Gallery: "গ্যালারি",
+          Websites: "ওয়েবসাইট",
           Updates: "আপডেট",
           "Call Now": "এখনই কল করুন",
 
@@ -4050,6 +5101,17 @@
           "Explore Games": "গেমস অন্বেষণ করুন",
           "Currently helping": "বর্তমানে সাহায্য করছি",
           customers: "গ্রাহকদের",
+
+          // Gallery
+          "Our Portfolio": "আমাদের পোর্টফোলিও",
+          "Explore our creative digital masterpieces":
+            "আমাদের সৃজনশীল ডিজিটাল কাজগুলো দেখুন",
+          All: "সব",
+          "Graphic Designs": "গ্রাফিক ডিজাইন",
+          "Digital Art": "ডিজিটাল আর্ট",
+          "Canvas Art": "ক্যানভাস আর্ট",
+          "Wall Art": "ওয়াল আর্ট",
+          View: "দেখুন",
 
           // Statistics
           "Happy Customers": "সন্তুষ্ট গ্রাহক",
@@ -4262,6 +5324,8 @@
           document.querySelector("#services"),
           document.querySelector("#quote-calculator"),
           document.querySelector("#games"),
+          document.querySelector("#gallery"),
+          document.querySelector("#demo-websites"),
           document.querySelector("footer"),
         ];
 
@@ -4411,6 +5475,7 @@
         loadNotificationsFromFirebase();
         loadAdminSettings();
         updateVisitorCount();
+        initGallery();
         updateShopHours();
         updateNoticeCountdown();
 
