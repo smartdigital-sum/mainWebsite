@@ -369,6 +369,83 @@
       .animate-slide-up {
         animation: slide-up 0.5s ease-out;
       }
+
+      /* Enhanced Horizontal Slider Styles */
+      .overflow-x-auto {
+        scroll-behavior: smooth;
+        scrollbar-color: #3b82f6 #e0e7ff; /* Firefox */
+        scrollbar-width: thin;
+      }
+
+      /* Custom horizontal scrollbar for webkit browsers */
+      .overflow-x-auto::-webkit-scrollbar {
+        height: 16px;
+      }
+
+      .overflow-x-auto::-webkit-scrollbar-track {
+        background: linear-gradient(
+          90deg,
+          #dbeafe 0%,
+          #e0e7ff 50%,
+          #dbeafe 100%
+        );
+        border-radius: 10px;
+        margin: 0 10px;
+      }
+
+      .overflow-x-auto::-webkit-scrollbar-thumb {
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+        border-radius: 10px;
+        border: 2px solid transparent;
+        background-clip: content-box;
+      }
+
+      .overflow-x-auto::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(90deg, #2563eb, #7c3aed, #db2777);
+        border-radius: 10px;
+        border: 2px solid transparent;
+        background-clip: content-box;
+      }
+
+      /* Add subtle gradient overlay on slider edges */
+      .overflow-x-auto {
+        position: relative;
+        padding: 12px 0;
+        margin: -12px 0;
+      }
+
+      /* Smooth scroll animation */
+      @keyframes scroll-hint {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(10px);
+        }
+      }
+
+      /* Add shadow effect to slider container */
+      .overflow-x-auto::before,
+      .overflow-x-auto::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 40px;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .overflow-x-auto::before {
+        left: 0;
+        background: linear-gradient(to right, white, transparent);
+      }
+
+      .overflow-x-auto::after {
+        right: 0;
+        background: linear-gradient(to left, white, transparent);
+      }
     </style>
   </head>
   <body class="bg-white text-gray-800">
@@ -402,7 +479,7 @@
             >Home</a
           >
           <a
-            href="#services"
+            href="#actual-services"
             class="text-gray-700 hover:text-blue-600 font-semibold transition"
             >Services</a
           >
@@ -495,7 +572,7 @@
           >Home</a
         >
         <a
-          href="#services"
+          href="#actual-services"
           class="block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
           >Services</a
         >
@@ -589,7 +666,7 @@
             <i class="fas fa-images mr-2"></i>All Services
           </a>
           <a
-            href="#services"
+            href="#actual-services"
             class="btn-brand px-8 py-3 rounded-lg font-bold text-lg transition transform hover:scale-105"
             >Explore Services</a
           >
@@ -848,207 +925,221 @@
         </h3>
 
         <!-- CSC & Govt Services -->
-        <div class="mb-16">
+        <div id="actual-services" class="mb-16">
           <h4 class="text-2xl font-bold text-blue-600 mb-6 flex items-center">
             <i class="fas fa-id-card mr-3"></i> CSC & Government Services
           </h4>
-          <div class="overflow-x-auto pb-4">
-            <div class="flex gap-6" style="min-width: max-content">
-              <!-- PAN Card -->
-              <div
-                onclick="openServiceModal('panModal')"
-                class="service-card block bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer no-underline flex-shrink-0"
-                style="width: 280px"
-              >
-                <div class="text-5xl mb-4 text-blue-600">
-                  <i class="fas fa-credit-card"></i>
-                </div>
-                <h5 class="text-xl font-bold text-gray-800 mb-2">PAN Card</h5>
-                <p class="text-gray-600 mb-3">
-                  Apply, print, correction & linking
-                </p>
+          <div
+            class="bg-gradient-to-r from-blue-50 via-white to-blue-50 rounded-2xl p-4 shadow-inner border border-blue-100"
+          >
+            <div class="overflow-x-auto pb-4">
+              <div class="flex gap-6" style="min-width: max-content">
+                <!-- PAN Card -->
                 <div
-                  class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                  onclick="openServiceModal('panModal')"
+                  class="service-card block bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer no-underline flex-shrink-0"
+                  style="width: 280px"
                 >
-                  <i class="fas fa-eye mr-2"></i>View Details
+                  <div class="text-5xl mb-4 text-blue-600">
+                    <i class="fas fa-credit-card"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800 mb-2">PAN Card</h5>
+                  <p class="text-gray-600 mb-3">
+                    Apply, print, correction & linking
+                  </p>
+                  <div
+                    class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                  >
+                    <i class="fas fa-eye mr-2"></i>View Details
+                  </div>
                 </div>
-              </div>
 
-              <!-- Aadhaar Services -->
-              <div
-                onclick="openServiceModal('aadharModal')"
-                class="service-card block bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer no-underline flex-shrink-0"
-                style="width: 280px"
-              >
-                <div class="text-5xl mb-4 text-blue-600">
-                  <i class="fas fa-passport"></i>
-                </div>
-                <h5 class="text-xl font-bold text-gray-800 mb-2">
-                  Aadhaar Services
-                </h5>
-                <p class="text-gray-600 mb-3">Download, print, PVC & linking</p>
+                <!-- Aadhaar Services -->
                 <div
-                  class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                  onclick="openServiceModal('aadharModal')"
+                  class="service-card block bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer no-underline flex-shrink-0"
+                  style="width: 280px"
                 >
-                  <i class="fas fa-eye mr-2"></i>View Details
+                  <div class="text-5xl mb-4 text-blue-600">
+                    <i class="fas fa-passport"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800 mb-2">
+                    Aadhaar Services
+                  </h5>
+                  <p class="text-gray-600 mb-3">
+                    Download, print, PVC & linking
+                  </p>
+                  <div
+                    class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                  >
+                    <i class="fas fa-eye mr-2"></i>View Details
+                  </div>
                 </div>
-              </div>
 
-              <!-- Voter Card -->
-              <div
-                onclick="openServiceModal('voterModal')"
-                class="service-card block bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer no-underline flex-shrink-0"
-                style="width: 280px"
-              >
-                <div class="text-5xl mb-4 text-blue-600">
-                  <i class="fas fa-vote-yea"></i>
-                </div>
-                <h5 class="text-xl font-bold text-gray-800 mb-2">Voter Card</h5>
-                <p class="text-gray-600 mb-3">Apply, link & print services</p>
+                <!-- Voter Card -->
                 <div
-                  class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                  onclick="openServiceModal('voterModal')"
+                  class="service-card block bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer no-underline flex-shrink-0"
+                  style="width: 280px"
                 >
-                  <i class="fas fa-eye mr-2"></i>View Details
+                  <div class="text-5xl mb-4 text-blue-600">
+                    <i class="fas fa-vote-yea"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800 mb-2">
+                    Voter Card
+                  </h5>
+                  <p class="text-gray-600 mb-3">Apply, link & print services</p>
+                  <div
+                    class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                  >
+                    <i class="fas fa-eye mr-2"></i>View Details
+                  </div>
                 </div>
-              </div>
 
-              <!-- Income Certificate -->
-              <div
-                onclick="openServiceModal('incomeCertModal')"
-                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
-                style="width: 280px"
-              >
-                <div class="text-5xl mb-4 text-blue-600">
-                  <i class="fas fa-file-invoice-dollar"></i>
-                </div>
-                <h5 class="text-xl font-bold text-gray-800 mb-2">
-                  Income Certificate
-                </h5>
-                <p class="text-gray-600 mb-3">Official income documentation</p>
+                <!-- Income Certificate -->
                 <div
-                  class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                  onclick="openServiceModal('incomeCertModal')"
+                  class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                  style="width: 280px"
                 >
-                  <i class="fas fa-eye mr-2"></i>View Details
+                  <div class="text-5xl mb-4 text-blue-600">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800 mb-2">
+                    Income Certificate
+                  </h5>
+                  <p class="text-gray-600 mb-3">
+                    Official income documentation
+                  </p>
+                  <div
+                    class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                  >
+                    <i class="fas fa-eye mr-2"></i>View Details
+                  </div>
                 </div>
-              </div>
 
-              <!-- Caste Certificate -->
-              <div
-                onclick="openServiceModal('casteCertModal')"
-                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
-                style="width: 280px"
-              >
-                <div class="text-5xl mb-4 text-blue-600">
-                  <i class="fas fa-certificate"></i>
-                </div>
-                <h5 class="text-xl font-bold text-gray-800 mb-2">
-                  Caste Certificate
-                </h5>
-                <p class="text-gray-600 mb-3">Official caste documentation</p>
+                <!-- Caste Certificate -->
                 <div
-                  class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                  onclick="openServiceModal('casteCertModal')"
+                  class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                  style="width: 280px"
                 >
-                  <i class="fas fa-eye mr-2"></i>View Details
+                  <div class="text-5xl mb-4 text-blue-600">
+                    <i class="fas fa-certificate"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800 mb-2">
+                    Caste Certificate
+                  </h5>
+                  <p class="text-gray-600 mb-3">Official caste documentation</p>
+                  <div
+                    class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                  >
+                    <i class="fas fa-eye mr-2"></i>View Details
+                  </div>
                 </div>
-              </div>
 
-              <!-- Domicile Certificate -->
-              <div
-                onclick="openServiceModal('domicileCertModal')"
-                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
-                style="width: 280px"
-              >
-                <div class="text-5xl mb-4 text-blue-600">
-                  <i class="fas fa-home"></i>
-                </div>
-                <h5 class="text-xl font-bold text-gray-800 mb-2">
-                  Domicile Certificate
-                </h5>
-                <p class="text-gray-600 mb-3">Residence proof certificate</p>
+                <!-- Domicile Certificate -->
                 <div
-                  class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                  onclick="openServiceModal('domicileCertModal')"
+                  class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                  style="width: 280px"
                 >
-                  <i class="fas fa-eye mr-2"></i>View Details
+                  <div class="text-5xl mb-4 text-blue-600">
+                    <i class="fas fa-home"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800 mb-2">
+                    Domicile Certificate
+                  </h5>
+                  <p class="text-gray-600 mb-3">Residence proof certificate</p>
+                  <div
+                    class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                  >
+                    <i class="fas fa-eye mr-2"></i>View Details
+                  </div>
                 </div>
-              </div>
 
-              <!-- Birth Certificate -->
-              <div
-                onclick="openServiceModal('birthCertModal')"
-                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
-                style="width: 280px"
-              >
-                <div class="text-5xl mb-4 text-blue-600">
-                  <i class="fas fa-baby"></i>
-                </div>
-                <h5 class="text-xl font-bold text-gray-800 mb-2">
-                  Birth Certificate
-                </h5>
-                <p class="text-gray-600 mb-3">Official birth registration</p>
+                <!-- Birth Certificate -->
                 <div
-                  class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                  onclick="openServiceModal('birthCertModal')"
+                  class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                  style="width: 280px"
                 >
-                  <i class="fas fa-eye mr-2"></i>View Details
+                  <div class="text-5xl mb-4 text-blue-600">
+                    <i class="fas fa-baby"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800 mb-2">
+                    Birth Certificate
+                  </h5>
+                  <p class="text-gray-600 mb-3">Official birth registration</p>
+                  <div
+                    class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                  >
+                    <i class="fas fa-eye mr-2"></i>View Details
+                  </div>
                 </div>
-              </div>
 
-              <!-- Banking Services -->
-              <div
-                onclick="openServiceModal('bankingModal')"
-                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
-                style="width: 280px"
-              >
-                <div class="text-5xl mb-4 text-blue-600">
-                  <i class="fas fa-university"></i>
-                </div>
-                <h5 class="text-xl font-bold text-gray-800 mb-2">
-                  Banking Services
-                </h5>
-                <p class="text-gray-600 mb-3">Account, DBT, transfer & more</p>
+                <!-- Banking Services -->
                 <div
-                  class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                  onclick="openServiceModal('bankingModal')"
+                  class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                  style="width: 280px"
                 >
-                  <i class="fas fa-eye mr-2"></i>View Details
+                  <div class="text-5xl mb-4 text-blue-600">
+                    <i class="fas fa-university"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800 mb-2">
+                    Banking Services
+                  </h5>
+                  <p class="text-gray-600 mb-3">
+                    Account, DBT, transfer & more
+                  </p>
+                  <div
+                    class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                  >
+                    <i class="fas fa-eye mr-2"></i>View Details
+                  </div>
                 </div>
-              </div>
 
-              <!-- Ration Card -->
-              <div
-                onclick="openServiceModal('rationModal')"
-                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
-                style="width: 280px"
-              >
-                <div class="text-5xl mb-4 text-blue-600">
-                  <i class="fas fa-id-card"></i>
-                </div>
-                <h5 class="text-xl font-bold text-gray-800 mb-2">
-                  Ration Card
-                </h5>
-                <p class="text-gray-600 mb-3">Number find, print & KYC</p>
+                <!-- Ration Card -->
                 <div
-                  class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                  onclick="openServiceModal('rationModal')"
+                  class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                  style="width: 280px"
                 >
-                  <i class="fas fa-eye mr-2"></i>View Details
+                  <div class="text-5xl mb-4 text-blue-600">
+                    <i class="fas fa-id-card"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800 mb-2">
+                    Ration Card
+                  </h5>
+                  <p class="text-gray-600 mb-3">Number find, print & KYC</p>
+                  <div
+                    class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                  >
+                    <i class="fas fa-eye mr-2"></i>View Details
+                  </div>
                 </div>
-              </div>
 
-              <!-- Other Services -->
-              <div
-                onclick="openServiceModal('otherServicesModal')"
-                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
-                style="width: 280px"
-              >
-                <div class="text-5xl mb-4 text-blue-600">
-                  <i class="fas fa-star"></i>
-                </div>
-                <h5 class="text-xl font-bold text-gray-800 mb-2">
-                  Other Services
-                </h5>
-                <p class="text-gray-600 mb-3">E-Sharm, Ayushman, JIO & more</p>
+                <!-- Other Services -->
                 <div
-                  class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                  onclick="openServiceModal('otherServicesModal')"
+                  class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                  style="width: 280px"
                 >
-                  <i class="fas fa-eye mr-2"></i>View Details
+                  <div class="text-5xl mb-4 text-blue-600">
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800 mb-2">
+                    Other Services
+                  </h5>
+                  <p class="text-gray-600 mb-3">
+                    E-Sharm, Ayushman, JIO & more
+                  </p>
+                  <div
+                    class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                  >
+                    <i class="fas fa-eye mr-2"></i>View Details
+                  </div>
                 </div>
               </div>
             </div>
@@ -1060,87 +1151,91 @@
           <h4 class="text-2xl font-bold text-blue-600 mb-6 flex items-center">
             <i class="fas fa-copy mr-3"></i> Xerox & Printout Services
           </h4>
-          <div class="overflow-x-auto pb-4">
-            <div class="flex gap-6" style="min-width: max-content">
-              <!-- Xerox Services -->
-              <div
-                onclick="openServiceModal('xeroxModal')"
-                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
-                style="width: 280px"
-              >
-                <div class="text-5xl mb-4 text-blue-600">
-                  <i class="fas fa-copy"></i>
-                </div>
-                <h5 class="text-xl font-bold text-gray-800 mb-2">
-                  Xerox Services
-                </h5>
-                <p class="text-gray-600 mb-3">B/W & Colour xerox options</p>
+          <div
+            class="bg-gradient-to-r from-purple-50 via-white to-purple-50 rounded-2xl p-4 shadow-inner border border-purple-100"
+          >
+            <div class="overflow-x-auto pb-4">
+              <div class="flex gap-6" style="min-width: max-content">
+                <!-- Xerox Services -->
                 <div
-                  class="bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-green-700 hover:to-teal-700 transition-all duration-300 transform hover:scale-105"
+                  onclick="openServiceModal('xeroxModal')"
+                  class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                  style="width: 280px"
                 >
-                  <i class="fas fa-rupee-sign mr-2"></i>View Pricing
+                  <div class="text-5xl mb-4 text-blue-600">
+                    <i class="fas fa-copy"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800 mb-2">
+                    Xerox Services
+                  </h5>
+                  <p class="text-gray-600 mb-3">B/W & Colour xerox options</p>
+                  <div
+                    class="bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-green-700 hover:to-teal-700 transition-all duration-300 transform hover:scale-105"
+                  >
+                    <i class="fas fa-rupee-sign mr-2"></i>View Pricing
+                  </div>
                 </div>
-              </div>
 
-              <!-- Printout Services -->
-              <div
-                onclick="openServiceModal('printoutModal')"
-                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
-                style="width: 280px"
-              >
-                <div class="text-5xl mb-4 text-blue-600">
-                  <i class="fas fa-print"></i>
-                </div>
-                <h5 class="text-xl font-bold text-gray-800 mb-2">
-                  Printout Services
-                </h5>
-                <p class="text-gray-600 mb-3">
-                  PDF, WhatsApp & Colour printing
-                </p>
+                <!-- Printout Services -->
                 <div
-                  class="bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-green-700 hover:to-teal-700 transition-all duration-300 transform hover:scale-105"
+                  onclick="openServiceModal('printoutModal')"
+                  class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                  style="width: 280px"
                 >
-                  <i class="fas fa-rupee-sign mr-2"></i>View Pricing
+                  <div class="text-5xl mb-4 text-blue-600">
+                    <i class="fas fa-print"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800 mb-2">
+                    Printout Services
+                  </h5>
+                  <p class="text-gray-600 mb-3">
+                    PDF, WhatsApp & Colour printing
+                  </p>
+                  <div
+                    class="bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-green-700 hover:to-teal-700 transition-all duration-300 transform hover:scale-105"
+                  >
+                    <i class="fas fa-rupee-sign mr-2"></i>View Pricing
+                  </div>
                 </div>
-              </div>
 
-              <!-- Photo Services -->
-              <div
-                onclick="openServiceModal('photoModal')"
-                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
-                style="width: 280px"
-              >
-                <div class="text-5xl mb-4 text-blue-600">
-                  <i class="fas fa-camera"></i>
-                </div>
-                <h5 class="text-xl font-bold text-gray-800 mb-2">
-                  Photo Services
-                </h5>
-                <p class="text-gray-600 mb-3">Passport & colour photos</p>
+                <!-- Photo Services -->
                 <div
-                  class="bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-green-700 hover:to-teal-700 transition-all duration-300 transform hover:scale-105"
+                  onclick="openServiceModal('photoModal')"
+                  class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                  style="width: 280px"
                 >
-                  <i class="fas fa-rupee-sign mr-2"></i>View Pricing
+                  <div class="text-5xl mb-4 text-blue-600">
+                    <i class="fas fa-camera"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800 mb-2">
+                    Photo Services
+                  </h5>
+                  <p class="text-gray-600 mb-3">Passport & colour photos</p>
+                  <div
+                    class="bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-green-700 hover:to-teal-700 transition-all duration-300 transform hover:scale-105"
+                  >
+                    <i class="fas fa-rupee-sign mr-2"></i>View Pricing
+                  </div>
                 </div>
-              </div>
 
-              <!-- Lamination Services -->
-              <div
-                onclick="openServiceModal('laminationModal')"
-                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
-                style="width: 280px"
-              >
-                <div class="text-5xl mb-4 text-blue-600">
-                  <i class="fas fa-shield-alt"></i>
-                </div>
-                <h5 class="text-xl font-bold text-gray-800 mb-2">
-                  Lamination Services
-                </h5>
-                <p class="text-gray-600 mb-3">Card & A4 lamination options</p>
+                <!-- Lamination Services -->
                 <div
-                  class="bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-green-700 hover:to-teal-700 transition-all duration-300 transform hover:scale-105"
+                  onclick="openServiceModal('laminationModal')"
+                  class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                  style="width: 280px"
                 >
-                  <i class="fas fa-rupee-sign mr-2"></i>View Pricing
+                  <div class="text-5xl mb-4 text-blue-600">
+                    <i class="fas fa-shield-alt"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800 mb-2">
+                    Lamination Services
+                  </h5>
+                  <p class="text-gray-600 mb-3">Card & A4 lamination options</p>
+                  <div
+                    class="bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-green-700 hover:to-teal-700 transition-all duration-300 transform hover:scale-105"
+                  >
+                    <i class="fas fa-rupee-sign mr-2"></i>View Pricing
+                  </div>
                 </div>
               </div>
             </div>
@@ -1152,80 +1247,86 @@
           <h4 class="text-2xl font-bold text-blue-600 mb-6 flex items-center">
             <i class="fas fa-globe mr-3"></i> Travel Bookings & Rechgarge
           </h4>
-          <div class="overflow-x-auto pb-4">
-            <div class="flex gap-6" style="min-width: max-content">
-              <!-- Train/Bus Tickets -->
-              <div
-                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
-                style="width: 280px"
-              >
-                <div class="text-5xl mb-4 text-blue-600">
-                  <i class="fas fa-train"></i>
+          <div
+            class="bg-gradient-to-r from-green-50 via-white to-green-50 rounded-2xl p-4 shadow-inner border border-green-100"
+          >
+            <div class="overflow-x-auto pb-4">
+              <div class="flex gap-6" style="min-width: max-content">
+                <!-- Train/Bus Tickets -->
+                <div
+                  class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                  style="width: 280px"
+                >
+                  <div class="text-5xl mb-4 text-blue-600">
+                    <i class="fas fa-train"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800 mb-2">
+                    Train/Bus Tickets
+                  </h5>
+                  <p class="text-gray-600">
+                    Easy reservation & booking services
+                  </p>
                 </div>
-                <h5 class="text-xl font-bold text-gray-800 mb-2">
-                  Train/Bus Tickets
-                </h5>
-                <p class="text-gray-600">Easy reservation & booking services</p>
-              </div>
 
-              <!-- Flight Booking -->
-              <div
-                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
-                style="width: 280px"
-              >
-                <div class="text-5xl mb-4 text-blue-600">
-                  <i class="fas fa-plane"></i>
+                <!-- Flight Booking -->
+                <div
+                  class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                  style="width: 280px"
+                >
+                  <div class="text-5xl mb-4 text-blue-600">
+                    <i class="fas fa-plane"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800 mb-2">
+                    Flight Booking
+                  </h5>
+                  <p class="text-gray-600">
+                    Quick flight reservations nationwide
+                  </p>
                 </div>
-                <h5 class="text-xl font-bold text-gray-800 mb-2">
-                  Flight Booking
-                </h5>
-                <p class="text-gray-600">
-                  Quick flight reservations nationwide
-                </p>
-              </div>
 
-              <!-- Hotel Booking -->
-              <div
-                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
-                style="width: 280px"
-              >
-                <div class="text-5xl mb-4 text-blue-600">
-                  <i class="fas fa-hotel"></i>
+                <!-- Hotel Booking -->
+                <div
+                  class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                  style="width: 280px"
+                >
+                  <div class="text-5xl mb-4 text-blue-600">
+                    <i class="fas fa-hotel"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800 mb-2">
+                    Hotel Booking
+                  </h5>
+                  <p class="text-gray-600">Best rates on accommodations</p>
                 </div>
-                <h5 class="text-xl font-bold text-gray-800 mb-2">
-                  Hotel Booking
-                </h5>
-                <p class="text-gray-600">Best rates on accommodations</p>
-              </div>
 
-              <!-- Event Ticketing -->
-              <div
-                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
-                style="width: 280px"
-              >
-                <div class="text-5xl mb-4 text-blue-600">
-                  <i class="fas fa-ticket-alt"></i>
+                <!-- Event Ticketing -->
+                <div
+                  class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                  style="width: 280px"
+                >
+                  <div class="text-5xl mb-4 text-blue-600">
+                    <i class="fas fa-ticket-alt"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800 mb-2">
+                    Event Ticketing
+                  </h5>
+                  <p class="text-gray-600">Book tickets for events & shows</p>
                 </div>
-                <h5 class="text-xl font-bold text-gray-800 mb-2">
-                  Event Ticketing
-                </h5>
-                <p class="text-gray-600">Book tickets for events & shows</p>
-              </div>
 
-              <!-- Mobile/DTH Recharges -->
-              <div
-                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
-                style="width: 280px"
-              >
-                <div class="text-5xl mb-4 text-blue-600">
-                  <i class="fas fa-mobile-alt"></i>
+                <!-- Mobile/DTH Recharges -->
+                <div
+                  class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                  style="width: 280px"
+                >
+                  <div class="text-5xl mb-4 text-blue-600">
+                    <i class="fas fa-mobile-alt"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800 mb-2">
+                    Mobile/DTH Recharges
+                  </h5>
+                  <p class="text-gray-600">
+                    Quick mobile and DTH recharge services
+                  </p>
                 </div>
-                <h5 class="text-xl font-bold text-gray-800 mb-2">
-                  Mobile/DTH Recharges
-                </h5>
-                <p class="text-gray-600">
-                  Quick mobile and DTH recharge services
-                </p>
               </div>
             </div>
           </div>
@@ -1236,88 +1337,94 @@
           <h4 class="text-2xl font-bold text-blue-600 mb-6 flex items-center">
             <i class="fas fa-pencil-ruler mr-3"></i> Offline & Design Services
           </h4>
-          <div class="overflow-x-auto pb-4">
-            <div class="flex gap-6" style="min-width: max-content">
-              <!-- Photo Editing -->
-              <div
-                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
-                style="width: 280px"
-              >
-                <div class="text-5xl mb-4 text-blue-600">
-                  <i class="fas fa-image"></i>
+          <div
+            class="bg-gradient-to-r from-orange-50 via-white to-orange-50 rounded-2xl p-4 shadow-inner border border-orange-100"
+          >
+            <div class="overflow-x-auto pb-4">
+              <div class="flex gap-6" style="min-width: max-content">
+                <!-- Photo Editing -->
+                <div
+                  class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                  style="width: 280px"
+                >
+                  <div class="text-5xl mb-4 text-blue-600">
+                    <i class="fas fa-image"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800 mb-2">
+                    Photo Editing
+                  </h5>
+                  <p class="text-gray-600">Professional photo enhancement</p>
                 </div>
-                <h5 class="text-xl font-bold text-gray-800 mb-2">
-                  Photo Editing
-                </h5>
-                <p class="text-gray-600">Professional photo enhancement</p>
-              </div>
 
-              <!-- Custom Invitations -->
-              <div
-                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
-                style="width: 280px"
-              >
-                <div class="text-5xl mb-4 text-blue-600">
-                  <i class="fas fa-envelope"></i>
+                <!-- Custom Invitations -->
+                <div
+                  class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                  style="width: 280px"
+                >
+                  <div class="text-5xl mb-4 text-blue-600">
+                    <i class="fas fa-envelope"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800 mb-2">
+                    Custom Invitations
+                  </h5>
+                  <p class="text-gray-600">Personalized invitation designs</p>
                 </div>
-                <h5 class="text-xl font-bold text-gray-800 mb-2">
-                  Custom Invitations
-                </h5>
-                <p class="text-gray-600">Personalized invitation designs</p>
-              </div>
 
-              <!-- DTP Work -->
-              <div
-                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
-                style="width: 280px"
-              >
-                <div class="text-5xl mb-4 text-blue-600">
-                  <i class="fas fa-book"></i>
+                <!-- DTP Work -->
+                <div
+                  class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                  style="width: 280px"
+                >
+                  <div class="text-5xl mb-4 text-blue-600">
+                    <i class="fas fa-book"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800 mb-2">DTP Work</h5>
+                  <p class="text-gray-600">Desktop publishing & layouts</p>
                 </div>
-                <h5 class="text-xl font-bold text-gray-800 mb-2">DTP Work</h5>
-                <p class="text-gray-600">Desktop publishing & layouts</p>
-              </div>
 
-              <!-- Digital Designs -->
-              <div
-                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
-                style="width: 280px"
-              >
-                <div class="text-5xl mb-4 text-blue-600">
-                  <i class="fas fa-paint-brush"></i>
+                <!-- Digital Designs -->
+                <div
+                  class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                  style="width: 280px"
+                >
+                  <div class="text-5xl mb-4 text-blue-600">
+                    <i class="fas fa-paint-brush"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800 mb-2">
+                    Digital Designs
+                  </h5>
+                  <p class="text-gray-600">Creative digital design solutions</p>
                 </div>
-                <h5 class="text-xl font-bold text-gray-800 mb-2">
-                  Digital Designs
-                </h5>
-                <p class="text-gray-600">Creative digital design solutions</p>
-              </div>
 
-              <!-- Video Editing -->
-              <div
-                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
-                style="width: 280px"
-              >
-                <div class="text-5xl mb-4 text-blue-600">
-                  <i class="fas fa-video"></i>
+                <!-- Video Editing -->
+                <div
+                  class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                  style="width: 280px"
+                >
+                  <div class="text-5xl mb-4 text-blue-600">
+                    <i class="fas fa-video"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800 mb-2">
+                    Video Editing
+                  </h5>
+                  <p class="text-gray-600">
+                    Professional video editing services
+                  </p>
                 </div>
-                <h5 class="text-xl font-bold text-gray-800 mb-2">
-                  Video Editing
-                </h5>
-                <p class="text-gray-600">Professional video editing services</p>
-              </div>
 
-              <!-- Photo Frames -->
-              <div
-                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
-                style="width: 280px"
-              >
-                <div class="text-5xl mb-4 text-blue-600">
-                  <i class="fas fa-frame"></i>
+                <!-- Photo Frames -->
+                <div
+                  class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                  style="width: 280px"
+                >
+                  <div class="text-5xl mb-4 text-blue-600">
+                    <i class="fas fa-frame"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800 mb-2">
+                    Photo Frames
+                  </h5>
+                  <p class="text-gray-600">Custom photo framing services</p>
                 </div>
-                <h5 class="text-xl font-bold text-gray-800 mb-2">
-                  Photo Frames
-                </h5>
-                <p class="text-gray-600">Custom photo framing services</p>
               </div>
             </div>
           </div>
@@ -1343,7 +1450,7 @@
             <h3 class="text-2xl font-bold text-gray-800">Services Overview</h3>
             <button
               data-close="true"
-              class="text-gray-600 hover:text-gray-800 text-3xl"
+              class="text-red-500 hover:text-red-700 text-3xl font-bold transition-colors"
             >
               &times;
             </button>
@@ -1377,7 +1484,7 @@
           <div class="w-full flex justify-end mb-3">
             <button
               data-close="true"
-              class="text-gray-600 hover:text-gray-800 text-3xl"
+              class="text-red-500 hover:text-red-700 text-3xl font-bold transition-colors"
             >
               &times;
             </button>
@@ -1412,7 +1519,7 @@
           <div class="w-full flex justify-end">
             <button
               data-close="true"
-              class="text-gray-600 hover:text-gray-800 text-3xl"
+              class="text-red-500 hover:text-red-700 text-3xl font-bold transition-colors"
             >
               &times;
             </button>
@@ -1443,7 +1550,7 @@
           <h3 class="text-2xl font-bold">PAN Card — Documents & Pricing</h3>
           <button
             data-close="true"
-            class="text-gray-600 hover:text-gray-800 text-2xl"
+            class="text-red-500 hover:text-red-700 text-2xl font-bold transition-colors"
           >
             &times;
           </button>
@@ -1516,7 +1623,10 @@
           </p>
         </div>
         <div class="mt-6 text-right">
-          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+          <button
+            data-close="true"
+            class="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded font-bold transition-colors"
+          >
             Close
           </button>
         </div>
@@ -1538,7 +1648,7 @@
           </h3>
           <button
             data-close="true"
-            class="text-gray-600 hover:text-gray-800 text-2xl"
+            class="text-red-500 hover:text-red-700 text-2xl font-bold transition-colors"
           >
             &times;
           </button>
@@ -1611,7 +1721,10 @@
           </p>
         </div>
         <div class="mt-6 text-right">
-          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+          <button
+            data-close="true"
+            class="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded font-bold transition-colors"
+          >
             Close
           </button>
         </div>
@@ -1631,7 +1744,7 @@
           <h3 class="text-2xl font-bold">Voter Card — Documents & Pricing</h3>
           <button
             data-close="true"
-            class="text-gray-600 hover:text-gray-800 text-2xl"
+            class="text-red-500 hover:text-red-700 text-2xl font-bold transition-colors"
           >
             &times;
           </button>
@@ -1680,7 +1793,10 @@
           </p>
         </div>
         <div class="mt-6 text-right">
-          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+          <button
+            data-close="true"
+            class="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded font-bold transition-colors"
+          >
             Close
           </button>
         </div>
@@ -1702,7 +1818,7 @@
           </h3>
           <button
             data-close="true"
-            class="text-gray-600 hover:text-gray-800 text-2xl"
+            class="text-red-500 hover:text-red-700 text-2xl font-bold transition-colors"
           >
             &times;
           </button>
@@ -1731,7 +1847,10 @@
           </p>
         </div>
         <div class="mt-6 text-right">
-          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+          <button
+            data-close="true"
+            class="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded font-bold transition-colors"
+          >
             Close
           </button>
         </div>
@@ -1753,7 +1872,7 @@
           </h3>
           <button
             data-close="true"
-            class="text-gray-600 hover:text-gray-800 text-2xl"
+            class="text-red-500 hover:text-red-700 text-2xl font-bold transition-colors"
           >
             &times;
           </button>
@@ -1782,7 +1901,10 @@
           </p>
         </div>
         <div class="mt-6 text-right">
-          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+          <button
+            data-close="true"
+            class="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded font-bold transition-colors"
+          >
             Close
           </button>
         </div>
@@ -1804,7 +1926,7 @@
           </h3>
           <button
             data-close="true"
-            class="text-gray-600 hover:text-gray-800 text-2xl"
+            class="text-red-500 hover:text-red-700 text-2xl font-bold transition-colors"
           >
             &times;
           </button>
@@ -1833,7 +1955,10 @@
           </p>
         </div>
         <div class="mt-6 text-right">
-          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+          <button
+            data-close="true"
+            class="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded font-bold transition-colors"
+          >
             Close
           </button>
         </div>
@@ -1855,7 +1980,7 @@
           </h3>
           <button
             data-close="true"
-            class="text-gray-600 hover:text-gray-800 text-2xl"
+            class="text-red-500 hover:text-red-700 text-2xl font-bold transition-colors"
           >
             &times;
           </button>
@@ -1884,7 +2009,10 @@
           </p>
         </div>
         <div class="mt-6 text-right">
-          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+          <button
+            data-close="true"
+            class="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded font-bold transition-colors"
+          >
             Close
           </button>
         </div>
@@ -1902,7 +2030,7 @@
           <h3 class="text-2xl font-bold">Xerox Services - Pricing</h3>
           <button
             data-close="true"
-            class="text-gray-600 hover:text-gray-800 text-2xl"
+            class="text-red-500 hover:text-red-700 text-2xl font-bold transition-colors"
           >
             &times;
           </button>
@@ -1922,7 +2050,10 @@
           </div>
         </div>
         <div class="mt-6 text-right">
-          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+          <button
+            data-close="true"
+            class="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded font-bold transition-colors"
+          >
             Close
           </button>
         </div>
@@ -1940,7 +2071,7 @@
           <h3 class="text-2xl font-bold">Printout Services - Pricing</h3>
           <button
             data-close="true"
-            class="text-gray-600 hover:text-gray-800 text-2xl"
+            class="text-red-500 hover:text-red-700 text-2xl font-bold transition-colors"
           >
             &times;
           </button>
@@ -1960,7 +2091,10 @@
           </div>
         </div>
         <div class="mt-6 text-right">
-          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+          <button
+            data-close="true"
+            class="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded font-bold transition-colors"
+          >
             Close
           </button>
         </div>
@@ -1978,7 +2112,7 @@
           <h3 class="text-2xl font-bold">Photo Services - Pricing</h3>
           <button
             data-close="true"
-            class="text-gray-600 hover:text-gray-800 text-2xl"
+            class="text-red-500 hover:text-red-700 text-2xl font-bold transition-colors"
           >
             &times;
           </button>
@@ -1998,7 +2132,10 @@
           </div>
         </div>
         <div class="mt-6 text-right">
-          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+          <button
+            data-close="true"
+            class="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded font-bold transition-colors"
+          >
             Close
           </button>
         </div>
@@ -2016,7 +2153,7 @@
           <h3 class="text-2xl font-bold">Lamination Services - Pricing</h3>
           <button
             data-close="true"
-            class="text-gray-600 hover:text-gray-800 text-2xl"
+            class="text-red-500 hover:text-red-700 text-2xl font-bold transition-colors"
           >
             &times;
           </button>
@@ -2036,7 +2173,10 @@
           </div>
         </div>
         <div class="mt-6 text-right">
-          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+          <button
+            data-close="true"
+            class="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded font-bold transition-colors"
+          >
             Close
           </button>
         </div>
@@ -2054,7 +2194,7 @@
           <h3 class="text-2xl font-bold">Banking Services - Pricing</h3>
           <button
             data-close="true"
-            class="text-gray-600 hover:text-gray-800 text-2xl"
+            class="text-red-500 hover:text-red-700 text-2xl font-bold transition-colors"
           >
             &times;
           </button>
@@ -2086,7 +2226,10 @@
           </div>
         </div>
         <div class="mt-6 text-right">
-          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+          <button
+            data-close="true"
+            class="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded font-bold transition-colors"
+          >
             Close
           </button>
         </div>
@@ -2104,7 +2247,7 @@
           <h3 class="text-2xl font-bold">Ration Card Services - Pricing</h3>
           <button
             data-close="true"
-            class="text-gray-600 hover:text-gray-800 text-2xl"
+            class="text-red-500 hover:text-red-700 text-2xl font-bold transition-colors"
           >
             &times;
           </button>
@@ -2126,7 +2269,10 @@
           </div>
         </div>
         <div class="mt-6 text-right">
-          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+          <button
+            data-close="true"
+            class="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded font-bold transition-colors"
+          >
             Close
           </button>
         </div>
@@ -2144,7 +2290,7 @@
           <h3 class="text-2xl font-bold">Other Services - Pricing</h3>
           <button
             data-close="true"
-            class="text-gray-600 hover:text-gray-800 text-2xl"
+            class="text-red-500 hover:text-red-700 text-2xl font-bold transition-colors"
           >
             &times;
           </button>
@@ -2180,7 +2326,10 @@
           </div>
         </div>
         <div class="mt-6 text-right">
-          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+          <button
+            data-close="true"
+            class="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded font-bold transition-colors"
+          >
             Close
           </button>
         </div>
@@ -2790,7 +2939,9 @@
 
         <div class="flex flex-col items-center gap-8">
           <!-- Map Container -->
-          <div class="w-full max-w-3xl rounded-xl overflow-hidden shadow-lg">
+          <div
+            class="w-full max-w-3xl rounded-xl overflow-hidden shadow-2xl border-4 border-blue-500 bg-gradient-to-r from-blue-100 via-white to-blue-100 p-2"
+          >
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.2651892319!2d91.7972!3d26.1445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375a5a5a5a5a5a5d%3A0x5a5a5a5a5a5a5a5a!2sRural%20Assam!5e0!3m2!1sen!2sin!4v1234567890"
               width="100%"
@@ -2921,7 +3072,9 @@
                 >
               </li>
               <li>
-                <a href="#services" class="hover:text-orange-500 transition"
+                <a
+                  href="#actual-services"
+                  class="hover:text-orange-500 transition"
                   >Services</a
                 >
               </li>
