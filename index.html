@@ -1,0 +1,4333 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Digital - Your Trusted Digital Partner in Assam</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-database-compat.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyCevBNvqGDEvgvVdBqaTlKK-xIto0J6BDo",
+        authDomain: "smart-digital-ce0a7.firebaseapp.com",
+        databaseURL:
+          "https://smart-digital-ce0a7-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "smart-digital-ce0a7",
+        storageBucket: "smart-digital-ce0a7.firebasestorage.app",
+        messagingSenderId: "771628223462",
+        appId: "1:771628223462:web:08aefc17ea1c8819366427",
+        measurementId: "G-VXCBRZV66F",
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      // Now you can use firebase.database() in your scripts!
+    </script>
+
+    <style>
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #1e40af;
+        border-radius: 5px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #1e3a8a;
+      }
+
+      /* Smooth animations */
+      .fade-in {
+        animation: fadeIn 0.6s ease-in;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Pulse slow animation for notifications */
+      @keyframes pulse-slow {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.95;
+        }
+      }
+      .animate-pulse-slow {
+        animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+
+      /* Bounce animation */
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+      .animate-bounce {
+        animation: bounce 0.6s ease-in-out;
+      }
+
+      /* Floating action hub animation */
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+      .float-animation {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      /* Glow effect on hover */
+      .icon-glow:hover {
+        filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.6));
+        transform: scale(1.15);
+      }
+
+      .notification-scroll {
+        overflow-y: auto;
+        max-height: 300px;
+      }
+
+      .notification-scroll::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .notification-scroll::-webkit-scrollbar-thumb {
+        background: #f97316;
+        border-radius: 3px;
+      }
+
+      /* Service card hover effect */
+      .service-card {
+        transition: all 0.3s ease;
+      }
+      .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 30px rgba(30, 64, 175, 0.2);
+      }
+
+      /* Enhanced button animation */
+      button {
+        position: relative;
+        overflow: hidden;
+      }
+
+      button::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.6s,
+          height 0.6s;
+      }
+
+      button:active::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      /* Smooth scroll behavior */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Gradient text effect */
+      .gradient-text {
+        background: linear-gradient(135deg, #1e40af, #f97316);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* Input focus animation */
+      input:focus {
+        box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+      }
+
+      /* Stagger animation for notification cards */
+      @keyframes stagger {
+        0% {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* Loading shimmer effect */
+      @keyframes shimmer {
+        0% {
+          background-position: -1000px 0;
+        }
+        100% {
+          background-position: 1000px 0;
+        }
+      }
+
+      .shimmer {
+        animation: shimmer 2s infinite;
+      }
+
+      /* Scale animation on hover for game cards */
+      .game-card {
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .game-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Glow effect for buttons */
+      button:hover {
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+      /* Brand color palette (derived from logo) */
+      :root {
+        --brand-primary: #0ea5e9; /* sky blue */
+        --brand-primary-dark: #0369a1;
+        --brand-accent: #f97316; /* orange */
+        --brand-teal: #06b6d4;
+        --brand-green: #22c55e;
+        --brand-sun: #f59e0b;
+        --brand-primary-rgb: 14, 165, 233;
+        --brand-accent-rgb: 249, 115, 22;
+      }
+
+      /* Gradient text using brand colors */
+      .gradient-text {
+        background: linear-gradient(
+          135deg,
+          var(--brand-accent),
+          var(--brand-primary)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* Primary CTA */
+      .btn-brand {
+        background: linear-gradient(
+          90deg,
+          var(--brand-accent),
+          var(--brand-primary)
+        );
+        color: white !important;
+        box-shadow: 0 10px 30px rgba(var(--brand-primary-rgb), 0.12);
+        border: none;
+      }
+      .btn-brand:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 18px 40px rgba(var(--brand-primary-rgb), 0.16);
+      }
+      /* Outline/secondary CTA - now gradient blue -> purple -> pink */
+      .btn-outline {
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+        color: white !important;
+        border: none;
+        font-weight: 700;
+        box-shadow: 0 10px 30px rgba(139, 92, 246, 0.12);
+      }
+      .btn-outline:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 18px 40px rgba(139, 92, 246, 0.18);
+      }
+
+      /* Service card visual upgrade */
+      .service-card {
+        background: linear-gradient(
+          180deg,
+          rgba(14, 165, 233, 0.03),
+          rgba(249, 115, 22, 0.02)
+        );
+        border: 1px solid rgba(14, 165, 233, 0.06);
+        transition:
+          transform 0.32s ease,
+          box-shadow 0.32s ease,
+          border-color 0.32s ease;
+        display: flex !important;
+        flex-direction: column;
+        height: 100%;
+        min-height: 280px;
+      }
+      .service-card:hover {
+        transform: translateY(-12px) scale(1.02);
+        box-shadow: 0 22px 50px rgba(var(--brand-primary-rgb), 0.12);
+        border-color: rgba(14, 165, 233, 0.18);
+      }
+      .service-card > .text-5xl {
+        width: 72px;
+        height: 72px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 12px auto;
+        background: linear-gradient(
+          135deg,
+          var(--brand-teal),
+          var(--brand-primary)
+        );
+        color: white;
+        box-shadow: inset 0 -6px 12px rgba(0, 0, 0, 0.06);
+      }
+
+      /* Service card content spacing */
+      .service-card > p {
+        flex-grow: 1;
+      }
+
+      .service-card > div[class*="bg-gradient-to-r"] {
+        margin-top: auto;
+      }
+
+      /* Subtle hero enhancement */
+      #home {
+        background: linear-gradient(
+          90deg,
+          rgba(14, 165, 233, 0.95),
+          rgba(249, 115, 22, 0.9)
+        );
+      }
+      #home .text-4xl {
+        text-shadow: 0 6px 30px rgba(0, 0, 0, 0.12);
+      }
+
+      /* Footer tweaks */
+      footer {
+        background: linear-gradient(180deg, #071129 0%, #0f1724 60%);
+      }
+      footer a:hover {
+        color: var(--brand-accent) !important;
+      }
+
+      /* Responsive clamp for modals so scaled size fits on small screens */
+      @media (max-width: 640px) {
+        .bg-white[style*="transform: scale(1.2)"] {
+          transform: scale(1) !important;
+        }
+      }
+      /* Ensure anchored sections do not hide behind sticky navbar */
+      #services {
+        scroll-margin-top: 96px;
+      }
+
+      /* Slide-up animation for sticky book bar */
+      @keyframes slide-up {
+        from {
+          transform: translateY(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      .animate-slide-up {
+        animation: slide-up 0.5s ease-out;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-800">
+    <!-- ======================== STICKY NAVBAR ======================== -->
+    <nav class="sticky top-0 z-50 bg-white shadow-lg">
+      <div
+        class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <!-- Logo -->
+        <div class="flex items-center space-x-3">
+          <a
+            href="#"
+            data-modal="logoModal"
+            class="w-14 h-14 rounded-lg overflow-hidden bg-white flex items-center justify-center cursor-zoom-in"
+            role="button"
+          >
+            <img
+              src="LOGO PNG.png"
+              alt="Smart Digital logo"
+              class="w-full h-full object-contain"
+            />
+          </a>
+          <h1 class="text-2xl font-bold text-blue-600">Smart Digital</h1>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a
+            href="#home"
+            class="text-gray-700 hover:text-blue-600 font-semibold transition"
+            >Home</a
+          >
+          <a
+            href="#services"
+            class="text-gray-700 hover:text-blue-600 font-semibold transition"
+            >Services</a
+          >
+          <a
+            href="#games"
+            class="text-gray-700 hover:text-blue-600 font-semibold transition"
+            >Games</a
+          >
+          <a
+            href="#demo-websites"
+            class="text-gray-700 hover:text-blue-600 font-semibold transition"
+            >Demo Websites</a
+          >
+          <a
+            href="#notifications"
+            class="text-gray-700 hover:text-blue-600 font-semibold transition"
+            >Updates</a
+          >
+          <a
+            href="#location"
+            class="text-gray-700 hover:text-blue-600 font-semibold transition flex items-center space-x-1"
+            ><i class="fas fa-map-marker-alt"></i>Find Us</a
+          >
+
+          <!-- Language Toggle -->
+          <div class="relative group">
+            <button
+              id="langToggle"
+              class="flex items-center gap-2 text-gray-700 hover:text-blue-600 font-semibold transition px-3 py-2 rounded-lg hover:bg-blue-50"
+            >
+              <i class="fas fa-globe"></i>
+              <span id="currentLang">English</span>
+              <i class="fas fa-chevron-down text-xs"></i>
+            </button>
+            <div
+              id="langMenu"
+              class="hidden absolute right-0 mt-1 w-44 bg-white rounded-lg shadow-lg border border-gray-200 z-50"
+            >
+              <button
+                onclick="changeLang('English')"
+                class="w-full text-left px-4 py-2 hover:bg-blue-50 rounded-t-lg text-gray-700"
+              >
+                English
+              </button>
+              <button
+                onclick="changeLang('हिंदी')"
+                class="w-full text-left px-4 py-2 hover:bg-blue-50 text-gray-700"
+              >
+                हिंदी
+              </button>
+              <button
+                onclick="changeLang('অসমীয়া')"
+                class="w-full text-left px-4 py-2 hover:bg-blue-50 text-gray-700"
+              >
+                অসমীয়া
+              </button>
+              <button
+                onclick="changeLang('বাংলা')"
+                class="w-full text-left px-4 py-2 hover:bg-blue-50 rounded-b-lg text-gray-700"
+              >
+                বাংলা
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Call Now Button -->
+        <button
+          onclick="makeCall()"
+          class="hidden md:flex items-center space-x-2 bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold transition transform hover:scale-105"
+        >
+          <i class="fas fa-phone"></i>
+          <span>Call Now</span>
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuBtn" class="md:hidden text-blue-600 text-2xl">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <div
+        id="mobileMenu"
+        class="hidden md:hidden bg-blue-50 border-t border-blue-200 py-4 px-4 space-y-2"
+      >
+        <a
+          href="#home"
+          class="block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
+          >Home</a
+        >
+        <a
+          href="#services"
+          class="block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
+          >Services</a
+        >
+        <a
+          href="#games"
+          class="block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
+          >Games</a
+        >
+        <a
+          href="#demo-websites"
+          class="block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
+          >Demo Websites</a
+        >
+        <a
+          href="#notifications"
+          class="block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
+          >Updates</a
+        >
+        <a
+          href="#location"
+          class="block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
+          ><i class="fas fa-map-marker-alt mr-2"></i>Find Us</a
+        >
+        <button
+          onclick="makeCall()"
+          class="w-full flex items-center justify-center space-x-2 bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold transition"
+        >
+          <i class="fas fa-phone"></i>
+          <span>Call Now</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ======================== URGENT NOTICE BANNER ======================== -->
+    <div
+      id="urgentNoticeBanner"
+      class="bg-gradient-to-r from-red-600 to-orange-600 text-white py-3 px-4 text-center sticky top-[72px] z-40 shadow-lg"
+    >
+      <div
+        class="max-w-7xl mx-auto flex items-center justify-center gap-4 flex-wrap"
+      >
+        <i
+          class="fas fa-exclamation-triangle text-yellow-300 text-xl animate-pulse"
+        ></i>
+        <span class="font-bold text-lg">URGENT:</span>
+        <span id="urgentNoticeText"
+          >PAN Card Application Deadline - Apply Now!</span
+        >
+        <span
+          class="bg-white/20 px-3 py-1 rounded-lg font-mono font-bold"
+          id="noticeCountdown"
+          >Loading...</span
+        >
+      </div>
+    </div>
+
+    <!-- ======================== HERO SECTION ======================== -->
+    <section
+      id="home"
+      class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20 px-4 fade-in"
+    >
+      <div class="max-w-7xl mx-auto text-center">
+        <!-- Live Visitor Counter -->
+        <div class="mb-6 flex justify-center">
+          <div
+            class="bg-white/10 backdrop-blur-sm px-6 py-2 rounded-full border border-white/20"
+          >
+            <i class="fas fa-users text-yellow-300 mr-2"></i>
+            <span class="font-semibold">Currently helping </span>
+            <span id="liveVisitors" class="font-bold text-yellow-300">3</span>
+            <span class="font-semibold"> customers</span>
+          </div>
+        </div>
+
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">
+          Your Trusted Digital Partner in Assam
+        </h2>
+        <p class="text-lg md:text-xl text-blue-100 mb-8">
+          CSC Services, Tech Repairs & Online Solutions
+        </p>
+        <p class="text-md text-blue-100 mb-12 max-w-2xl mx-auto">
+          Bringing digital services and technical expertise to rural Assam with
+          fast, reliable, and affordable solutions for all your digital needs.
+        </p>
+        <div class="flex justify-center items-center gap-4 flex-wrap">
+          <a
+            href="#"
+            data-modal="designModal"
+            class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-3 rounded-lg font-bold text-lg transition transform hover:scale-105 shadow-lg"
+          >
+            <i class="fas fa-images mr-2"></i>All Services
+          </a>
+          <a
+            href="#services"
+            class="btn-brand px-8 py-3 rounded-lg font-bold text-lg transition transform hover:scale-105"
+            >Explore Services</a
+          >
+          <a
+            href="#games"
+            class="btn-outline px-8 py-3 rounded-lg text-lg transition transform hover:scale-105"
+            >Explore Games</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== NOTIFICATIONS SECTION ======================== -->
+    <section id="notifications" class="py-16 px-4 bg-gray-50">
+      <div class="max-w-7xl mx-auto">
+        <!-- Shop Status & Hours Countdown -->
+        <div class="mb-12 text-center">
+          <div
+            class="inline-block bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-400 rounded-xl px-8 py-4 shadow-lg"
+          >
+            <div class="flex items-center justify-center gap-3 mb-2">
+              <div
+                class="w-3 h-3 bg-green-500 rounded-full animate-pulse"
+              ></div>
+              <i class="fas fa-store text-green-600 text-2xl"></i>
+              <span class="text-2xl font-bold text-gray-800" id="shopStatus"
+                >Shop Open</span
+              >
+            </div>
+            <div class="text-gray-600 font-semibold">
+              <i class="fas fa-clock mr-2"></i>
+              <span id="shopHoursText">Loading...</span>
+            </div>
+            <div class="text-blue-600 font-bold text-lg mt-2">
+              <i class="fas fa-hourglass-half mr-2"></i>
+              <span id="shopCountdownTimer">Calculating...</span>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="text-3xl font-bold text-center mb-12 text-gray-800">
+          Latest Updates & Exam Notices
+        </h3>
+
+        <div class="border-4 border-orange-500 rounded-xl bg-white p-8 fade-in">
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center">
+              <i class="fas fa-bell text-orange-500 text-2xl mr-3"></i>
+              <h4 class="text-2xl font-bold text-gray-800">Flash Updates</h4>
+            </div>
+            <button
+              id="editNotifBtn"
+              onclick="toggleEditMode()"
+              class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition flex items-center space-x-2"
+            >
+              <i class="fas fa-edit"></i>
+              <span>Edit</span>
+            </button>
+          </div>
+
+          <!-- Notifications Display Mode -->
+          <div id="notificationContainer" class="notification-scroll space-y-3">
+            <!-- Notifications will be inserted here by JavaScript -->
+          </div>
+
+          <!-- Notifications Edit Mode -->
+          <div
+            id="editMode"
+            class="hidden mt-8 border-t-2 border-gray-200 pt-8"
+          >
+            <h5 class="text-xl font-bold text-gray-800 mb-4">
+              Edit Notifications
+            </h5>
+            <div id="editFormContainer" class="space-y-3 mb-6">
+              <!-- Edit form items will be generated here -->
+            </div>
+
+            <!-- Admin Settings: Urgent Notice -->
+            <div class="mt-8 border-t-2 border-orange-300 pt-6">
+              <h5 class="text-xl font-bold text-orange-600 mb-4">
+                <i class="fas fa-exclamation-triangle mr-2"></i>Urgent Notice
+                Banner
+              </h5>
+              <div class="space-y-4">
+                <div>
+                  <label class="block text-gray-700 font-semibold mb-2"
+                    >Notice Text</label
+                  >
+                  <input
+                    type="text"
+                    id="urgentNoticeTextEdit"
+                    class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-orange-600 transition"
+                    placeholder="Enter urgent notice message..."
+                  />
+                </div>
+                <div>
+                  <label class="block text-gray-700 font-semibold mb-2"
+                    >Deadline Date & Time</label
+                  >
+                  <input
+                    type="datetime-local"
+                    id="urgentDeadlineEdit"
+                    class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-orange-600 transition"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Admin Settings: Shop Status -->
+            <div class="mt-8 border-t-2 border-green-300 pt-6">
+              <h5 class="text-xl font-bold text-green-600 mb-4">
+                <i class="fas fa-store mr-2"></i>Shop Status & Hours
+              </h5>
+              <div class="space-y-4">
+                <div>
+                  <label class="block text-gray-700 font-semibold mb-2"
+                    >Shop Opening Time</label
+                  >
+                  <input
+                    type="time"
+                    id="shopOpenTimeEdit"
+                    class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-600 transition"
+                    placeholder="e.g., 08:30"
+                  />
+                </div>
+                <div>
+                  <label class="block text-gray-700 font-semibold mb-2"
+                    >Shop Closing Time</label
+                  >
+                  <input
+                    type="time"
+                    id="shopCloseTimeEdit"
+                    class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-600 transition"
+                    placeholder="e.g., 21:00"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="flex gap-3 mt-8">
+              <button
+                onclick="addNotificationField()"
+                class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-semibold transition flex items-center space-x-2"
+              >
+                <i class="fas fa-plus"></i>
+                <span>Add New</span>
+              </button>
+              <button
+                onclick="saveAllAdminSettings()"
+                class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition flex items-center space-x-2"
+              >
+                <i class="fas fa-save"></i>
+                <span>Save All</span>
+              </button>
+              <button
+                onclick="cancelEditMode()"
+                class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-lg font-semibold transition"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== ANIMATED STATISTICS ======================== -->
+    <section class="py-16 px-4 bg-gradient-to-r from-blue-600 to-purple-600">
+      <div class="max-w-7xl mx-auto">
+        <div
+          class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white"
+        >
+          <div class="fade-in">
+            <div class="text-5xl font-bold mb-2">
+              <span class="counter" data-target="1234">0</span>+
+            </div>
+            <div class="text-blue-100 text-lg">Happy Customers</div>
+          </div>
+          <div class="fade-in">
+            <div class="text-5xl font-bold mb-2">
+              <span class="counter" data-target="500">0</span>+
+            </div>
+            <div class="text-blue-100 text-lg">Services Completed</div>
+          </div>
+          <div class="fade-in">
+            <div class="text-5xl font-bold mb-2">
+              <span class="counter" data-target="15">0</span>+
+            </div>
+            <div class="text-blue-100 text-lg">Expert Services</div>
+          </div>
+          <div class="fade-in">
+            <div class="text-5xl font-bold mb-2">
+              <span class="counter" data-target="99">0</span>%
+            </div>
+            <div class="text-blue-100 text-lg">Satisfaction Rate</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== SERVICES SECTION ======================== -->
+    <section id="services" class="py-20 px-4 bg-white">
+      <div class="max-w-7xl mx-auto">
+        <!-- Certifications Display -->
+        <div class="mb-16">
+          <h3 class="text-3xl font-bold text-center mb-8 text-gray-800">
+            <span class="relative inline-block">
+              <i class="fas fa-certificate text-blue-600 mr-3"></i>
+              <i
+                class="fas fa-check absolute text-white text-xs"
+                style="top: 50%; left: 50%; transform: translate(-90%, -40%)"
+              ></i> </span
+            >Our Certifications
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div
+              class="bg-white border-2 border-blue-200 rounded-xl p-4 text-center hover:shadow-xl transition overflow-hidden cursor-pointer group"
+              onclick="
+                openCertificateModal(
+                  'UC-c4fd8c29-b30c-4d38-bbf3-0afd42d46292.jpg',
+                )
+              "
+            >
+              <img
+                src="UC-c4fd8c29-b30c-4d38-bbf3-0afd42d46292.jpg"
+                alt="Udemy Certificate"
+                class="w-full h-64 object-cover rounded-lg group-hover:scale-105 transition"
+              />
+              <p class="text-gray-700 font-semibold mt-3">
+                <i class="fas fa-certificate text-blue-600 mr-2"></i>Udemy
+                Certificate
+              </p>
+              <p class="text-sm text-gray-500 mt-1">Click to enlarge</p>
+            </div>
+            <div
+              class="bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200 rounded-xl p-8 text-center hover:shadow-xl transition h-64 flex items-center justify-center"
+            >
+              <div>
+                <i class="fas fa-image text-gray-400 text-6xl mb-3"></i>
+                <p class="text-gray-500 font-semibold">Certificate Image 2</p>
+              </div>
+            </div>
+            <div
+              class="bg-gradient-to-br from-pink-50 to-blue-50 border-2 border-pink-200 rounded-xl p-8 text-center hover:shadow-xl transition h-64 flex items-center justify-center"
+            >
+              <div>
+                <i class="fas fa-image text-gray-400 text-6xl mb-3"></i>
+                <p class="text-gray-500 font-semibold">Certificate Image 3</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="text-4xl font-bold text-center mb-16 text-gray-800">
+          All Services
+        </h3>
+
+        <!-- CSC & Govt Services -->
+        <div class="mb-16">
+          <h4 class="text-2xl font-bold text-blue-600 mb-6 flex items-center">
+            <i class="fas fa-id-card mr-3"></i> CSC & Government Services
+          </h4>
+          <div class="overflow-x-auto pb-4">
+            <div class="flex gap-6" style="min-width: max-content">
+              <!-- PAN Card -->
+              <div
+                onclick="openServiceModal('panModal')"
+                class="service-card block bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer no-underline flex-shrink-0"
+                style="width: 280px"
+              >
+                <div class="text-5xl mb-4 text-blue-600">
+                  <i class="fas fa-credit-card"></i>
+                </div>
+                <h5 class="text-xl font-bold text-gray-800 mb-2">PAN Card</h5>
+                <p class="text-gray-600 mb-3">
+                  Apply, print, correction & linking
+                </p>
+                <div
+                  class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                >
+                  <i class="fas fa-eye mr-2"></i>View Details
+                </div>
+              </div>
+
+              <!-- Aadhaar Services -->
+              <div
+                onclick="openServiceModal('aadharModal')"
+                class="service-card block bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer no-underline flex-shrink-0"
+                style="width: 280px"
+              >
+                <div class="text-5xl mb-4 text-blue-600">
+                  <i class="fas fa-passport"></i>
+                </div>
+                <h5 class="text-xl font-bold text-gray-800 mb-2">
+                  Aadhaar Services
+                </h5>
+                <p class="text-gray-600 mb-3">Download, print, PVC & linking</p>
+                <div
+                  class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                >
+                  <i class="fas fa-eye mr-2"></i>View Details
+                </div>
+              </div>
+
+              <!-- Voter Card -->
+              <div
+                onclick="openServiceModal('voterModal')"
+                class="service-card block bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer no-underline flex-shrink-0"
+                style="width: 280px"
+              >
+                <div class="text-5xl mb-4 text-blue-600">
+                  <i class="fas fa-vote-yea"></i>
+                </div>
+                <h5 class="text-xl font-bold text-gray-800 mb-2">Voter Card</h5>
+                <p class="text-gray-600 mb-3">Apply, link & print services</p>
+                <div
+                  class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                >
+                  <i class="fas fa-eye mr-2"></i>View Details
+                </div>
+              </div>
+
+              <!-- Income Certificate -->
+              <div
+                onclick="openServiceModal('incomeCertModal')"
+                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                style="width: 280px"
+              >
+                <div class="text-5xl mb-4 text-blue-600">
+                  <i class="fas fa-file-invoice-dollar"></i>
+                </div>
+                <h5 class="text-xl font-bold text-gray-800 mb-2">
+                  Income Certificate
+                </h5>
+                <p class="text-gray-600 mb-3">Official income documentation</p>
+                <div
+                  class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                >
+                  <i class="fas fa-eye mr-2"></i>View Details
+                </div>
+              </div>
+
+              <!-- Caste Certificate -->
+              <div
+                onclick="openServiceModal('casteCertModal')"
+                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                style="width: 280px"
+              >
+                <div class="text-5xl mb-4 text-blue-600">
+                  <i class="fas fa-certificate"></i>
+                </div>
+                <h5 class="text-xl font-bold text-gray-800 mb-2">
+                  Caste Certificate
+                </h5>
+                <p class="text-gray-600 mb-3">Official caste documentation</p>
+                <div
+                  class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                >
+                  <i class="fas fa-eye mr-2"></i>View Details
+                </div>
+              </div>
+
+              <!-- Domicile Certificate -->
+              <div
+                onclick="openServiceModal('domicileCertModal')"
+                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                style="width: 280px"
+              >
+                <div class="text-5xl mb-4 text-blue-600">
+                  <i class="fas fa-home"></i>
+                </div>
+                <h5 class="text-xl font-bold text-gray-800 mb-2">
+                  Domicile Certificate
+                </h5>
+                <p class="text-gray-600 mb-3">Residence proof certificate</p>
+                <div
+                  class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                >
+                  <i class="fas fa-eye mr-2"></i>View Details
+                </div>
+              </div>
+
+              <!-- Birth Certificate -->
+              <div
+                onclick="openServiceModal('birthCertModal')"
+                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                style="width: 280px"
+              >
+                <div class="text-5xl mb-4 text-blue-600">
+                  <i class="fas fa-baby"></i>
+                </div>
+                <h5 class="text-xl font-bold text-gray-800 mb-2">
+                  Birth Certificate
+                </h5>
+                <p class="text-gray-600 mb-3">Official birth registration</p>
+                <div
+                  class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                >
+                  <i class="fas fa-eye mr-2"></i>View Details
+                </div>
+              </div>
+
+              <!-- Banking Services -->
+              <div
+                onclick="openServiceModal('bankingModal')"
+                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                style="width: 280px"
+              >
+                <div class="text-5xl mb-4 text-blue-600">
+                  <i class="fas fa-university"></i>
+                </div>
+                <h5 class="text-xl font-bold text-gray-800 mb-2">
+                  Banking Services
+                </h5>
+                <p class="text-gray-600 mb-3">Account, DBT, transfer & more</p>
+                <div
+                  class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                >
+                  <i class="fas fa-eye mr-2"></i>View Details
+                </div>
+              </div>
+
+              <!-- Ration Card -->
+              <div
+                onclick="openServiceModal('rationModal')"
+                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                style="width: 280px"
+              >
+                <div class="text-5xl mb-4 text-blue-600">
+                  <i class="fas fa-id-card"></i>
+                </div>
+                <h5 class="text-xl font-bold text-gray-800 mb-2">
+                  Ration Card
+                </h5>
+                <p class="text-gray-600 mb-3">Number find, print & KYC</p>
+                <div
+                  class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                >
+                  <i class="fas fa-eye mr-2"></i>View Details
+                </div>
+              </div>
+
+              <!-- Other Services -->
+              <div
+                onclick="openServiceModal('otherServicesModal')"
+                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                style="width: 280px"
+              >
+                <div class="text-5xl mb-4 text-blue-600">
+                  <i class="fas fa-star"></i>
+                </div>
+                <h5 class="text-xl font-bold text-gray-800 mb-2">
+                  Other Services
+                </h5>
+                <p class="text-gray-600 mb-3">E-Sharm, Ayushman, JIO & more</p>
+                <div
+                  class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                >
+                  <i class="fas fa-eye mr-2"></i>View Details
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Xerox & Printout Services -->
+        <div class="mb-16">
+          <h4 class="text-2xl font-bold text-blue-600 mb-6 flex items-center">
+            <i class="fas fa-copy mr-3"></i> Xerox & Printout Services
+          </h4>
+          <div class="overflow-x-auto pb-4">
+            <div class="flex gap-6" style="min-width: max-content">
+              <!-- Xerox Services -->
+              <div
+                onclick="openServiceModal('xeroxModal')"
+                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                style="width: 280px"
+              >
+                <div class="text-5xl mb-4 text-blue-600">
+                  <i class="fas fa-copy"></i>
+                </div>
+                <h5 class="text-xl font-bold text-gray-800 mb-2">
+                  Xerox Services
+                </h5>
+                <p class="text-gray-600 mb-3">B/W & Colour xerox options</p>
+                <div
+                  class="bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-green-700 hover:to-teal-700 transition-all duration-300 transform hover:scale-105"
+                >
+                  <i class="fas fa-rupee-sign mr-2"></i>View Pricing
+                </div>
+              </div>
+
+              <!-- Printout Services -->
+              <div
+                onclick="openServiceModal('printoutModal')"
+                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                style="width: 280px"
+              >
+                <div class="text-5xl mb-4 text-blue-600">
+                  <i class="fas fa-print"></i>
+                </div>
+                <h5 class="text-xl font-bold text-gray-800 mb-2">
+                  Printout Services
+                </h5>
+                <p class="text-gray-600 mb-3">
+                  PDF, WhatsApp & Colour printing
+                </p>
+                <div
+                  class="bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-green-700 hover:to-teal-700 transition-all duration-300 transform hover:scale-105"
+                >
+                  <i class="fas fa-rupee-sign mr-2"></i>View Pricing
+                </div>
+              </div>
+
+              <!-- Photo Services -->
+              <div
+                onclick="openServiceModal('photoModal')"
+                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                style="width: 280px"
+              >
+                <div class="text-5xl mb-4 text-blue-600">
+                  <i class="fas fa-camera"></i>
+                </div>
+                <h5 class="text-xl font-bold text-gray-800 mb-2">
+                  Photo Services
+                </h5>
+                <p class="text-gray-600 mb-3">Passport & colour photos</p>
+                <div
+                  class="bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-green-700 hover:to-teal-700 transition-all duration-300 transform hover:scale-105"
+                >
+                  <i class="fas fa-rupee-sign mr-2"></i>View Pricing
+                </div>
+              </div>
+
+              <!-- Lamination Services -->
+              <div
+                onclick="openServiceModal('laminationModal')"
+                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                style="width: 280px"
+              >
+                <div class="text-5xl mb-4 text-blue-600">
+                  <i class="fas fa-shield-alt"></i>
+                </div>
+                <h5 class="text-xl font-bold text-gray-800 mb-2">
+                  Lamination Services
+                </h5>
+                <p class="text-gray-600 mb-3">Card & A4 lamination options</p>
+                <div
+                  class="bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-3 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl hover:from-green-700 hover:to-teal-700 transition-all duration-300 transform hover:scale-105"
+                >
+                  <i class="fas fa-rupee-sign mr-2"></i>View Pricing
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Travel Bookings & Rechgarge -->
+        <div class="mb-16">
+          <h4 class="text-2xl font-bold text-blue-600 mb-6 flex items-center">
+            <i class="fas fa-globe mr-3"></i> Travel Bookings & Rechgarge
+          </h4>
+          <div class="overflow-x-auto pb-4">
+            <div class="flex gap-6" style="min-width: max-content">
+              <!-- Train/Bus Tickets -->
+              <div
+                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                style="width: 280px"
+              >
+                <div class="text-5xl mb-4 text-blue-600">
+                  <i class="fas fa-train"></i>
+                </div>
+                <h5 class="text-xl font-bold text-gray-800 mb-2">
+                  Train/Bus Tickets
+                </h5>
+                <p class="text-gray-600">Easy reservation & booking services</p>
+              </div>
+
+              <!-- Flight Booking -->
+              <div
+                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                style="width: 280px"
+              >
+                <div class="text-5xl mb-4 text-blue-600">
+                  <i class="fas fa-plane"></i>
+                </div>
+                <h5 class="text-xl font-bold text-gray-800 mb-2">
+                  Flight Booking
+                </h5>
+                <p class="text-gray-600">
+                  Quick flight reservations nationwide
+                </p>
+              </div>
+
+              <!-- Hotel Booking -->
+              <div
+                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                style="width: 280px"
+              >
+                <div class="text-5xl mb-4 text-blue-600">
+                  <i class="fas fa-hotel"></i>
+                </div>
+                <h5 class="text-xl font-bold text-gray-800 mb-2">
+                  Hotel Booking
+                </h5>
+                <p class="text-gray-600">Best rates on accommodations</p>
+              </div>
+
+              <!-- Event Ticketing -->
+              <div
+                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                style="width: 280px"
+              >
+                <div class="text-5xl mb-4 text-blue-600">
+                  <i class="fas fa-ticket-alt"></i>
+                </div>
+                <h5 class="text-xl font-bold text-gray-800 mb-2">
+                  Event Ticketing
+                </h5>
+                <p class="text-gray-600">Book tickets for events & shows</p>
+              </div>
+
+              <!-- Mobile/DTH Recharges -->
+              <div
+                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                style="width: 280px"
+              >
+                <div class="text-5xl mb-4 text-blue-600">
+                  <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h5 class="text-xl font-bold text-gray-800 mb-2">
+                  Mobile/DTH Recharges
+                </h5>
+                <p class="text-gray-600">
+                  Quick mobile and DTH recharge services
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Offline & Design Services -->
+        <div>
+          <h4 class="text-2xl font-bold text-blue-600 mb-6 flex items-center">
+            <i class="fas fa-pencil-ruler mr-3"></i> Offline & Design Services
+          </h4>
+          <div class="overflow-x-auto pb-4">
+            <div class="flex gap-6" style="min-width: max-content">
+              <!-- Photo Editing -->
+              <div
+                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                style="width: 280px"
+              >
+                <div class="text-5xl mb-4 text-blue-600">
+                  <i class="fas fa-image"></i>
+                </div>
+                <h5 class="text-xl font-bold text-gray-800 mb-2">
+                  Photo Editing
+                </h5>
+                <p class="text-gray-600">Professional photo enhancement</p>
+              </div>
+
+              <!-- Custom Invitations -->
+              <div
+                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                style="width: 280px"
+              >
+                <div class="text-5xl mb-4 text-blue-600">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <h5 class="text-xl font-bold text-gray-800 mb-2">
+                  Custom Invitations
+                </h5>
+                <p class="text-gray-600">Personalized invitation designs</p>
+              </div>
+
+              <!-- DTP Work -->
+              <div
+                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                style="width: 280px"
+              >
+                <div class="text-5xl mb-4 text-blue-600">
+                  <i class="fas fa-book"></i>
+                </div>
+                <h5 class="text-xl font-bold text-gray-800 mb-2">DTP Work</h5>
+                <p class="text-gray-600">Desktop publishing & layouts</p>
+              </div>
+
+              <!-- Digital Designs -->
+              <div
+                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                style="width: 280px"
+              >
+                <div class="text-5xl mb-4 text-blue-600">
+                  <i class="fas fa-paint-brush"></i>
+                </div>
+                <h5 class="text-xl font-bold text-gray-800 mb-2">
+                  Digital Designs
+                </h5>
+                <p class="text-gray-600">Creative digital design solutions</p>
+              </div>
+
+              <!-- Video Editing -->
+              <div
+                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                style="width: 280px"
+              >
+                <div class="text-5xl mb-4 text-blue-600">
+                  <i class="fas fa-video"></i>
+                </div>
+                <h5 class="text-xl font-bold text-gray-800 mb-2">
+                  Video Editing
+                </h5>
+                <p class="text-gray-600">Professional video editing services</p>
+              </div>
+
+              <!-- Photo Frames -->
+              <div
+                class="service-card bg-white border-2 border-blue-100 rounded-xl p-6 text-center hover:border-blue-600 cursor-pointer flex-shrink-0"
+                style="width: 280px"
+              >
+                <div class="text-5xl mb-4 text-blue-600">
+                  <i class="fas fa-frame"></i>
+                </div>
+                <h5 class="text-xl font-bold text-gray-800 mb-2">
+                  Photo Frames
+                </h5>
+                <p class="text-gray-600">Custom photo framing services</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service detail modals -->
+
+    <!-- Service Design Modal -->
+    <div
+      id="designModal"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center px-4"
+    >
+      <div class="absolute inset-0 bg-black opacity-60" data-close="true"></div>
+      <div
+        class="bg-transparent max-w-4xl w-full z-10 p-4 flex items-center justify-center"
+      >
+        <div
+          class="bg-white rounded-xl shadow-2xl p-4 max-w-full w-full flex flex-col items-center"
+        >
+          <div class="w-full flex justify-between items-center mb-4">
+            <h3 class="text-2xl font-bold text-gray-800">Services Overview</h3>
+            <button
+              data-close="true"
+              class="text-gray-600 hover:text-gray-800 text-3xl"
+            >
+              &times;
+            </button>
+          </div>
+          <div class="w-full flex items-center justify-center p-4">
+            <img
+              src="main poster resize small png.png"
+              alt="Services design overview"
+              class="max-w-full max-h-[70vh] object-contain"
+            />
+          </div>
+          <div class="mt-3 text-gray-600 text-sm text-center">
+            Click outside or press the X button to close.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certificate Modal -->
+    <div
+      id="certificateModal"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center px-4"
+    >
+      <div class="absolute inset-0 bg-black opacity-60" data-close="true"></div>
+      <div
+        class="bg-transparent max-w-4xl w-full z-10 p-4 flex items-center justify-center"
+      >
+        <div
+          class="bg-white rounded-xl shadow-2xl p-4 max-w-full w-full flex flex-col items-center"
+        >
+          <div class="w-full flex justify-end mb-3">
+            <button
+              data-close="true"
+              class="text-gray-600 hover:text-gray-800 text-3xl"
+            >
+              &times;
+            </button>
+          </div>
+          <div class="w-full flex items-center justify-center p-4">
+            <img
+              id="certificateImage"
+              src=""
+              alt="Certificate"
+              class="max-w-full max-h-[70vh] object-contain"
+            />
+          </div>
+          <div class="mt-3 text-gray-600 text-sm text-center">
+            Click outside or press the X button to close.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logo modal -->
+    <div
+      id="logoModal"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center px-4"
+    >
+      <div class="absolute inset-0 bg-black opacity-60" data-close="true"></div>
+      <div
+        class="bg-transparent max-w-3xl w-full z-10 p-4 flex items-center justify-center"
+      >
+        <div
+          class="bg-white rounded-xl shadow-2xl p-4 max-w-[760px] w-full flex flex-col items-center"
+        >
+          <div class="w-full flex justify-end">
+            <button
+              data-close="true"
+              class="text-gray-600 hover:text-gray-800 text-3xl"
+            >
+              &times;
+            </button>
+          </div>
+          <div class="w-full flex items-center justify-center p-4">
+            <img
+              src="LOGO PNG.png"
+              alt="Smart Digital logo enlarged"
+              class="max-h-[520px] object-contain"
+            />
+          </div>
+          <div class="mt-3 text-gray-700 text-sm">
+            Click outside or press Close to dismiss.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      id="panModal"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center px-4"
+    >
+      <div class="absolute inset-0 bg-black opacity-50" data-close="true"></div>
+      <div
+        class="bg-white rounded-lg shadow-xl max-w-lg w-full z-10 p-6"
+        style="transform: scale(1.2); transform-origin: center center"
+      >
+        <div class="flex justify-between items-start">
+          <h3 class="text-2xl font-bold">PAN Card — Documents & Pricing</h3>
+          <button
+            data-close="true"
+            class="text-gray-600 hover:text-gray-800 text-2xl"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="mt-4 text-gray-700">
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Proof of Identity (Aadhaar Card, Passport, Driving License)</li>
+            <li>
+              Proof of Address (Utility Bill, Bank Statement, Rent Agreement)
+            </li>
+            <li>Passport-sized Photograph (Recent)</li>
+            <li>Form 49A (for Indian citizens)</li>
+          </ul>
+          <div class="mt-6">
+            <h4 class="text-lg font-semibold mb-3">Pricing</h4>
+            <div class="space-y-3">
+              <div
+                class="flex justify-between items-center p-3 bg-gray-50 rounded"
+              >
+                <span class="font-semibold">PAN Card Apply</span>
+                <span class="bg-green-500 text-white px-3 py-1 rounded"
+                  >₹200/-</span
+                >
+              </div>
+              <div
+                class="flex justify-between items-center p-3 bg-gray-50 rounded"
+              >
+                <span class="font-semibold">PAN Card Print</span>
+                <span class="bg-green-500 text-white px-3 py-1 rounded"
+                  >₹60/-</span
+                >
+              </div>
+              <div
+                class="flex justify-between items-center p-3 bg-gray-50 rounded"
+              >
+                <span class="font-semibold">PAN Card Reprint</span>
+                <span class="bg-green-500 text-white px-3 py-1 rounded"
+                  >₹100/-</span
+                >
+              </div>
+              <div
+                class="flex justify-between items-center p-3 bg-gray-50 rounded"
+              >
+                <span class="font-semibold">PAN Number Find</span>
+                <span class="bg-green-500 text-white px-3 py-1 rounded"
+                  >₹100/-</span
+                >
+              </div>
+              <div
+                class="flex justify-between items-center p-3 bg-gray-50 rounded"
+              >
+                <span class="font-semibold">PAN Mobile Link</span>
+                <span class="bg-green-500 text-white px-3 py-1 rounded"
+                  >₹250/-</span
+                >
+              </div>
+              <div
+                class="flex justify-between items-center p-3 bg-gray-50 rounded"
+              >
+                <span class="font-semibold">PAN Card Correction</span>
+                <span class="bg-green-500 text-white px-3 py-1 rounded"
+                  >₹200/-</span
+                >
+              </div>
+            </div>
+          </div>
+          <p class="mt-4">
+            Shop hours: <strong>8:30 AM</strong> — <strong>9:00 PM</strong>.
+            Please bring physical (printed) copies of all documents.
+          </p>
+        </div>
+        <div class="mt-6 text-right">
+          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="aadharModal"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center px-4"
+    >
+      <div class="absolute inset-0 bg-black opacity-50" data-close="true"></div>
+      <div
+        class="bg-white rounded-lg shadow-xl max-w-lg w-full z-10 p-6"
+        style="transform: scale(1.2); transform-origin: center center"
+      >
+        <div class="flex justify-between items-start">
+          <h3 class="text-2xl font-bold">
+            Aadhaar Services — Documents & Pricing
+          </h3>
+          <button
+            data-close="true"
+            class="text-gray-600 hover:text-gray-800 text-2xl"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="mt-4 text-gray-700">
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Proof of Identity (PAN Card, Passport, Driving License)</li>
+            <li>
+              Proof of Address (Utility Bill, Ration Card, Bank Statement)
+            </li>
+            <li>Updated photograph (if required)</li>
+            <li>Enrollment/update form (to be filled in-person)</li>
+          </ul>
+          <div class="mt-6">
+            <h4 class="text-lg font-semibold mb-3">Pricing</h4>
+            <div class="space-y-3">
+              <div
+                class="flex justify-between items-center p-3 bg-gray-50 rounded"
+              >
+                <span class="font-semibold">Aadhaar Card Download</span>
+                <span class="bg-green-500 text-white px-3 py-1 rounded"
+                  >₹20/-</span
+                >
+              </div>
+              <div
+                class="flex justify-between items-center p-3 bg-gray-50 rounded"
+              >
+                <span class="font-semibold">Aadhaar Card Print</span>
+                <span class="bg-green-500 text-white px-3 py-1 rounded"
+                  >₹50/-</span
+                >
+              </div>
+              <div
+                class="flex justify-between items-center p-3 bg-gray-50 rounded"
+              >
+                <span class="font-semibold">Aadhaar Card PVC</span>
+                <span class="bg-green-500 text-white px-3 py-1 rounded"
+                  >₹100/-</span
+                >
+              </div>
+              <div
+                class="flex justify-between items-center p-3 bg-gray-50 rounded"
+              >
+                <span class="font-semibold">Aadhaar Mobile Link</span>
+                <span class="bg-green-500 text-white px-3 py-1 rounded"
+                  >₹100/-</span
+                >
+              </div>
+              <div
+                class="flex justify-between items-center p-3 bg-gray-50 rounded"
+              >
+                <span class="font-semibold">Aadhaar Not Link</span>
+                <span class="bg-green-500 text-white px-3 py-1 rounded"
+                  >₹200/-</span
+                >
+              </div>
+              <div
+                class="flex justify-between items-center p-3 bg-gray-50 rounded"
+              >
+                <span class="font-semibold">Aadhaar + PAN Link</span>
+                <span class="bg-green-500 text-white px-3 py-1 rounded"
+                  >₹1100/-</span
+                >
+              </div>
+            </div>
+          </div>
+          <p class="mt-4">
+            Shop hours: <strong>8:30 AM</strong> — <strong>9:00 PM</strong>.
+            Please bring physical (printed) copies of all documents.
+          </p>
+        </div>
+        <div class="mt-6 text-right">
+          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="voterModal"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center px-4"
+    >
+      <div class="absolute inset-0 bg-black opacity-50" data-close="true"></div>
+      <div
+        class="bg-white rounded-lg shadow-xl max-w-lg w-full z-10 p-6"
+        style="transform: scale(1.2); transform-origin: center center"
+      >
+        <div class="flex justify-between items-start">
+          <h3 class="text-2xl font-bold">Voter Card — Documents & Pricing</h3>
+          <button
+            data-close="true"
+            class="text-gray-600 hover:text-gray-800 text-2xl"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="mt-4 text-gray-700">
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Proof of Identity (Aadhaar Card, Passport, Driving License)</li>
+            <li>
+              Proof of Address (Utility Bill, Ration Card, Bank Statement)
+            </li>
+            <li>Passport-sized Photograph</li>
+            <li>Form 6 (Application for Voter ID) — fill in-person</li>
+          </ul>
+          <div class="mt-6">
+            <h4 class="text-lg font-semibold mb-3">Pricing</h4>
+            <div class="space-y-3">
+              <div
+                class="flex justify-between items-center p-3 bg-gray-50 rounded"
+              >
+                <span class="font-semibold">Voter Card Apply</span>
+                <span class="bg-green-500 text-white px-3 py-1 rounded"
+                  >₹100/-</span
+                >
+              </div>
+              <div
+                class="flex justify-between items-center p-3 bg-gray-50 rounded"
+              >
+                <span class="font-semibold">Voter Mobile Link</span>
+                <span class="bg-green-500 text-white px-3 py-1 rounded"
+                  >₹50/-</span
+                >
+              </div>
+              <div
+                class="flex justify-between items-center p-3 bg-gray-50 rounded"
+              >
+                <span class="font-semibold">Voter Card Print</span>
+                <span class="bg-green-500 text-white px-3 py-1 rounded"
+                  >₹50/-</span
+                >
+              </div>
+            </div>
+          </div>
+          <p class="mt-4">
+            Shop hours: <strong>8:30 AM</strong> — <strong>9:00 PM</strong>.
+            Please bring physical (printed) copies of all documents.
+          </p>
+        </div>
+        <div class="mt-6 text-right">
+          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="incomeCertModal"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center px-4"
+    >
+      <div class="absolute inset-0 bg-black opacity-50" data-close="true"></div>
+      <div
+        class="bg-white rounded-lg shadow-xl max-w-lg w-full z-10 p-6"
+        style="transform: scale(1.2); transform-origin: center center"
+      >
+        <div class="flex justify-between items-start">
+          <h3 class="text-2xl font-bold">
+            Income Certificate — Documents & Pricing
+          </h3>
+          <button
+            data-close="true"
+            class="text-gray-600 hover:text-gray-800 text-2xl"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="mt-4 text-gray-700">
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Aadhaar Card</li>
+            <li>Address Proof (Utility Bill / Ration Card / Bank Statement)</li>
+            <li>Income Proof (Salary Slip / ITR / Bank Statement)</li>
+            <li>Passport-sized Photograph</li>
+          </ul>
+          <div class="mt-6">
+            <h4 class="text-lg font-semibold mb-3">Pricing</h4>
+            <div
+              class="flex justify-between items-center p-3 bg-gray-50 rounded"
+            >
+              <span class="font-semibold">Income Certificate</span>
+              <span class="bg-yellow-500 text-white px-3 py-1 rounded text-xs"
+                >Contact</span
+              >
+            </div>
+          </div>
+          <p class="mt-4">
+            Shop hours: <strong>8:30 AM</strong> — <strong>9:00 PM</strong>.
+            Please bring physical (printed) copies of all documents.
+          </p>
+        </div>
+        <div class="mt-6 text-right">
+          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="casteCertModal"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center px-4"
+    >
+      <div class="absolute inset-0 bg-black opacity-50" data-close="true"></div>
+      <div
+        class="bg-white rounded-lg shadow-xl max-w-lg w-full z-10 p-6"
+        style="transform: scale(1.2); transform-origin: center center"
+      >
+        <div class="flex justify-between items-start">
+          <h3 class="text-2xl font-bold">
+            Caste Certificate — Documents & Pricing
+          </h3>
+          <button
+            data-close="true"
+            class="text-gray-600 hover:text-gray-800 text-2xl"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="mt-4 text-gray-700">
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Aadhaar Card</li>
+            <li>Address Proof (Utility Bill / Ration Card / Bank Statement)</li>
+            <li>Parent/Guardian Caste Certificate (if available)</li>
+            <li>Passport-sized Photograph</li>
+          </ul>
+          <div class="mt-6">
+            <h4 class="text-lg font-semibold mb-3">Pricing</h4>
+            <div
+              class="flex justify-between items-center p-3 bg-gray-50 rounded"
+            >
+              <span class="font-semibold">Caste Certificate</span>
+              <span class="bg-yellow-500 text-white px-3 py-1 rounded text-xs"
+                >Contact</span
+              >
+            </div>
+          </div>
+          <p class="mt-4">
+            Shop hours: <strong>8:30 AM</strong> — <strong>9:00 PM</strong>.
+            Please bring physical (printed) copies of all documents.
+          </p>
+        </div>
+        <div class="mt-6 text-right">
+          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="domicileCertModal"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center px-4"
+    >
+      <div class="absolute inset-0 bg-black opacity-50" data-close="true"></div>
+      <div
+        class="bg-white rounded-lg shadow-xl max-w-lg w-full z-10 p-6"
+        style="transform: scale(1.2); transform-origin: center center"
+      >
+        <div class="flex justify-between items-start">
+          <h3 class="text-2xl font-bold">
+            Domicile Certificate — Documents & Pricing
+          </h3>
+          <button
+            data-close="true"
+            class="text-gray-600 hover:text-gray-800 text-2xl"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="mt-4 text-gray-700">
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Aadhaar Card</li>
+            <li>Address Proof (Utility Bill / Rent Agreement / Ration Card)</li>
+            <li>Residence Proof (Land/House Document if available)</li>
+            <li>Passport-sized Photograph</li>
+          </ul>
+          <div class="mt-6">
+            <h4 class="text-lg font-semibold mb-3">Pricing</h4>
+            <div
+              class="flex justify-between items-center p-3 bg-gray-50 rounded"
+            >
+              <span class="font-semibold">Domicile Certificate</span>
+              <span class="bg-yellow-500 text-white px-3 py-1 rounded text-xs"
+                >Contact</span
+              >
+            </div>
+          </div>
+          <p class="mt-4">
+            Shop hours: <strong>8:30 AM</strong> — <strong>9:00 PM</strong>.
+            Please bring physical (printed) copies of all documents.
+          </p>
+        </div>
+        <div class="mt-6 text-right">
+          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="birthCertModal"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center px-4"
+    >
+      <div class="absolute inset-0 bg-black opacity-50" data-close="true"></div>
+      <div
+        class="bg-white rounded-lg shadow-xl max-w-lg w-full z-10 p-6"
+        style="transform: scale(1.2); transform-origin: center center"
+      >
+        <div class="flex justify-between items-start">
+          <h3 class="text-2xl font-bold">
+            Birth Certificate — Documents & Pricing
+          </h3>
+          <button
+            data-close="true"
+            class="text-gray-600 hover:text-gray-800 text-2xl"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="mt-4 text-gray-700">
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Hospital Birth Record / Discharge Slip (if available)</li>
+            <li>Parents' Aadhaar Cards</li>
+            <li>Address Proof</li>
+            <li>Passport-sized Photograph (if required)</li>
+          </ul>
+          <div class="mt-6">
+            <h4 class="text-lg font-semibold mb-3">Pricing</h4>
+            <div
+              class="flex justify-between items-center p-3 bg-gray-50 rounded"
+            >
+              <span class="font-semibold">Birth Certificate</span>
+              <span class="bg-yellow-500 text-white px-3 py-1 rounded text-xs"
+                >Contact</span
+              >
+            </div>
+          </div>
+          <p class="mt-4">
+            Shop hours: <strong>8:30 AM</strong> — <strong>9:00 PM</strong>.
+            Please bring physical (printed) copies of all documents.
+          </p>
+        </div>
+        <div class="mt-6 text-right">
+          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Xerox Services Modal -->
+    <div
+      id="xeroxModal"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center px-4"
+    >
+      <div class="absolute inset-0 bg-black opacity-50" data-close="true"></div>
+      <div class="bg-white rounded-lg shadow-xl max-w-lg w-full z-10 p-6">
+        <div class="flex justify-between items-start mb-4">
+          <h3 class="text-2xl font-bold">Xerox Services - Pricing</h3>
+          <button
+            data-close="true"
+            class="text-gray-600 hover:text-gray-800 text-2xl"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="space-y-3">
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">B/W Xerox</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded">₹5/-</span>
+          </div>
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">B/W Xerox (10 pages+)</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded">₹3/-</span>
+          </div>
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">Colour Xerox</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded">₹5/-</span>
+          </div>
+        </div>
+        <div class="mt-6 text-right">
+          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Printout Services Modal -->
+    <div
+      id="printoutModal"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center px-4"
+    >
+      <div class="absolute inset-0 bg-black opacity-50" data-close="true"></div>
+      <div class="bg-white rounded-lg shadow-xl max-w-lg w-full z-10 p-6">
+        <div class="flex justify-between items-start mb-4">
+          <h3 class="text-2xl font-bold">Printout Services - Pricing</h3>
+          <button
+            data-close="true"
+            class="text-gray-600 hover:text-gray-800 text-2xl"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="space-y-3">
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">B/W Printout PDF (10 pages+)</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded">₹10/-</span>
+          </div>
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">B/W Printout WhatsApp</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded">₹10/-</span>
+          </div>
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">Colour Printout</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded">₹15/-</span>
+          </div>
+        </div>
+        <div class="mt-6 text-right">
+          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Photo Services Modal -->
+    <div
+      id="photoModal"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center px-4"
+    >
+      <div class="absolute inset-0 bg-black opacity-50" data-close="true"></div>
+      <div class="bg-white rounded-lg shadow-xl max-w-lg w-full z-10 p-6">
+        <div class="flex justify-between items-start mb-4">
+          <h3 class="text-2xl font-bold">Photo Services - Pricing</h3>
+          <button
+            data-close="true"
+            class="text-gray-600 hover:text-gray-800 text-2xl"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="space-y-3">
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">Passport Size (6 pieces)</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded">₹30/-</span>
+          </div>
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">Passport Size (12 pieces)</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded">₹50/-</span>
+          </div>
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">4x6 Colour Photo</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded">₹40/-</span>
+          </div>
+        </div>
+        <div class="mt-6 text-right">
+          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lamination Services Modal -->
+    <div
+      id="laminationModal"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center px-4"
+    >
+      <div class="absolute inset-0 bg-black opacity-50" data-close="true"></div>
+      <div class="bg-white rounded-lg shadow-xl max-w-lg w-full z-10 p-6">
+        <div class="flex justify-between items-start mb-4">
+          <h3 class="text-2xl font-bold">Lamination Services - Pricing</h3>
+          <button
+            data-close="true"
+            class="text-gray-600 hover:text-gray-800 text-2xl"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="space-y-3">
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">Card Lamination</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded">₹10/-</span>
+          </div>
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">A4 Lamination Normal</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded">₹10/-</span>
+          </div>
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">A4 Lamination Hard</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded">₹20/-</span>
+          </div>
+        </div>
+        <div class="mt-6 text-right">
+          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Banking Services Modal -->
+    <div
+      id="bankingModal"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center px-4"
+    >
+      <div class="absolute inset-0 bg-black opacity-50" data-close="true"></div>
+      <div class="bg-white rounded-lg shadow-xl max-w-lg w-full z-10 p-6">
+        <div class="flex justify-between items-start mb-4">
+          <h3 class="text-2xl font-bold">Banking Services - Pricing</h3>
+          <button
+            data-close="true"
+            class="text-gray-600 hover:text-gray-800 text-2xl"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="space-y-3">
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">Bank Account Open</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded"
+              >₹200/-</span
+            >
+          </div>
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">Bank DBT Check</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded">₹20/-</span>
+          </div>
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">Bank DBT Link</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded"
+              >₹100/-</span
+            >
+          </div>
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">Cash Withdrawal (per 1000)</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded">₹10/-</span>
+          </div>
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">Money Transfer (per 1000)</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded">₹10/-</span>
+          </div>
+        </div>
+        <div class="mt-6 text-right">
+          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ration Card Modal -->
+    <div
+      id="rationModal"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center px-4"
+    >
+      <div class="absolute inset-0 bg-black opacity-50" data-close="true"></div>
+      <div class="bg-white rounded-lg shadow-xl max-w-lg w-full z-10 p-6">
+        <div class="flex justify-between items-start mb-4">
+          <h3 class="text-2xl font-bold">Ration Card Services - Pricing</h3>
+          <button
+            data-close="true"
+            class="text-gray-600 hover:text-gray-800 text-2xl"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="space-y-3">
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">Ration Number Find</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded">₹50/-</span>
+          </div>
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">Ration Card Print</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded">₹50/-</span>
+          </div>
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">Ration Card KYC</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded"
+              >₹100/-</span
+            >
+          </div>
+        </div>
+        <div class="mt-6 text-right">
+          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Other Services Modal -->
+    <div
+      id="otherServicesModal"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center px-4"
+    >
+      <div class="absolute inset-0 bg-black opacity-50" data-close="true"></div>
+      <div class="bg-white rounded-lg shadow-xl max-w-lg w-full z-10 p-6">
+        <div class="flex justify-between items-start mb-4">
+          <h3 class="text-2xl font-bold">Other Services - Pricing</h3>
+          <button
+            data-close="true"
+            class="text-gray-600 hover:text-gray-800 text-2xl"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="space-y-3">
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">E Sharm Card Apply</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded">₹80/-</span>
+          </div>
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">E Sharm Card Update</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded">₹80/-</span>
+          </div>
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">Ayushman Card Apply</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded"
+              >₹100/-</span
+            >
+          </div>
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">PM Kisan E KYC</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded"
+              >₹100/-</span
+            >
+          </div>
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">New JIO SIM</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded">FREE</span>
+          </div>
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+            <span class="font-semibold">Port On JIO</span>
+            <span class="bg-green-500 text-white px-3 py-1 rounded">FREE</span>
+          </div>
+        </div>
+        <div class="mt-6 text-right">
+          <button data-close="true" class="bg-gray-200 px-4 py-2 rounded">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Job status section removed -->
+
+    <!-- ======================== QUICK QUOTE CALCULATOR ======================== -->
+    <section
+      id="quote-calculator"
+      class="py-20 px-4 bg-gradient-to-r from-blue-50 to-purple-50"
+    >
+      <div class="max-w-4xl mx-auto">
+        <h3 class="text-4xl font-bold text-center mb-4 text-gray-800">
+          <i class="fas fa-calculator text-blue-600 mr-3"></i>Quick Quote
+          Calculator
+        </h3>
+        <p class="text-center text-gray-600 mb-12">
+          Get instant pricing estimates for our services
+        </p>
+
+        <div class="bg-white rounded-xl shadow-2xl p-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label class="block text-gray-700 font-semibold mb-2"
+                >Service Type</label
+              >
+              <select
+                id="serviceType"
+                onchange="calculateQuote()"
+                class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition"
+              >
+                <option value="0">Select a service...</option>
+                <option value="50">PAN Card Application - ₹50</option>
+                <option value="30">Aadhaar Update - ₹30</option>
+                <option value="40">Voter ID - ₹40</option>
+                <option value="5">Photocopy (per page) - ₹5</option>
+                <option value="10">Color Print (per page) - ₹10</option>
+                <option value="20">Lamination - ₹20</option>
+                <option value="100">Form Filling - ₹100</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-gray-700 font-semibold mb-2"
+                >Quantity</label
+              >
+              <input
+                type="number"
+                id="quantity"
+                value="1"
+                min="1"
+                onchange="calculateQuote()"
+                class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition"
+              />
+            </div>
+          </div>
+
+          <div
+            class="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl p-6 text-center"
+          >
+            <div class="text-lg mb-2">Estimated Total</div>
+            <div class="text-5xl font-bold">
+              ₹<span id="totalPrice">0</span>
+            </div>
+            <p class="text-blue-100 mt-3 text-sm">
+              *Final price may vary based on specific requirements
+            </p>
+          </div>
+
+          <div class="mt-6 text-center">
+            <a
+              href="#home"
+              class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-bold text-lg transition transform hover:scale-105 inline-block"
+            >
+              Visit Our Shop
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== GAMES & PROJECTS SECTION ======================== -->
+    <section
+      id="games"
+      class="py-20 px-4 bg-gradient-to-r from-purple-50 to-indigo-50"
+    >
+      <div class="max-w-7xl mx-auto">
+        <h3 class="text-4xl font-bold text-center mb-16 text-gray-800">
+          <i class="fas fa-gamepad text-purple-600 mr-3"></i>Games & Projects
+        </h3>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          Explore our collection of exciting games and interactive projects. All
+          built with modern web technologies and hosted on GitHub.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Game Card Template - Modify these with your actual games -->
+
+          <!-- Game 1 -->
+          <div
+            class="service-card bg-white rounded-xl overflow-hidden shadow-lg border-2 border-purple-200 hover:border-purple-600"
+          >
+            <div
+              class="h-48 bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center"
+            >
+              <i class="fas fa-gamepad text-white text-6xl"></i>
+            </div>
+            <div class="p-6">
+              <h4 class="text-2xl font-bold text-gray-800 mb-2">Snake Game</h4>
+              <p class="text-gray-600 mb-4">
+                Classic snake game with smooth controls and increasing
+                difficulty levels. Test your reflexes!
+              </p>
+              <div class="flex gap-3">
+                <a
+                  href="https://github.com/smartdigital-sum/snake-game.git"
+                  target="_blank"
+                  class="flex-1 bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-lg text-center font-semibold transition flex items-center justify-center space-x-2"
+                >
+                  <i class="fab fa-github"></i>
+                  <span>View Code</span>
+                </a>
+                <a
+                  href="https://smartdigital-sum.github.io/snake-game/"
+                  target="_blank"
+                  class="flex-1 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-center font-semibold transition flex items-center justify-center space-x-2"
+                >
+                  <i class="fas fa-play"></i>
+                  <span>Play</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Game 2 -->
+          <div
+            class="service-card bg-white rounded-xl overflow-hidden shadow-lg border-2 border-purple-200 hover:border-purple-600"
+          >
+            <div
+              class="h-48 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center"
+            >
+              <i class="fas fa-brain text-white text-6xl"></i>
+            </div>
+            <div class="p-6">
+              <h4 class="text-2xl font-bold text-gray-800 mb-2">
+                Memory Match - Assamese Edition
+              </h4>
+              <p class="text-gray-600 mb-4">
+                Match cultural icons and test your memory! Features traditional
+                Assamese symbols and heritage.
+              </p>
+              <div class="flex gap-3">
+                <a
+                  href="https://github.com/smartdigital-sum/memory-game-assamese.git"
+                  target="_blank"
+                  class="flex-1 bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-lg text-center font-semibold transition flex items-center justify-center space-x-2"
+                >
+                  <i class="fab fa-github"></i>
+                  <span>View Code</span>
+                </a>
+                <a
+                  href="https://smartdigital-sum.github.io/memory-game-assamese/"
+                  target="_blank"
+                  class="flex-1 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-center font-semibold transition flex items-center justify-center space-x-2"
+                >
+                  <i class="fas fa-play"></i>
+                  <span>Play</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Game 3 -->
+          <div
+            class="service-card bg-white rounded-xl overflow-hidden shadow-lg border-2 border-purple-200 hover:border-purple-600"
+          >
+            <div
+              class="h-48 bg-gradient-to-br from-pink-500 to-indigo-600 flex items-center justify-center"
+            >
+              <i class="fas fa-star text-white text-6xl"></i>
+            </div>
+            <div class="p-6">
+              <h4 class="text-2xl font-bold text-gray-800 mb-2">Flappy Bird</h4>
+              <p class="text-gray-600 mb-4">
+                Navigate through obstacles with simple tap controls. Addictive
+                and fun!
+              </p>
+              <div class="flex gap-3">
+                <a
+                  href="https://github.com/smartdigital-sum/flappybird.git"
+                  target="_blank"
+                  class="flex-1 bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-lg text-center font-semibold transition flex items-center justify-center space-x-2"
+                >
+                  <i class="fab fa-github"></i>
+                  <span>View Code</span>
+                </a>
+                <a
+                  href="https://smartdigital-sum.github.io/flappybird/"
+                  target="_blank"
+                  class="flex-1 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-center font-semibold transition flex items-center justify-center space-x-2"
+                >
+                  <i class="fas fa-play"></i>
+                  <span>Play</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Game 4 -->
+          <div
+            class="service-card bg-white rounded-xl overflow-hidden shadow-lg border-2 border-purple-200 hover:border-purple-600"
+          >
+            <div
+              class="h-48 bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center"
+            >
+              <i class="fas fa-mouse text-white text-6xl"></i>
+            </div>
+            <div class="p-6">
+              <h4 class="text-2xl font-bold text-gray-800 mb-2">
+                Click Counter Game
+              </h4>
+              <p class="text-gray-600 mb-4">
+                A number guessing game! Add random numbers between 1-5 each
+                click and try to reach the target number before running out of
+                attempts!
+              </p>
+              <div class="flex gap-3">
+                <a
+                  href="https://github.com/Suman1590/numberAddGuessGit.git"
+                  target="_blank"
+                  class="flex-1 bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-lg text-center font-semibold transition flex items-center justify-center space-x-2"
+                >
+                  <i class="fab fa-github"></i>
+                  <span>View Code</span>
+                </a>
+                <a
+                  href="https://suman1590.github.io/numberAddGuessGit/"
+                  target="_blank"
+                  class="flex-1 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-center font-semibold transition flex items-center justify-center space-x-2"
+                >
+                  <i class="fas fa-play"></i>
+                  <span>Play</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Game 5 -->
+          <div
+            class="service-card bg-white rounded-xl overflow-hidden shadow-lg border-2 border-purple-200 hover:border-purple-600"
+          >
+            <div
+              class="h-48 bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center"
+            >
+              <i class="fas fa-meteor text-white text-6xl"></i>
+            </div>
+            <div class="p-6">
+              <h4 class="text-2xl font-bold text-gray-800 mb-2">
+                Space Shooter
+              </h4>
+              <p class="text-gray-600 mb-4">
+                Defend your ship from incoming asteroids. High-octane action
+                gameplay!
+              </p>
+              <div class="flex gap-3">
+                <a
+                  href="https://github.com/smartdigital-sum/sapceshooter"
+                  target="_blank"
+                  class="flex-1 bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-lg text-center font-semibold transition flex items-center justify-center space-x-2"
+                >
+                  <i class="fab fa-github"></i>
+                  <span>View Code</span>
+                </a>
+                <a
+                  href="https://smartdigital-sum.github.io/sapceshooter/"
+                  target="_blank"
+                  class="flex-1 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-center font-semibold transition flex items-center justify-center space-x-2"
+                >
+                  <i class="fas fa-play"></i>
+                  <span>Play</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Game 6 -->
+          <div
+            class="service-card bg-white rounded-xl overflow-hidden shadow-lg border-2 border-purple-200 hover:border-purple-600"
+          >
+            <div
+              class="h-48 bg-gradient-to-br from-red-500 to-pink-600 flex items-center justify-center"
+            >
+              <i class="fas fa-dice text-white text-6xl"></i>
+            </div>
+            <div class="p-6">
+              <h4 class="text-2xl font-bold text-gray-800 mb-2">Dice Roller</h4>
+              <p class="text-gray-600 mb-4">
+                Interactive dice rolling game with statistics and probability
+                calculations.
+              </p>
+              <div class="flex gap-3">
+                <a
+                  href="https://github.com/Suman1590/pigGame-Ch.git"
+                  target="_blank"
+                  class="flex-1 bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-lg text-center font-semibold transition flex items-center justify-center space-x-2"
+                >
+                  <i class="fab fa-github"></i>
+                  <span>View Code</span>
+                </a>
+                <a
+                  href="https://suman1590.github.io/pigGame-Ch/"
+                  target="_blank"
+                  class="flex-1 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-center font-semibold transition flex items-center justify-center space-x-2"
+                >
+                  <i class="fas fa-play"></i>
+                  <span>Play</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rating -->
+        <div class="text-center mt-16">
+          <div
+            class="inline-flex items-center space-x-4 bg-white/5 backdrop-blur-sm px-6 py-4 rounded-lg"
+          >
+            <div class="flex items-center space-x-1 text-yellow-400 text-2xl">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="text-white font-semibold text-lg">4.5</div>
+            <div class="text-gray-300">(Based on customer feedback)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== DEMO WEBSITES SECTION ======================== -->
+    <section
+      id="demo-websites"
+      class="py-20 px-4 bg-gradient-to-b from-white to-blue-50"
+    >
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+            Demo Websites
+          </h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Explore our portfolio of demo websites showcasing different business
+            types. These are fully functional sample sites we've created.
+          </p>
+        </div>
+
+        <!-- Demo Website Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Restaurant Demo -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105"
+          >
+            <div
+              class="h-40 bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center"
+            >
+              <i class="fas fa-utensils text-white text-5xl"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                Restaurant Demo
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Complete restaurant website with menu showcase, online ordering,
+                and reservation system.
+              </p>
+              <div class="flex gap-3">
+                <a
+                  href="#"
+                  onclick="alert('Live link coming soon')"
+                  class="w-full bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg text-center font-semibold transition"
+                >
+                  <i class="fas fa-external-link-alt mr-2"></i>Visit
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Medical Shop Demo -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105"
+          >
+            <div
+              class="h-40 bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center"
+            >
+              <i class="fas fa-pills text-white text-5xl"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                Medical Shop Demo
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Pharmacy website with medicine catalog, prescription upload,
+                home delivery, and consultation booking.
+              </p>
+              <div class="flex gap-3">
+                <a
+                  href="#"
+                  onclick="alert('Live link coming soon')"
+                  class="w-full bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-center font-semibold transition"
+                >
+                  <i class="fas fa-external-link-alt mr-2"></i>Visit
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Grocery Store Demo -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105"
+          >
+            <div
+              class="h-40 bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center"
+            >
+              <i class="fas fa-shopping-cart text-white text-5xl"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                Grocery Store Demo
+              </h3>
+              <p class="text-gray-600 mb-4">
+                E-commerce grocery platform with product categories, cart
+                management, secure payments, and delivery tracking.
+              </p>
+              <div class="flex gap-3">
+                <a
+                  href="#"
+                  onclick="alert('Live link coming soon')"
+                  class="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-center font-semibold transition"
+                >
+                  <i class="fas fa-external-link-alt mr-2"></i>Visit
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Salon Demo -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105"
+          >
+            <div
+              class="h-40 bg-gradient-to-br from-pink-400 to-rose-500 flex items-center justify-center"
+            >
+              <i class="fas fa-cut text-white text-5xl"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-800 mb-2">Salon Demo</h3>
+              <p class="text-gray-600 mb-4">
+                Salon & spa website with service catalog, staff profiles,
+                appointment booking, and customer reviews.
+              </p>
+              <div class="flex gap-3">
+                <a
+                  href="#"
+                  onclick="alert('Live link coming soon')"
+                  class="w-full bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-lg text-center font-semibold transition"
+                >
+                  <i class="fas fa-external-link-alt mr-2"></i>Visit
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Small Hotel Demo -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105"
+          >
+            <div
+              class="h-40 bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center"
+            >
+              <i class="fas fa-bed text-white text-5xl"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-800 mb-2">Hotel Demo</h3>
+              <p class="text-gray-600 mb-4">
+                Hotel website with room showcase, real-time booking, guest
+                reviews, amenities, and contact management system.
+              </p>
+              <div class="flex gap-3">
+                <a
+                  href="#"
+                  onclick="alert('Live link coming soon')"
+                  class="w-full bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg text-center font-semibold transition"
+                >
+                  <i class="fas fa-external-link-alt mr-2"></i>Visit
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- School Demo -->
+          <div
+            class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105"
+          >
+            <div
+              class="h-40 bg-gradient-to-br from-yellow-400 to-amber-500 flex items-center justify-center"
+            >
+              <i class="fas fa-graduation-cap text-white text-5xl"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-800 mb-2">School Demo</h3>
+              <p class="text-gray-600 mb-4">
+                Educational institution website with courses, faculty
+                information, admissions, events, and student portal.
+              </p>
+              <div class="flex gap-3">
+                <a
+                  href="https://smartdigital-sum.github.io/demo-school/"
+                  target="_blank"
+                  class="w-full bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg text-center font-semibold transition"
+                >
+                  <i class="fas fa-external-link-alt mr-2"></i>Visit
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Modal open/close handlers
+      function openModal(id) {
+        const m = document.getElementById(id);
+        if (!m) return;
+        m.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      }
+      function closeModal(id) {
+        const m = document.getElementById(id);
+        if (!m) return;
+        m.classList.add("hidden");
+        document.body.style.overflow = "";
+      }
+
+      // Open certificate modal with image
+      function openCertificateModal(imageSrc) {
+        document.getElementById("certificateImage").src = imageSrc;
+        openModal("certificateModal");
+      }
+
+      // Open service pricing modal
+      function openServiceModal(modalId) {
+        openModal(modalId);
+      }
+
+      // Attach click listeners to elements with data-modal
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll("[data-modal]").forEach(function (el) {
+          el.addEventListener("click", function (e) {
+            e.preventDefault();
+            const id = el.getAttribute("data-modal");
+            if (id) openModal(id);
+          });
+        });
+
+        // Close buttons / overlay
+        document.querySelectorAll("[data-close]").forEach(function (el) {
+          el.addEventListener("click", function () {
+            // find the closest modal parent
+            const modal = el.closest("[id]");
+            if (modal && modal.id) closeModal(modal.id);
+            else {
+              // fallback: hide all
+              document
+                .querySelectorAll("#panModal,#aadharModal,#voterModal")
+                .forEach((m) => m.classList.add("hidden"));
+              document.body.style.overflow = "";
+            }
+          });
+        });
+
+        // Close on ESC
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            document
+              .querySelectorAll("#panModal,#aadharModal,#voterModal")
+              .forEach((m) => m.classList.add("hidden"));
+            document.body.style.overflow = "";
+          }
+        });
+      });
+    </script>
+
+    <!-- ======================== LOCATION & MAP SECTION ======================== -->
+    <section id="location" class="py-16 px-4 bg-white">
+      <div class="max-w-7xl mx-auto">
+        <h3 class="text-3xl font-bold text-center mb-4 text-gray-800">
+          <i class="fas fa-map-marker-alt text-red-600 mr-2"></i>Find Us on the
+          Map
+        </h3>
+        <p class="text-center text-gray-600 text-lg mb-12">
+          Visit our physical shop to experience our services in person
+        </p>
+
+        <div class="flex flex-col items-center gap-8">
+          <!-- Map Container -->
+          <div class="w-full max-w-3xl rounded-xl overflow-hidden shadow-lg">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.2651892319!2d91.7972!3d26.1445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375a5a5a5a5a5a5d%3A0x5a5a5a5a5a5a5a5a!2sRural%20Assam!5e0!3m2!1sen!2sin!4v1234567890"
+              width="100%"
+              height="600"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              class="rounded-xl"
+            ></iframe>
+          </div>
+
+          <!-- Where I Am Button -->
+          <div class="flex justify-center">
+            <button
+              onclick="openMaps()"
+              class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition transform hover:scale-105"
+            >
+              <i class="fas fa-location-arrow mr-2"></i>Where I am
+            </button>
+          </div>
+
+          <!-- Location Details -->
+          <div
+            class="w-full max-w-3xl bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-xl shadow-lg"
+          >
+            <h4 class="text-2xl font-bold text-gray-800 mb-6">
+              <i class="fas fa-store text-blue-600 mr-2"></i>Smart Digital Shop
+            </h4>
+
+            <!-- Address -->
+            <div class="mb-6 pb-6 border-b border-gray-300">
+              <h5 class="font-semibold text-gray-700 mb-2 flex items-center">
+                <i class="fas fa-map-pin text-red-600 mr-3 text-lg"></i>Address
+              </h5>
+              <p class="text-gray-600 ml-9 leading-relaxed">
+                Smart Digital Shop<br />
+                Rural Assam<br />
+                Your Town/Village Name<br />
+                Pin Code: XXXXX
+              </p>
+            </div>
+
+            <!-- Phone -->
+            <div class="mb-6 pb-6 border-b border-gray-300">
+              <h5 class="font-semibold text-gray-700 mb-2 flex items-center">
+                <i class="fas fa-phone text-green-600 mr-3 text-lg"></i>Contact
+              </h5>
+              <a
+                href="tel:+919876543210"
+                class="text-gray-600 ml-9 hover:text-green-600 transition text-lg font-semibold"
+              >
+                +91-98765-43210
+              </a>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-6 pb-6 border-b border-gray-300">
+              <h5 class="font-semibold text-gray-700 mb-2 flex items-center">
+                <i class="fas fa-envelope text-blue-600 mr-3 text-lg"></i>Email
+              </h5>
+              <a
+                href="mailto:info@smartdigital.com"
+                class="text-gray-600 ml-9 hover:text-blue-600 transition"
+              >
+                info@smartdigital.com
+              </a>
+            </div>
+
+            <!-- Hours -->
+            <div class="mb-6">
+              <h5 class="font-semibold text-gray-700 mb-2 flex items-center">
+                <i class="fas fa-clock text-orange-600 mr-3 text-lg"></i
+                >Business Hours
+              </h5>
+              <p class="text-gray-600 ml-9">
+                <strong>Monday - Saturday:</strong> 8:30 AM - 9:00 PM<br />
+                <strong>Sunday:</strong> 10:00 AM - 6:00 PM
+              </p>
+            </div>
+
+            <!-- WhatsApp Button -->
+            <a
+              href="https://wa.me/919876543210"
+              target="_blank"
+              class="inline-flex items-center justify-center w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 py-3 rounded-lg font-bold shadow-lg hover:shadow-xl transition transform hover:scale-105"
+            >
+              <i class="fab fa-whatsapp mr-2 text-lg"></i>
+              Message us on WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== FOOTER ======================== -->
+    <footer class="bg-gray-900 text-white py-16 px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+          <!-- About Section -->
+          <div>
+            <div class="flex items-center space-x-2 mb-4">
+              <div
+                class="w-12 h-12 rounded-lg overflow-hidden bg-white flex items-center justify-center"
+              >
+                <img
+                  src="LOGO PNG.png"
+                  alt="Smart Digital logo"
+                  class="w-full h-full object-contain"
+                />
+              </div>
+              <h4 class="text-xl font-bold">Smart Digital</h4>
+            </div>
+            <p class="text-gray-400 leading-relaxed">
+              Your trusted digital partner in rural Assam, providing CSC
+              services, tech repairs, and online solutions with expertise and
+              care.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="#home" class="hover:text-orange-500 transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="#services" class="hover:text-orange-500 transition"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#notifications"
+                  class="hover:text-orange-500 transition"
+                  >Updates</a
+                >
+              </li>
+              <li>
+                <a
+                  href="javascript:void(0);"
+                  onclick="
+                    alert('Contact us at: +91-XXXXXXXXXX or visit our shop!')
+                  "
+                  class="hover:text-orange-500 transition"
+                  >Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Address -->
+          <div>
+            <h4 class="text-lg font-bold mb-4">Visit Us</h4>
+            <p class="text-gray-400 mb-4">
+              <i class="fas fa-map-marker-alt text-orange-500 mr-2"></i>
+              Smart Digital Shop<br />
+              Rural Assam<br />
+              Your Town Name
+            </p>
+            <a
+              href="https://maps.google.com"
+              target="_blank"
+              class="inline-flex items-center space-x-2 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg transition"
+            >
+              <i class="fas fa-map"></i>
+              <span>Find on Google Maps</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Social Connect Section -->
+        <div class="border-t border-gray-700 pt-12">
+          <h4 class="text-xl font-bold text-center mb-8">
+            Join Our Digital Community
+          </h4>
+          <div class="flex justify-center items-center space-x-8 mb-8">
+            <!-- Facebook -->
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              class="icon-glow transition-all duration-300"
+            >
+              <div
+                class="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700"
+              >
+                <i class="fab fa-facebook-f text-white text-2xl"></i>
+              </div>
+            </a>
+
+            <!-- Instagram -->
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              class="icon-glow transition-all duration-300"
+            >
+              <div
+                class="w-14 h-14 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center hover:from-purple-600 hover:to-pink-600"
+              >
+                <i class="fab fa-instagram text-white text-2xl"></i>
+              </div>
+            </a>
+
+            <!-- Twitter/X -->
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              class="icon-glow transition-all duration-300"
+            >
+              <div
+                class="w-14 h-14 bg-black rounded-full flex items-center justify-center hover:bg-gray-800"
+              >
+                <i class="fab fa-x-twitter text-white text-2xl"></i>
+              </div>
+            </a>
+
+            <!-- YouTube -->
+            <a
+              href="https://youtube.com"
+              target="_blank"
+              class="icon-glow transition-all duration-300"
+            >
+              <div
+                class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700"
+              >
+                <i class="fab fa-youtube text-white text-2xl"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-gray-700 pt-8 text-center text-gray-500">
+          <p>
+            &copy; 2026 Smart Digital. All rights reserved. | Serving Rural
+            Assam with Digital Excellence
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ======================== FLOATING ACTION HUB ======================== -->
+    <div class="fixed bottom-8 right-8 z-40 float-animation">
+      <!-- WhatsApp Button -->
+      <a
+        href="https://wa.me/919876543210?text=Hello%20Smart%20Digital!%20I%20need%20help%20with%20your%20services."
+        target="_blank"
+        class="flex items-center justify-center w-16 h-16 bg-green-500 hover:bg-green-600 rounded-full shadow-lg mb-3 transition transform hover:scale-110"
+        title="Chat on WhatsApp"
+      >
+        <i class="fab fa-whatsapp text-white text-3xl"></i>
+      </a>
+
+      <!-- Telegram Button -->
+      <a
+        href="https://t.me/smartdigitalassam"
+        target="_blank"
+        class="flex items-center justify-center w-16 h-16 bg-blue-500 hover:bg-blue-600 rounded-full shadow-lg mb-3 transition transform hover:scale-110"
+        title="Chat on Telegram"
+      >
+        <i class="fab fa-telegram text-white text-3xl"></i>
+      </a>
+
+      <!-- Phone Button -->
+      <button
+        onclick="makeCall()"
+        class="flex items-center justify-center w-16 h-16 bg-orange-500 hover:bg-orange-600 rounded-full shadow-lg transition transform hover:scale-110"
+        title="Call Now"
+      >
+        <i class="fas fa-phone text-white text-2xl"></i>
+      </button>
+    </div>
+
+    <!-- ======================== JAVASCRIPT SECTION ======================== -->
+    <script>
+      // ===================== NOTIFICATIONS DATA (Firebase) =====================
+      // Default notifications if Firebase is empty
+      const defaultNotifications = [
+        "📝 Board Exam 2026 - Application Form Open Now",
+        "📚 JEE Main Registration Extended - Last Date Feb 28",
+        "🏆 Scholarship Form for Merit Students - Fill Now",
+        "✅ Aadhaar Update Link Open - Complete Your Update",
+        "🚀 Free Coaching Classes Starting - Tech & Govt Jobs",
+      ];
+
+      // Notifications array (will be loaded from Firebase)
+      let notifications = [];
+
+      // Load notifications from Firebase
+      function loadNotificationsFromFirebase() {
+        firebase
+          .database()
+          .ref("notifications")
+          .once("value", (snapshot) => {
+            const data = snapshot.val();
+            if (Array.isArray(data) && data.length > 0) {
+              notifications = data;
+            } else {
+              notifications = defaultNotifications;
+            }
+            renderNotifications();
+          });
+      }
+
+      // ===================== ADMIN PASSWORD PROTECTION =====================
+      const ADMIN_PASSWORD = "192113114"; // ⚠️ CHANGE THIS TO YOUR OWN SECURE PASSWORD!
+
+      // ===================== RENDER NOTIFICATIONS =====================
+      function renderNotifications() {
+        const container = document.getElementById("notificationContainer");
+        container.innerHTML = "";
+
+        if (notifications.length === 0) {
+          container.innerHTML =
+            '<p class="text-gray-500 text-center py-4">No notifications at the moment.</p>';
+          return;
+        }
+
+        notifications.forEach((notification, index) => {
+          const card = document.createElement("div");
+          card.className =
+            "bg-gradient-to-r from-orange-50 to-orange-100 border-l-4 border-orange-500 p-4 rounded-lg flex items-center space-x-3 hover:shadow-md transition animate-pulse-slow";
+          card.style.animation = `fadeIn 0.5s ease-in-out ${index * 0.1}s backwards`;
+          card.innerHTML = `
+                    <div class="text-2xl text-orange-500 flex-shrink-0">
+                        <i class="fas fa-flash"></i>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-gray-800 font-semibold">${notification}</p>
+                    </div>
+                    <span class="text-xs bg-orange-500 text-white px-3 py-1 rounded-full font-bold flex-shrink-0">#${index + 1}</span>
+                `;
+          container.appendChild(card);
+        });
+      }
+
+      // ===================== EDIT MODE FUNCTIONS =====================
+      function toggleEditMode() {
+        const editMode = document.getElementById("editMode");
+        const btn = document.getElementById("editNotifBtn");
+
+        if (editMode.classList.contains("hidden")) {
+          // 🔒 Ask for password before opening edit mode
+          const password = prompt(
+            "🔒 Enter Admin Password to Edit Notifications:",
+          );
+
+          if (password === null) {
+            // User cancelled
+            return;
+          }
+
+          if (password !== ADMIN_PASSWORD) {
+            showNotificationError(
+              "❌ Incorrect Password! Only admins can edit.",
+            );
+            return;
+          }
+
+          // ✅ Password correct - open edit mode
+          editMode.classList.remove("hidden");
+          btn.innerHTML = '<i class="fas fa-times"></i><span>Close</span>';
+          renderEditForm();
+          showNotificationSuccess("✅ Admin Mode Activated!");
+        } else {
+          editMode.classList.add("hidden");
+          btn.innerHTML = '<i class="fas fa-edit"></i><span>Edit</span>';
+        }
+      }
+
+      function renderEditForm() {
+        const container = document.getElementById("editFormContainer");
+        container.innerHTML = "";
+
+        notifications.forEach((notif, index) => {
+          const field = document.createElement("div");
+          field.className = "flex gap-2";
+          field.innerHTML = `
+                    <input 
+                        type="text" 
+                        value="${notif}" 
+                        class="flex-1 px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition"
+                        id="notif-${index}"
+                        placeholder="Enter notification text..."
+                    >
+                    <button 
+                        onclick="deleteNotificationField(${index})" 
+                        class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition"
+                        title="Delete"
+                    >
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+          container.appendChild(field);
+        });
+
+        // Load current admin settings into edit form
+        loadAdminSettingsToForm();
+      }
+
+      function addNotificationField() {
+        notifications.push("");
+        renderEditForm();
+      }
+
+      function deleteNotificationField(index) {
+        if (notifications.length > 1) {
+          notifications.splice(index, 1);
+          renderEditForm();
+        } else {
+          alert("You need at least one notification!");
+        }
+      }
+
+      function saveNotifications() {
+        const updated = [];
+        const inputs = document.querySelectorAll("#editFormContainer input");
+
+        inputs.forEach((input) => {
+          if (input.value.trim()) {
+            updated.push(input.value.trim());
+          }
+        });
+
+        if (updated.length === 0) {
+          alert("Please add at least one notification!");
+          return;
+        }
+
+        notifications = updated;
+        // Save notifications to Firebase
+        firebase
+          .database()
+          .ref("notifications")
+          .set(notifications, function (error) {
+            if (error) {
+              showNotificationError(
+                "❌ Failed to save notifications to server!",
+              );
+            } else {
+              // Close edit mode and refresh display
+              document.getElementById("editMode").classList.add("hidden");
+              document.getElementById("editNotifBtn").innerHTML =
+                '<i class="fas fa-edit"></i><span>Edit</span>';
+              renderNotifications();
+              showNotificationSuccess("✅ Notifications saved successfully!");
+            }
+          });
+      }
+
+      function cancelEditMode() {
+        document.getElementById("editMode").classList.add("hidden");
+        document.getElementById("editNotifBtn").innerHTML =
+          '<i class="fas fa-edit"></i><span>Edit</span>';
+      }
+
+      // ===================== ADMIN SETTINGS: URGENT NOTICE & SHOP STATUS =====================
+
+      // Load admin settings from Firebase
+      function loadAdminSettings() {
+        firebase
+          .database()
+          .ref("adminSettings")
+          .once("value", (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+              // Update urgent notice
+              if (data.urgentNoticeText) {
+                document.getElementById("urgentNoticeText").textContent =
+                  data.urgentNoticeText;
+              }
+              if (data.urgentDeadline) {
+                // Store deadline for countdown
+                window.urgentDeadline = new Date(data.urgentDeadline);
+              }
+
+              // Update shop times
+              if (data.shopOpenTime) {
+                window.shopOpenTime = data.shopOpenTime;
+              }
+              if (data.shopCloseTime) {
+                window.shopCloseTime = data.shopCloseTime;
+              }
+            }
+          });
+      }
+
+      // Load admin settings into edit form
+      function loadAdminSettingsToForm() {
+        firebase
+          .database()
+          .ref("adminSettings")
+          .once("value", (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+              // Populate urgent notice fields
+              if (data.urgentNoticeText) {
+                document.getElementById("urgentNoticeTextEdit").value =
+                  data.urgentNoticeText;
+              }
+              if (data.urgentDeadline) {
+                // Convert to datetime-local format
+                const date = new Date(data.urgentDeadline);
+                const localDatetime = date.toISOString().slice(0, 16);
+                document.getElementById("urgentDeadlineEdit").value =
+                  localDatetime;
+              }
+
+              // Populate shop time fields
+              if (data.shopOpenTime) {
+                document.getElementById("shopOpenTimeEdit").value =
+                  data.shopOpenTime;
+              }
+              if (data.shopCloseTime) {
+                document.getElementById("shopCloseTimeEdit").value =
+                  data.shopCloseTime;
+              }
+            }
+          });
+      }
+
+      // Save all admin settings (notifications + urgent notice + shop status)
+      function saveAllAdminSettings() {
+        // Save notifications
+        const updated = [];
+        const inputs = document.querySelectorAll("#editFormContainer input");
+        inputs.forEach((input) => {
+          if (input.value.trim()) {
+            updated.push(input.value.trim());
+          }
+        });
+
+        if (updated.length === 0) {
+          alert("Please add at least one notification!");
+          return;
+        }
+        notifications = updated;
+
+        // Get admin settings values
+        const urgentNoticeText = document
+          .getElementById("urgentNoticeTextEdit")
+          .value.trim();
+        const urgentDeadline =
+          document.getElementById("urgentDeadlineEdit").value;
+        const shopOpenTime = document.getElementById("shopOpenTimeEdit").value;
+        const shopCloseTime =
+          document.getElementById("shopCloseTimeEdit").value;
+
+        // Validate
+        if (!urgentNoticeText) {
+          alert("Please enter an urgent notice message!");
+          return;
+        }
+        if (!urgentDeadline) {
+          alert("Please select a deadline date & time!");
+          return;
+        }
+        if (!shopOpenTime || !shopCloseTime) {
+          alert("Please set both shop opening and closing times!");
+          return;
+        }
+
+        // Save everything to Firebase
+        const updates = {
+          notifications: notifications,
+          adminSettings: {
+            urgentNoticeText: urgentNoticeText,
+            urgentDeadline: urgentDeadline,
+            shopOpenTime: shopOpenTime,
+            shopCloseTime: shopCloseTime,
+            lastUpdated: new Date().toISOString(),
+          },
+        };
+
+        Promise.all([
+          firebase.database().ref("notifications").set(notifications),
+          firebase.database().ref("adminSettings").set(updates.adminSettings),
+        ])
+          .then(() => {
+            // Success - close edit mode and refresh
+            document.getElementById("editMode").classList.add("hidden");
+            document.getElementById("editNotifBtn").innerHTML =
+              '<i class="fas fa-edit"></i><span>Edit</span>';
+            renderNotifications();
+            loadAdminSettings();
+            showNotificationSuccess("✅ All settings saved successfully!");
+          })
+          .catch((error) => {
+            showNotificationError(
+              "❌ Failed to save settings: " + error.message,
+            );
+          });
+      }
+
+      // Show temporary success message
+      function showNotificationSuccess(message) {
+        const alert = document.createElement("div");
+        alert.className =
+          "fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-bounce";
+        alert.textContent = message;
+        document.body.appendChild(alert);
+
+        setTimeout(() => {
+          alert.remove();
+        }, 3000);
+      }
+
+      // Show temporary error message
+      function showNotificationError(message) {
+        const alert = document.createElement("div");
+        alert.className =
+          "fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-bounce";
+        alert.textContent = message;
+        document.body.appendChild(alert);
+
+        setTimeout(() => {
+          alert.remove();
+        }, 4000);
+      }
+
+      // Alias for backward compatibility
+      function showNotification(message) {
+        showNotificationSuccess(message);
+      }
+
+      // ===================== MOBILE MENU TOGGLE =====================
+      document
+        .getElementById("mobileMenuBtn")
+        .addEventListener("click", function () {
+          const menu = document.getElementById("mobileMenu");
+          menu.classList.toggle("hidden");
+        });
+
+      // Close mobile menu when a link is clicked
+      document.querySelectorAll("#mobileMenu a").forEach((link) => {
+        link.addEventListener("click", function () {
+          document.getElementById("mobileMenu").classList.add("hidden");
+        });
+      });
+
+      // ===================== CALL NOW FUNCTION =====================
+      function makeCall() {
+        const phoneNumber = "+919876543210"; // Change this to your actual phone number
+        window.location.href = `tel:${phoneNumber}`;
+      }
+
+      // Job status feature removed
+
+      // ===================== NEW FEATURES JAVASCRIPT =====================
+
+      // Live Visitor Counter (simulated - randomizes between 2-5)
+      function updateVisitorCount() {
+        const count = Math.floor(Math.random() * 4) + 2; // 2-5 visitors
+        document.getElementById("liveVisitors").textContent = count;
+      }
+      setInterval(updateVisitorCount, 10000); // Update every 10 seconds
+
+      // Animated Statistics Counter
+      function animateCounter(element) {
+        const target = parseInt(element.getAttribute("data-target"));
+        const duration = 2000; // 2 seconds
+        const increment = target / (duration / 16); // 60fps
+        let current = 0;
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            element.textContent = target;
+            clearInterval(timer);
+          } else {
+            element.textContent = Math.floor(current);
+          }
+        }, 16);
+      }
+
+      // Observe statistics section and animate when visible
+      const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            document.querySelectorAll(".counter").forEach((counter) => {
+              animateCounter(counter);
+            });
+            statsObserver.disconnect();
+          }
+        });
+      });
+
+      // Quote Calculator
+      function calculateQuote() {
+        const servicePrice = parseFloat(
+          document.getElementById("serviceType").value,
+        );
+        const quantity =
+          parseInt(document.getElementById("quantity").value) || 1;
+        const total = servicePrice * quantity;
+        document.getElementById("totalPrice").textContent = total;
+      }
+
+      // Appointment system removed - customers visit physical shop
+
+      // ===================== LANGUAGE TRANSLATION SYSTEM =====================
+
+      const translations = {
+        English: {
+          // Navbar
+          Home: "Home",
+          Services: "Services",
+          Games: "Games",
+          Updates: "Updates",
+          "Call Now": "Call Now",
+
+          // Hero Section
+          "Your Trusted Digital Partner in Assam":
+            "Your Trusted Digital Partner in Assam",
+          "CSC Services, Tech Repairs & Online Solutions":
+            "CSC Services, Tech Repairs & Online Solutions",
+          "Bringing digital services and technical expertise to rural Assam with fast, reliable, and affordable solutions for all your digital needs.":
+            "Bringing digital services and technical expertise to rural Assam with fast, reliable, and affordable solutions for all your digital needs.",
+          "All Services": "All Services",
+          "Explore Services": "Explore Services",
+          "Explore Games": "Explore Games",
+          "Currently helping": "Currently helping",
+          customers: "customers",
+
+          // Statistics
+          "Happy Customers": "Happy Customers",
+          "Services Completed": "Services Completed",
+          "Expert Services": "Expert Services",
+          "Satisfaction Rate": "Satisfaction Rate",
+
+          // Notifications
+          "Latest Updates & Exam Notices": "Latest Updates & Exam Notices",
+          "Flash Updates": "Flash Updates",
+          Edit: "Edit",
+
+          // Shop Status
+          "Shop Open": "Shop Open",
+          "Shop Closed": "Shop Closed",
+
+          // Certifications
+          "Our Certifications": "Our Certifications",
+          "Udemy Certificate": "Udemy Certificate",
+          "Click to enlarge": "Click to enlarge",
+
+          // Services Section
+          "CSC & Government Services": "CSC & Government Services",
+          "PAN Card": "PAN Card",
+          "Quick application and renewal services":
+            "Quick application and renewal services",
+          "Aadhaar Update": "Aadhaar Update",
+          "Update your Aadhaar details easily":
+            "Update your Aadhaar details easily",
+          "Voter ID": "Voter ID",
+          "Registration & verification services":
+            "Registration & verification services",
+          "Income Certificate": "Income Certificate",
+          "Official income documentation": "Official income documentation",
+
+          "Travel Bookings & Rechgarge": "Travel Bookings & Rechgarge",
+          "Train/Bus Tickets": "Train/Bus Tickets",
+          "Easy reservation & booking services":
+            "Easy reservation & booking services",
+          "Flight Booking": "Flight Booking",
+          "Quick flight reservations nationwide":
+            "Quick flight reservations nationwide",
+          "Hotel Booking": "Hotel Booking",
+          "Best rates on accommodations": "Best rates on accommodations",
+          "Travel Assistance": "Travel Assistance",
+          "Complete travel planning support":
+            "Complete travel planning support",
+
+          "Offline & Design Services": "Offline & Design Services",
+          "Photo Editing": "Photo Editing",
+          "Professional photo enhancement": "Professional photo enhancement",
+          "Custom Invitations": "Custom Invitations",
+          "Personalized invitation designs": "Personalized invitation designs",
+          "Flex Design & Printing": "Flex Design & Printing",
+          "Custom flex banners & signage": "Custom flex banners & signage",
+          "DTP Work": "DTP Work",
+          "Desktop publishing & layouts": "Desktop publishing & layouts",
+
+          // Quote Calculator
+          "Quick Quote Calculator": "Quick Quote Calculator",
+          "Get instant pricing estimates for our services":
+            "Get instant pricing estimates for our services",
+          "Service Type": "Service Type",
+          Quantity: "Quantity",
+          "Estimated Total": "Estimated Total",
+          "Visit Our Shop": "Visit Our Shop",
+
+          // Games
+          "Games & Projects": "Games & Projects",
+          "View Code": "View Code",
+          Play: "Play",
+
+          // Demo Websites
+          "Demo Websites": "Demo Websites",
+          "Explore our portfolio of demo websites showcasing different business types. These are fully functional sample sites we've created.":
+            "Explore our portfolio of demo websites showcasing different business types. These are fully functional sample sites we've created.",
+          "Restaurant Demo": "Restaurant Demo",
+          "Complete restaurant website with menu showcase, online ordering, and reservation system.":
+            "Complete restaurant website with menu showcase, online ordering, and reservation system.",
+          "Medical Shop Demo": "Medical Shop Demo",
+          "Pharmacy website with medicine catalog, prescription upload, home delivery, and consultation booking.":
+            "Pharmacy website with medicine catalog, prescription upload, home delivery, and consultation booking.",
+          "Grocery Store Demo": "Grocery Store Demo",
+          "E-commerce grocery platform with product categories, cart management, secure payments, and delivery tracking.":
+            "E-commerce grocery platform with product categories, cart management, secure payments, and delivery tracking.",
+          "Salon Demo": "Salon Demo",
+          "Salon & spa website with service catalog, staff profiles, appointment booking, and customer reviews.":
+            "Salon & spa website with service catalog, staff profiles, appointment booking, and customer reviews.",
+          "Hotel Demo": "Hotel Demo",
+          "Hotel website with room showcase, real-time booking, guest reviews, amenities, and contact management system.":
+            "Hotel website with room showcase, real-time booking, guest reviews, amenities, and contact management system.",
+          Code: "Code",
+          Visit: "Visit",
+
+          // Footer
+          "Quick Links": "Quick Links",
+          "Visit Us": "Visit Us",
+          "Find on Google Maps": "Find on Google Maps",
+          "Join Our Digital Community": "Join Our Digital Community",
+        },
+
+        हिंदी: {
+          // Navbar
+          Home: "होम",
+          Services: "सेवाएं",
+          Games: "गेम्स",
+          Updates: "अपडेट",
+          "Call Now": "कॉल करें",
+
+          // Hero Section
+          "Your Trusted Digital Partner in Assam":
+            "असम में आपका विश्वसनीय डिजिटल पार्टनर",
+          "CSC Services, Tech Repairs & Online Solutions":
+            "सीएससी सेवाएं, तकनीकी मरम्मत और ऑनलाइन समाधान",
+          "Bringing digital services and technical expertise to rural Assam with fast, reliable, and affordable solutions for all your digital needs.":
+            "ग्रामीण असम में तेज, विश्वसनीय और किफायती समाधानों के साथ डिजिटल सेवाएं और तकनीकी विशेषज्ञता लाना।",
+          "All Services": "सभी सेवाएं",
+          "Explore Services": "सेवाएं देखें",
+          "Explore Games": "गेम्स देखें",
+          "Currently helping": "वर्तमान में सहायता कर रहे हैं",
+          customers: "ग्राहकों को",
+
+          // Statistics
+          "Happy Customers": "खुश ग्राहक",
+          "Services Completed": "पूर्ण सेवाएं",
+          "Expert Services": "विशेषज्ञ सेवाएं",
+          "Satisfaction Rate": "संतुष्टि दर",
+
+          // Notifications
+          "Latest Updates & Exam Notices": "नवीनतम अपडेट और परीक्षा सूचनाएं",
+          "Flash Updates": "तत्काल अपडेट",
+          Edit: "संपादित करें",
+
+          // Shop Status
+          "Shop Open": "दुकान खुली है",
+          "Shop Closed": "दुकान बंद है",
+
+          // Certifications
+          "Our Certifications": "हमारे प्रमाण पत्र",
+          "Udemy Certificate": "उडेमी प्रमाण पत्र",
+          "Click to enlarge": "बड़ा करने के लिए क्लिक करें",
+
+          // Services Section
+          "CSC & Government Services": "सीएससी और सरकारी सेवाएं",
+          "PAN Card": "पैन कार्ड",
+          "Quick application and renewal services":
+            "त्वरित आवेदन और नवीनीकरण सेवाएं",
+          "Aadhaar Update": "आधार अपडेट",
+          "Update your Aadhaar details easily":
+            "अपने आधार विवरण आसानी से अपडेट करें",
+          "Voter ID": "वोटर आईडी",
+          "Registration & verification services": "पंजीकरण और सत्यापन सेवाएं",
+          "Income Certificate": "आय प्रमाण पत्र",
+          "Official income documentation": "आधिकारिक आय दस्तावेज",
+
+          "Daily Digital Work": "दैनिक डिजिटल कार्य",
+          "High-Quality Photocopy": "उच्च गुणवत्ता फोटोकॉपी",
+          "Crystal clear document copies": "बिल्कुल स्पष्ट दस्तावेज प्रतियां",
+          "Color Printing": "रंगीन प्रिंटिंग",
+          "Vibrant and professional prints": "जीवंत और पेशेवर प्रिंट",
+          Lamination: "लैमिनेशन",
+          "Protect your documents with durability":
+            "अपने दस्तावेजों को टिकाऊपन से सुरक्षित रखें",
+          "Form Filling": "फॉर्म भरना",
+          "Accurate and hassle-free form completion":
+            "सटीक और परेशानी मुक्त फॉर्म पूर्णता",
+
+          "Travel Bookings & Rechgarge": "यात्रा बुकिंग और रिचार्ज",
+          "Train/Bus Tickets": "ट्रेन/बस टिकट",
+          "Easy reservation & booking services": "आसान आरक्षण और बुकिंग सेवाएं",
+          "Flight Booking": "फ्लाइट बुकिंग",
+          "Quick flight reservations nationwide":
+            "देश भर में त्वरित उड़ान आरक्षण",
+          "Hotel Booking": "होटल बुकिंग",
+          "Best rates on accommodations": "आवास पर सर्वोत्तम दरें",
+          "Travel Assistance": "यात्रा सहायता",
+          "Complete travel planning support": "पूर्ण यात्रा योजना सहायता",
+
+          "Offline & Design Services": "ऑफलाइन और डिजाइन सेवाएं",
+          "Photo Editing": "फोटो संपादन",
+          "Professional photo enhancement": "पेशेवर फोटो सुधार",
+          "Custom Invitations": "कस्टम निमंत्रण",
+          "Personalized invitation designs": "व्यक्तिगत निमंत्रण डिजाइन",
+          "Flex Design & Printing": "फ्लेक्स डिजाइन और प्रिंटिंग",
+          "Custom flex banners & signage": "कस्टम फ्लेक्स बैनर और साइनेज",
+          "DTP Work": "डीटीपी कार्य",
+          "Desktop publishing & layouts": "डेस्कटॉप प्रकाशन और लेआउट",
+
+          // Quote Calculator
+          "Quick Quote Calculator": "त्वरित मूल्य कैलकुलेटर",
+          "Get instant pricing estimates for our services":
+            "हमारी सेवाओं के लिए तत्काल मूल्य अनुमान प्राप्त करें",
+          "Service Type": "सेवा प्रकार",
+          Quantity: "मात्रा",
+          "Estimated Total": "अनुमानित कुल",
+          "Visit Our Shop": "हमारी दुकान पर आएं",
+
+          // Games
+          "Games & Projects": "गेम्स और प्रोजेक्ट्स",
+          "View Code": "कोड देखें",
+          Play: "खेलें",
+
+          // Demo Websites
+          "Demo Websites": "डेमो वेबसाइटें",
+          "Explore our portfolio of demo websites showcasing different business types. These are fully functional sample sites we've created.":
+            "विभिन्न व्यावसायिक प्रकारों को प्रदर्शित करने वाली हमारी डेमो वेबसाइटों के पोर्टफोलियो का पता लगाएं। ये पूरी तरह कार्यात्मक नमूना साइटें हैं जो हमने बनाई हैं।",
+          "Restaurant Demo": "रेस्तरां डेमो",
+          "Complete restaurant website with menu showcase, online ordering, and reservation system.":
+            "मेनू प्रदर्शन, ऑनलाइन ऑर्डरिंग और आरक्षण प्रणाली के साथ पूर्ण रेस्तरां वेबसाइट।",
+          "Medical Shop Demo": "मेडिकल शॉप डेमो",
+          "Pharmacy website with medicine catalog, prescription upload, home delivery, and consultation booking.":
+            "दवा कैटलॉग, नुस्खा अपलोड, होम डिलीवरी और परामर्श बुकिंग के साथ फार्मेसी वेबसाइट।",
+          "Grocery Store Demo": "किराना स्टोर डेमो",
+          "E-commerce grocery platform with product categories, cart management, secure payments, and delivery tracking.":
+            "उत्पाद श्रेणियों, कार्ट प्रबंधन, सुरक्षित भुगतान और डिलीवरी ट्रैकिंग के साथ ई-कॉमर्स किराना प्लेटफॉर्म।",
+          "Salon Demo": "सैलून डेमो",
+          "Salon & spa website with service catalog, staff profiles, appointment booking, and customer reviews.":
+            "सेवा कैटलॉग, कर्मचारी प्रोफाइल, नियुक्ति बुकिंग और ग्राहक समीक्षाओं के साथ सैलून और स्पा वेबसाइट।",
+          "Hotel Demo": "होटल डेमो",
+          "Hotel website with room showcase, real-time booking, guest reviews, amenities, and contact management system.":
+            "कक्षों के प्रदर्शन, वास्तविक समय बुकिंग, अतिथि समीक्षा, सुविधाओं और संपर्क प्रबंधन प्रणाली के साथ होटल वेबसाइट।",
+          Code: "कोड",
+          Visit: "देखें",
+
+          // Footer
+          "Quick Links": "त्वरित लिंक",
+          "Visit Us": "हमसे मिलें",
+          "Find on Google Maps": "गूगल मैप्स पर खोजें",
+          "Join Our Digital Community": "हमारे डिजिटल समुदाय में शामिल हों",
+        },
+
+        অসমীয়া: {
+          // Navbar
+          Home: "ঘৰ",
+          Services: "সেৱাসমূহ",
+          Games: "গেমছ",
+          Updates: "আপডেট",
+          "Call Now": "কল কৰক",
+
+          // Hero Section
+          "Your Trusted Digital Partner in Assam":
+            "অসমত আপোনাৰ বিশ্বাসযোগ্য ডিজিটেল সহযোগী",
+          "CSC Services, Tech Repairs & Online Solutions":
+            "চিএছচি সেৱা, প্ৰযুক্তি মেৰামতি আৰু অনলাইন সমাধান",
+          "Bringing digital services and technical expertise to rural Assam with fast, reliable, and affordable solutions for all your digital needs.":
+            "গ্ৰাম্য অসমলৈ দ্ৰুত, নিৰ্ভৰযোগ্য আৰু সুলভ সমাধানৰ সৈতে ডিজিটেল সেৱা আৰু প্ৰযুক্তিগত বিশেষজ্ঞতা আনিছো।",
+          "All Services": "সকলো সেৱা",
+          "Explore Services": "সেৱাসমূহ চাওক",
+          "Explore Games": "গেমছ চাওক",
+          "Currently helping": "বৰ্তমান সহায় কৰি আছে",
+          customers: "গ্ৰাহকক",
+
+          // Statistics
+          "Happy Customers": "সুখী গ্ৰাহক",
+          "Services Completed": "সম্পূৰ্ণ সেৱা",
+          "Expert Services": "বিশেষজ্ঞ সেৱা",
+          "Satisfaction Rate": "সন্তুষ্টিৰ হাৰ",
+
+          // Notifications
+          "Latest Updates & Exam Notices": "শেহতীয়া আপডেট আৰু পৰীক্ষাৰ জাননী",
+          "Flash Updates": "তাৎক্ষণিক আপডেট",
+          Edit: "সম্পাদনা কৰক",
+
+          // Shop Status
+          "Shop Open": "দোকান খোলা আছে",
+          "Shop Closed": "দোকান বন্ধ আছে",
+
+          // Certifications
+          "Our Certifications": "আমাৰ প্ৰমাণপত্ৰসমূহ",
+          "Udemy Certificate": "উডেমি প্ৰমাণপত্ৰ",
+          "Click to enlarge": "ডাঙৰ কৰিবলৈ ক্লিক কৰক",
+
+          // Services Section
+          "CSC & Government Services": "চিএছচি আৰু চৰকাৰী সেৱা",
+          "PAN Card": "পেন কাৰ্ড",
+          "Quick application and renewal services":
+            "দ্ৰুত আবেদন আৰু নবীকৰণ সেৱা",
+          "Aadhaar Update": "আধাৰ আপডেট",
+          "Update your Aadhaar details easily":
+            "আপোনাৰ আধাৰৰ বিৱৰণ সহজে আপডেট কৰক",
+          "Voter ID": "ভোটাৰ আইডি",
+          "Registration & verification services": "পঞ্জীয়ন আৰু সত্যাপন সেৱা",
+          "Income Certificate": "আয় প্ৰমাণপত্ৰ",
+          "Official income documentation": "চৰকাৰী আয় নথিকৰণ",
+
+          "Daily Digital Work": "দৈনিক ডিজিটেল কাম",
+          "High-Quality Photocopy": "উচ্চ মানৰ ফটোকপি",
+          "Crystal clear document copies": "স্ফটিক স্পষ্ট নথি প্ৰতিলিপি",
+          "Color Printing": "ৰঙীন প্ৰিন্টিং",
+          "Vibrant and professional prints": "প্ৰাণবন্ত আৰু পেছাদাৰী প্ৰিন্ট",
+          Lamination: "লেমিনেচন",
+          "Protect your documents with durability":
+            "আপোনাৰ নথিসমূহ স্থায়িত্বৰ সৈতে সুৰক্ষিত কৰক",
+          "Form Filling": "ফৰ্ম পূৰণ",
+          "Accurate and hassle-free form completion":
+            "সঠিক আৰু ঝামেলামুক্ত ফৰ্ম সম্পূৰ্ণতা",
+
+          "Travel Bookings & Rechgarge": "ভ্ৰমণ বুকিং আৰু ৰিচাৰ্জ",
+          "Train/Bus Tickets": "ৰেল/বাছ টিকট",
+          "Easy reservation & booking services": "সহজ সংৰক্ষণ আৰু বুকিং সেৱা",
+          "Flight Booking": "বিমান বুকিং",
+          "Quick flight reservations nationwide": "দেশজুৰি দ্ৰুত বিমান সংৰক্ষণ",
+          "Hotel Booking": "হোটেল বুকিং",
+          "Best rates on accommodations": "আবাসত সৰ্বশ্ৰেষ্ঠ হাৰ",
+          "Travel Assistance": "যাত্ৰা সহায়তা",
+          "Complete travel planning support": "সম্পূৰ্ণ যাত্ৰা পৰিকল্পনা সহায়",
+
+          "Offline & Design Services": "অফলাইন আৰু ডিজাইন সেৱা",
+          "Photo Editing": "ফটো সম্পাদনা",
+          "Professional photo enhancement": "পেছাদাৰী ফটো উন্নতি",
+          "Custom Invitations": "কাষ্টম নিমন্ত্ৰণ",
+          "Personalized invitation designs": "ব্যক্তিগত নিমন্ত্ৰণ ডিজাইন",
+          "Flex Design & Printing": "ফ্লেক্স ডিজাইন আৰু প্ৰিন্টিং",
+          "Custom flex banners & signage": "কাষ্টম ফ্লেক্স বেনাৰ আৰু সাইনেজ",
+          "DTP Work": "ডিটিপি কাম",
+          "Desktop publishing & layouts": "ডেস্কটপ প্ৰকাশন আৰু লেআউট",
+
+          // Quote Calculator
+          "Quick Quote Calculator": "দ্ৰুত মূল্য কেলকুলেটৰ",
+          "Get instant pricing estimates for our services":
+            "আমাৰ সেৱাৰ বাবে তাৎক্ষণিক মূল্য অনুমান পাওক",
+          "Service Type": "সেৱাৰ প্ৰকাৰ",
+          Quantity: "পৰিমাণ",
+          "Estimated Total": "আনুমানিক মুঠ",
+          "Visit Our Shop": "আমাৰ দোকান চাওক",
+
+          // Games
+          "Games & Projects": "গেমছ আৰু প্রজেক্টছ",
+          "View Code": "কোড চাওক",
+          Play: "খেলক",
+
+          // Demo Websites
+          "Demo Websites": "ডেমো ওয়েবছাইটছ",
+          "Explore our portfolio of demo websites showcasing different business types. These are fully functional sample sites we've created.":
+            "বিভিন্ন ব্যবসায়িক ধরনের প্রদর্শনী করা আমাদের ডেমো ওয়েবসাইট পোর্টফোলিও অনুসন্ধান করুন। এগুলি সম্পূর্ণ কার্যকরী নমুনা সাইট যা আমরা তৈরি করেছি।",
+          "Restaurant Demo": "রেস্তোরাঁ ডেমো",
+          "Complete restaurant website with menu showcase, online ordering, and reservation system.":
+            "মেনু প্রদর্শনী, অনলাইন অর্ডারিং এবং সংরক্ষণ বিষয়ক সম্পূর্ণ রেস্তোরাঁ ওয়েবসাইট।",
+          "Medical Shop Demo": "মেডিকেল শপ ডেমো",
+          "Pharmacy website with medicine catalog, prescription upload, home delivery, and consultation booking.":
+            "ওষুধ তালিকা, প্রেসক্রিপশন আপলোড, গৃহ ডেলিভারি এবং পরামর্শ বুকিং সহ ফার্মেসি ওয়েবসাইট।",
+          "Grocery Store Demo": "মুদি দোকান ডেমো",
+          "E-commerce grocery platform with product categories, cart management, secure payments, and delivery tracking.":
+            "পণ্য বিভাগ, কার্ট ব্যবস্থাপনা, নিরাপদ পেমেন্ট এবং ডেলিভারি ট্র্যাকিং সহ ই-কমার্স মুদি প্ল্যাটফর্ম।",
+          "Salon Demo": "সেলুন ডেমো",
+          "Salon & spa website with service catalog, staff profiles, appointment booking, and customer reviews.":
+            "সেবা তালিকা, কর্মীদের প্রোফাইল, নিয়োগ বুকিং এবং গ্রাহক পর্যালোচনা সহ সেলুন এবং স্পা ওয়েবসাইট।",
+          "Hotel Demo": "হোটেল ডেমো",
+          "Hotel website with room showcase, real-time booking, guest reviews, amenities, and contact management system.":
+            "কক্ষের প্রদর্শনী, রিয়েল-টাইম বুকিং, অতিথি পর্যালোচনা, সুবিধা এবং যোগাযোগ ব্যবস্থাপনা সিস্টেম সহ হোটেল ওয়েবসাইট।",
+          Code: "কোড",
+          Visit: "পরিদর্শন",
+
+          // Footer
+          "Quick Links": "দ্রুত লিংক",
+          "Visit Us": "আমাক লগ কৰক",
+          "Find on Google Maps": "গুগল মেপত বিচাৰক",
+          "Join Our Digital Community": "আমাৰ ডিজিটেল সম্প্ৰদায়ত যোগদান কৰক",
+        },
+
+        বাংলা: {
+          // Navbar
+          Home: "হোম",
+          Services: "সেবা",
+          Games: "গেমস",
+          Updates: "আপডেট",
+          "Call Now": "এখনই কল করুন",
+
+          // Hero Section
+          "Your Trusted Digital Partner in Assam":
+            "অসমে আপনার বিশ্বস্ত ডিজিটাল অংশীদার",
+          "CSC Services, Tech Repairs & Online Solutions":
+            "সিএসসি সেবা, টেক মেরামত এবং অনলাইন সমাধান",
+          "Bringing digital services and technical expertise to rural Assam with fast, reliable, and affordable solutions for all your digital needs.":
+            "গ্রামীণ অসমে দ্রুত, নির্ভরযোগ্য এবং সাশ্রয়ী সমাধান সহ ডিজিটাল সেবা এবং প্রযুক্তিগত দক্ষতা নিয়ে আসছি।",
+          "All Services": "সমস্ত সেবা",
+          "Explore Services": "সেবা অন্বেষণ করুন",
+          "Explore Games": "গেমস অন্বেষণ করুন",
+          "Currently helping": "বর্তমানে সাহায্য করছি",
+          customers: "গ্রাহকদের",
+
+          // Statistics
+          "Happy Customers": "সন্তুষ্ট গ্রাহক",
+          "Services Completed": "সম্পূর্ণ সেবা",
+          "Expert Services": "বিশেষজ্ঞ সেবা",
+          "Satisfaction Rate": "সন্তুষ্টির হার",
+
+          // Notifications
+          "Latest Updates & Exam Notices": "সর্বশেষ আপডেট এবং পরীক্ষার নোটিশ",
+          "Flash Updates": "তাৎক্ষণিক আপডেট",
+          Edit: "সম্পাদনা",
+
+          // Shop Status
+          "Shop Open": "দোকান খোলা",
+          "Shop Closed": "দোকান বন্ধ",
+
+          // Certifications
+          "Our Certifications": "আমাদের শংসাপত্র",
+          "Udemy Certificate": "উডেমি শংসাপত্র",
+          "Click to enlarge": "বড় করতে ক্লিক করুন",
+
+          // Services Section
+          "CSC & Government Services": "সিএসসি এবং সরকারী সেবা",
+          "PAN Card": "প্যান কার্ড",
+          "Quick application and renewal services":
+            "দ্রুত আবেদন এবং পুনর্নবীকরণ সেবা",
+          "Aadhaar Update": "আধার আপডেট",
+          "Update your Aadhaar details easily":
+            "আপনার আধার বিবরণ সহজে আপডেট করুন",
+          "Voter ID": "ভোটার আইডি",
+          "Registration & verification services": "নিবন্ধন এবং যাচাইকরণ সেবা",
+          "Income Certificate": "আয়ের শংসাপত্র",
+          "Official income documentation": "সরকারী আয়ের নথিকরণ",
+
+          "Daily Digital Work": "দৈনিক ডিজিটাল কাজ",
+          "High-Quality Photocopy": "উচ্চমানের ফটোকপি",
+          "Crystal clear document copies": "স্ফটিক পরিষ্কার নথির অনুলিপি",
+          "Color Printing": "রঙিন মুদ্রণ",
+          "Vibrant and professional prints": "প্রাণবন্ত এবং পেশাদার প্রিন্ট",
+          Lamination: "ল্যামিনেশন",
+          "Protect your documents with durability":
+            "আপনার নথি স্থায়িত্ব সহ রক্ষা করুন",
+          "Form Filling": "ফর্ম পূরণ",
+          "Accurate and hassle-free form completion":
+            "নির্ভুল এবং ঝামেলামুক্ত ফর্ম সম্পূর্ণতা",
+
+          "Travel Bookings & Rechgarge": "ভ্রমণ বুকিং এবং রিচার্জ",
+          "Train/Bus Tickets": "ট্রেন/বাস টিকিট",
+          "Easy reservation & booking services": "সহজ সংরক্ষণ এবং বুকিং সেবা",
+          "Flight Booking": "ফ্লাইট বুকিং",
+          "Quick flight reservations nationwide":
+            "সারাদেশে দ্রুত ফ্লাইট সংরক্ষণ",
+          "Hotel Booking": "হোটেল বুকিং",
+          "Best rates on accommodations": "আবাসনে সেরা হার",
+          "Travel Assistance": "ভ্রমণ সহায়তা",
+          "Complete travel planning support":
+            "সম্পূর্ণ ভ্রমণ পরিকল্পনা সহায়তা",
+
+          "Offline & Design Services": "অফলাইন এবং ডিজাইন সেবা",
+          "Photo Editing": "ফটো সম্পাদনা",
+          "Professional photo enhancement": "পেশাদার ফটো উন্নতি",
+          "Custom Invitations": "কাস্টম আমন্ত্রণ",
+          "Personalized invitation designs": "ব্যক্তিগত আমন্ত্রণ ডিজাইন",
+          "Flex Design & Printing": "ফ্লেক্স ডিজাইন এবং মুদ্রণ",
+          "Custom flex banners & signage": "কাস্টম ফ্লেক্স ব্যানার এবং সাইনেজ",
+          "DTP Work": "ডিটিপি কাজ",
+          "Desktop publishing & layouts": "ডেস্কটপ প্রকাশনা এবং লেআউট",
+
+          // Quote Calculator
+          "Quick Quote Calculator": "দ্রুত উদ্ধৃতি ক্যালকুলেটর",
+          "Get instant pricing estimates for our services":
+            "আমাদের সেবার জন্য তাৎক্ষণিক মূল্য অনুমান পান",
+          "Service Type": "সেবার ধরন",
+          Quantity: "পরিমাণ",
+          "Estimated Total": "অনুমানিত মোট",
+          "Visit Our Shop": "আমাদের দোকান পরিদর্শন করুন",
+
+          // Games
+          "Games & Projects": "গেমস এবং প্রকল্প",
+          "View Code": "কোড দেখুন",
+          Play: "খেলুন",
+
+          // Demo Websites
+          "Demo Websites": "ডেমো ওয়েবসাইটগুলি",
+          "Explore our portfolio of demo websites showcasing different business types. These are fully functional sample sites we've created.":
+            "বিভিন্ন ব্যবসায়িক প্রকার প্রদর্শনকারী আমাদের ডেমো ওয়েবসাইটের পোর্টফোলিও অন্বেষণ করুন। এগুলি সম্পূর্ণ কার্যকরী নমুনা সাইট যা আমরা তৈরি করেছি।",
+          "Restaurant Demo": "রেস্তোরাঁ ডেমো",
+          "Complete restaurant website with menu showcase, online ordering, and reservation system.":
+            "মেনু প্রদর্শনী, অনলাইন অর্ডারিং এবং সংরক্ষণ সিস্টেম সহ সম্পূর্ণ রেস্তোরাঁ ওয়েবসাইট।",
+          "Medical Shop Demo": "মেডিকেল শপ ডেমো",
+          "Pharmacy website with medicine catalog, prescription upload, home delivery, and consultation booking.":
+            "ওষুধ ক্যাটালগ, প্রেসক্রিপশন আপলোড, হোম ডেলিভারি এবং পরামর্শ বুকিং সহ ফার্মেসি ওয়েবসাইট।",
+          "Grocery Store Demo": "গ্রোসারি স্টোর ডেমো",
+          "E-commerce grocery platform with product categories, cart management, secure payments, and delivery tracking.":
+            "পণ্য বিভাগ, কার্ট ব্যবস্থাপনা, নিরাপদ পেমেন্ট এবং ডেলিভারি ট্র্যাকিং সহ ই-কমার্স গ্রোসারি প্ল্যাটফর্ম।",
+          "Salon Demo": "সেলুন ডেমো",
+          "Salon & spa website with service catalog, staff profiles, appointment booking, and customer reviews.":
+            "সেবা ক্যাটালগ, কর্মীদের প্রোফাইল, অ্যাপয়েন্টমেন্ট বুকিং এবং গ্রাহক পর্যালোচনা সহ সেলুন এবং স্পা ওয়েবসাইট।",
+          "Hotel Demo": "হোটেল ডেমো",
+          "Hotel website with room showcase, real-time booking, guest reviews, amenities, and contact management system.":
+            "কক্ষ প্রদর্শনী, রিয়েল-টাইম বুকিং, অতিথি পর্যালোচনা, সুবিধা এবং যোগাযোগ ব্যবস্থাপনা সিস্টেম সহ হোটেল ওয়েবসাইট।",
+          Code: "কোড",
+          Visit: "পরিদর্শন",
+
+          // Footer
+          "Quick Links": "দ্রুত লিংক",
+          "Visit Us": "আমাদের পরিদর্শন করুন",
+          "Find on Google Maps": "গুগল ম্যাপে খুঁজুন",
+          "Join Our Digital Community": "আমাদের ডিজিটাল সম্প্রদায়ে যোগ দিন",
+        },
+      };
+
+      let currentLanguage = "English";
+
+      // Language Toggle with actual translation
+      function changeLang(lang) {
+        currentLanguage = lang;
+        document.getElementById("currentLang").textContent = lang;
+        document.getElementById("langMenu").classList.add("hidden");
+
+        // Apply translations
+        translatePage(lang);
+
+        showNotificationSuccess(`Language changed to ${lang}`);
+      }
+
+      // Translate page content
+      function translatePage(lang) {
+        // If English is selected, restore original content and return
+        if (lang === "English") {
+          if (window.translatedElements) {
+            window.translatedElements.forEach((original, element) => {
+              if (element && element.parentNode) {
+                element.textContent = original;
+              }
+            });
+          }
+          localStorage.setItem("selectedLanguage", lang);
+          return;
+        }
+
+        const langData = translations[lang];
+        if (!langData) return;
+
+        // Initialize storage for translated elements
+        if (!window.translatedElements) {
+          window.translatedElements = new Map();
+        }
+
+        // Function to translate text nodes
+        function translateNode(node) {
+          if (node.nodeType === Node.TEXT_NODE) {
+            const text = node.textContent.trim();
+            if (text && langData[text]) {
+              // Store original English text
+              if (!window.translatedElements.has(node)) {
+                window.translatedElements.set(node, node.textContent);
+              }
+              node.textContent = node.textContent.replace(text, langData[text]);
+            }
+          } else if (node.nodeType === Node.ELEMENT_NODE) {
+            // Skip script, style, and input elements
+            if (
+              ["SCRIPT", "STYLE", "INPUT", "TEXTAREA", "SELECT"].includes(
+                node.tagName,
+              )
+            ) {
+              return;
+            }
+
+            // Special handling for elements with only text content
+            if (
+              node.childNodes.length === 1 &&
+              node.childNodes[0].nodeType === Node.TEXT_NODE
+            ) {
+              const text = node.textContent.trim();
+              if (text && langData[text]) {
+                // Store original English text
+                if (!window.translatedElements.has(node)) {
+                  window.translatedElements.set(node, node.textContent);
+                }
+                node.textContent = langData[text];
+                return;
+              }
+            }
+
+            // Recursively translate child nodes
+            Array.from(node.childNodes).forEach((child) =>
+              translateNode(child),
+            );
+          }
+        }
+
+        // First restore English if switching between non-English languages
+        if (currentLanguage !== "English" && window.translatedElements) {
+          window.translatedElements.forEach((original, element) => {
+            if (element && element.parentNode) {
+              element.textContent = original;
+            }
+          });
+          // Clear the map to store new translations
+          window.translatedElements.clear();
+        }
+
+        // Translate main content areas
+        const areas = [
+          document.querySelector("nav"),
+          document.querySelector("#home"),
+          document.querySelector("#notifications"),
+          document.querySelector("#services"),
+          document.querySelector("#quote-calculator"),
+          document.querySelector("#games"),
+          document.querySelector("footer"),
+        ];
+
+        areas.forEach((area) => {
+          if (area) translateNode(area);
+        });
+
+        // Save language preference
+        localStorage.setItem("selectedLanguage", lang);
+      }
+
+      // Toggle language dropdown
+      document.addEventListener("DOMContentLoaded", function () {
+        const langToggle = document.getElementById("langToggle");
+        const langMenu = document.getElementById("langMenu");
+
+        if (langToggle) {
+          langToggle.addEventListener("click", function (e) {
+            e.stopPropagation();
+            langMenu.classList.toggle("hidden");
+          });
+
+          // Close dropdown when clicking outside
+          document.addEventListener("click", function () {
+            langMenu.classList.add("hidden");
+          });
+        }
+      });
+
+      // Sticky bar removed - customers visit physical shop
+
+      // Shop Hours Countdown (only auto-updates if admin hasn't set manual values)
+      function updateShopHours() {
+        // Check if admin has manually set shop status
+        firebase
+          .database()
+          .ref("adminSettings/shopStatus")
+          .once("value", (snapshot) => {
+            if (snapshot.exists()) {
+              // Admin has set manual values, don't auto-update
+              return;
+            }
+
+            // Auto-update based on time
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            const currentTime = hours * 60 + minutes;
+
+            // Use admin-set times or default to 8:30 AM - 9:00 PM
+            let openTime = 8 * 60 + 30; // Default 8:30 AM
+            let closeTime = 21 * 60; // Default 9:00 PM
+            let openTimeStr = "8:30 AM";
+            let closeTimeStr = "9:00 PM";
+
+            if (window.shopOpenTime) {
+              const [openHr, openMin] = window.shopOpenTime
+                .split(":")
+                .map(Number);
+              openTime = openHr * 60 + openMin;
+              const openHr12 = openHr % 12 || 12;
+              const openAmPm = openHr >= 12 ? "PM" : "AM";
+              openTimeStr = `${openHr12}:${openMin.toString().padStart(2, "0")} ${openAmPm}`;
+            }
+            if (window.shopCloseTime) {
+              const [closeHr, closeMin] = window.shopCloseTime
+                .split(":")
+                .map(Number);
+              closeTime = closeHr * 60 + closeMin;
+              const closeHr12 = closeHr % 12 || 12;
+              const closeAmPm = closeHr >= 12 ? "PM" : "AM";
+              closeTimeStr = `${closeHr12}:${closeMin.toString().padStart(2, "0")} ${closeAmPm}`;
+            }
+
+            const statusEl = document.getElementById("shopStatus");
+            const textEl = document.getElementById("shopHoursText");
+            const timerEl = document.getElementById("shopCountdownTimer");
+
+            if (currentTime >= openTime && currentTime < closeTime) {
+              // Shop is OPEN
+              const totalSecondsUntilClose =
+                (closeTime - currentTime) * 60 - seconds;
+              const hoursLeft = Math.floor(totalSecondsUntilClose / 3600);
+              const minsLeft = Math.floor((totalSecondsUntilClose % 3600) / 60);
+              const secsLeft = totalSecondsUntilClose % 60;
+
+              statusEl.textContent = "🟢 Shop Open";
+              statusEl.parentElement
+                .querySelector(".w-3")
+                .classList.add("bg-green-500");
+              statusEl.parentElement
+                .querySelector(".w-3")
+                .classList.remove("bg-red-500");
+              textEl.textContent = `Shop will be closing at ${closeTimeStr}`;
+              timerEl.textContent = `Shop closes in ${hoursLeft} hours ${minsLeft} minutes ${secsLeft} seconds`;
+            } else {
+              // Shop is CLOSED
+              let totalSecondsUntilOpen;
+              if (currentTime < openTime) {
+                totalSecondsUntilOpen = (openTime - currentTime) * 60 - seconds;
+              } else {
+                totalSecondsUntilOpen =
+                  (24 * 60 - currentTime + openTime) * 60 - seconds;
+              }
+              const hoursLeft = Math.floor(totalSecondsUntilOpen / 3600);
+              const minsLeft = Math.floor((totalSecondsUntilOpen % 3600) / 60);
+              const secsLeft = totalSecondsUntilOpen % 60;
+
+              statusEl.textContent = "🔴 Shop Closed";
+              statusEl.parentElement
+                .querySelector(".w-3")
+                .classList.add("bg-red-500");
+              statusEl.parentElement
+                .querySelector(".w-3")
+                .classList.remove("bg-green-500");
+              textEl.textContent = `Shop will be opening at ${openTimeStr}`;
+              timerEl.textContent = `Shop opens in ${hoursLeft} hours ${minsLeft} minutes ${secsLeft} seconds`;
+            }
+          });
+      }
+
+      // Urgent Notice Countdown (uses admin-set deadline)
+      function updateNoticeCountdown() {
+        // Use admin-set deadline if available, otherwise default
+        const deadline =
+          window.urgentDeadline || new Date("2026-02-28T23:59:59");
+        const now = new Date();
+        const diff = deadline - now;
+
+        if (diff > 0) {
+          const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
+            (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+          );
+          const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+          document.getElementById("noticeCountdown").textContent =
+            `${days}d ${hours}h ${mins}m left`;
+        } else {
+          document.getElementById("noticeCountdown").textContent = "EXPIRED";
+        }
+      }
+
+      // ===================== INITIALIZE =====================
+      document.addEventListener("DOMContentLoaded", function () {
+        loadNotificationsFromFirebase();
+        loadAdminSettings();
+        updateVisitorCount();
+        updateShopHours();
+        updateNoticeCountdown();
+
+        // Set up statistics observer
+        const statsSection = document.querySelector(".counter");
+        if (statsSection) {
+          statsObserver.observe(statsSection.closest("section"));
+        }
+
+        // Update countdowns every second for live timer
+        setInterval(updateShopHours, 1000);
+        setInterval(updateNoticeCountdown, 60000);
+
+        // Restore saved language preference
+        const savedLang = localStorage.getItem("selectedLanguage");
+        if (savedLang && savedLang !== "English") {
+          setTimeout(() => {
+            changeLang(savedLang);
+          }, 500);
+        }
+      });
+
+      // ===================== TAWK.TO LIVE CHAT WIDGET =====================
+      // Instructions: Replace 'YOUR_PROPERTY_ID' and 'YOUR_WIDGET_ID' with your actual Tawk.to credentials
+      // Sign up at https://www.tawk.to/ to get your free chat widget
+      /*
+      var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+      (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/YOUR_PROPERTY_ID/YOUR_WIDGET_ID';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+      })();
+      */
+      // Uncomment above code and add your Tawk.to credentials to enable live chat
+
+      // ===================== WHERE I AM BUTTON - GOOGLE MAPS =====================
+      function openMaps() {
+        // Coordinates for your location
+        const latitude = 26.1445;
+        const longitude = 91.7972;
+        const locationName = "Smart Digital Shop";
+
+        // Check if the device is mobile
+        const isMobile =
+          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+            navigator.userAgent,
+          );
+
+        if (isMobile) {
+          // For mobile devices, use maps:// URL scheme
+          window.location.href = `maps://maps.google.com/maps?q=${locationName}@${latitude},${longitude}`;
+
+          // Fallback to web version if maps app is not available
+          setTimeout(() => {
+            window.open(
+              `https://maps.google.com/?q=${locationName}@${latitude},${longitude}`,
+              "_blank",
+            );
+          }, 1000);
+        } else {
+          // For desktop, open Google Maps in a new tab
+          window.open(
+            `https://maps.google.com/?q=${locationName}@${latitude},${longitude}`,
+            "_blank",
+          );
+        }
+      }
+    </script>
+  </body>
+</html>
