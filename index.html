@@ -320,6 +320,35 @@
         background-clip: text;
       }
 
+      /* Scroll-spy nav styles */
+      .nav-link {
+        position: relative;
+        display: inline-block;
+        transition: color 0.2s ease;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -6px;
+        height: 2px;
+        background: #2563eb;
+        border-radius: 999px;
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: transform 0.2s ease;
+      }
+      .nav-link-active {
+        color: #2563eb;
+      }
+      .nav-link-active::after {
+        transform: scaleX(1);
+      }
+      .nav-link-mobile.nav-link-active {
+        background: #dbeafe;
+      }
+
       /* Primary CTA */
       .btn-brand {
         background: linear-gradient(
@@ -547,37 +576,37 @@
         <div class="hidden md:flex items-center space-x-8">
           <a
             href="#home"
-            class="text-gray-700 hover:text-blue-600 font-semibold transition"
+            class="js-nav-link nav-link text-gray-700 hover:text-blue-600 font-semibold transition"
             >Home</a
           >
           <a
             href="#notifications"
-            class="text-gray-700 hover:text-blue-600 font-semibold transition"
+            class="js-nav-link nav-link text-gray-700 hover:text-blue-600 font-semibold transition"
             >Updates</a
           >
           <a
             href="#actual-services"
-            class="text-gray-700 hover:text-blue-600 font-semibold transition"
+            class="js-nav-link nav-link text-gray-700 hover:text-blue-600 font-semibold transition"
             >Services</a
           >
           <a
             href="#gallery"
-            class="text-gray-700 hover:text-blue-600 font-semibold transition"
+            class="js-nav-link nav-link text-gray-700 hover:text-blue-600 font-semibold transition"
             >Gallery</a
           >
           <a
             href="#games"
-            class="text-gray-700 hover:text-blue-600 font-semibold transition"
+            class="js-nav-link nav-link text-gray-700 hover:text-blue-600 font-semibold transition"
             >Games</a
           >
           <a
             href="#demo-websites"
-            class="text-gray-700 hover:text-blue-600 font-semibold transition"
+            class="js-nav-link nav-link text-gray-700 hover:text-blue-600 font-semibold transition"
             >Websites</a
           >
           <a
             href="#location"
-            class="text-gray-700 hover:text-blue-600 font-semibold transition flex items-center space-x-1"
+            class="js-nav-link nav-link text-gray-700 hover:text-blue-600 font-semibold transition flex items-center space-x-1"
             ><i class="fas fa-map-marker-alt"></i>Find Us</a
           >
 
@@ -645,37 +674,37 @@
       >
         <a
           href="#home"
-          class="block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
+          class="js-nav-link nav-link nav-link-mobile block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
           >Home</a
         >
         <a
           href="#notifications"
-          class="block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
+          class="js-nav-link nav-link nav-link-mobile block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
           >Updates</a
         >
         <a
           href="#actual-services"
-          class="block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
+          class="js-nav-link nav-link nav-link-mobile block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
           >Services</a
         >
         <a
           href="#gallery"
-          class="block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
+          class="js-nav-link nav-link nav-link-mobile block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
           >Gallery</a
         >
         <a
           href="#games"
-          class="block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
+          class="js-nav-link nav-link nav-link-mobile block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
           >Games</a
         >
         <a
           href="#demo-websites"
-          class="block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
+          class="js-nav-link nav-link nav-link-mobile block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
           >Websites</a
         >
         <a
           href="#location"
-          class="block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
+          class="js-nav-link nav-link nav-link-mobile block text-gray-700 hover:text-blue-600 font-semibold py-2 px-4 rounded transition hover:bg-blue-100"
           ><i class="fas fa-map-marker-alt mr-2"></i>Find Us</a
         >
         <button
@@ -4412,6 +4441,76 @@
           document.getElementById("mobileMenu").classList.add("hidden");
         });
       });
+
+      // ===================== NAV SCROLL SPY =====================
+      function initNavScrollSpy() {
+        const navLinks = Array.from(document.querySelectorAll(".js-nav-link"));
+
+        if (!navLinks.length) return;
+
+        const sectionMap = new Map();
+        const sections = [];
+
+        navLinks.forEach((link) => {
+          const hash = link.getAttribute("href");
+          if (!hash || !hash.startsWith("#")) return;
+          const id = hash.slice(1);
+          const section = document.getElementById(id);
+          if (!section || sectionMap.has(id)) return;
+          sectionMap.set(id, section);
+          sections.push(section);
+        });
+
+        const setActive = (activeId) => {
+          navLinks.forEach((link) => {
+            const hash = link.getAttribute("href");
+            const isActive = hash === `#${activeId}`;
+            link.classList.toggle("nav-link-active", isActive);
+          });
+        };
+
+        const getActiveSectionId = () => {
+          const navbarHeight = document.querySelector("nav")
+            ? document.querySelector("nav").offsetHeight
+            : 0;
+          const offset = navbarHeight + 80;
+          const scrollPosition = window.scrollY + offset;
+
+          let activeId = sections[0] ? sections[0].id : "";
+
+          sections.forEach((section) => {
+            if (section.offsetTop <= scrollPosition) {
+              activeId = section.id;
+            }
+          });
+
+          return activeId;
+        };
+
+        const updateActive = () => {
+          const activeId = getActiveSectionId();
+          if (activeId) {
+            setActive(activeId);
+          }
+        };
+
+        let isTicking = false;
+        const onScroll = () => {
+          if (isTicking) return;
+          isTicking = true;
+          window.requestAnimationFrame(() => {
+            updateActive();
+            isTicking = false;
+          });
+        };
+
+        updateActive();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", updateActive);
+        window.addEventListener("hashchange", updateActive);
+      }
+
+      initNavScrollSpy();
 
       // ===================== CALL NOW FUNCTION =====================
       function makeCall() {
