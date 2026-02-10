@@ -2575,6 +2575,13 @@
           <button
             type="button"
             class="js-gallery-filter px-5 py-2 rounded-full border-2 border-blue-200 text-gray-700 font-semibold transition hover:bg-blue-600 hover:text-white"
+            data-filter="restored"
+          >
+            Restored Photos
+          </button>
+          <button
+            type="button"
+            class="js-gallery-filter px-5 py-2 rounded-full border-2 border-blue-200 text-gray-700 font-semibold transition hover:bg-blue-600 hover:text-white"
             data-filter="graphic"
           >
             Graphic Designs
@@ -2604,7 +2611,93 @@
 
         <!-- Gallery Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Restored Photos Items -->
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="restored"
+            data-gallery-images='[{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/v1770671360/1_gp7nf0.png","alt":"Restored Photo 1"}]'
+          >
+            <img
+              src="https://res.cloudinary.com/duzr2cnth/image/upload/w_900,h_600,c_fill,f_auto,q_auto/v1770671360/1_gp7nf0.png"
+              alt="Restored Photo 1"
+              class="w-full h-56 object-cover"
+              loading="eager"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">Vintage Photo Restoration</h4>
+                <p class="text-sm text-white/80 mb-4">Restored Photos</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="restored"
+            data-gallery-images='[{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/v1770671361/3_zfoq3c.png","alt":"Restored Photo 2"}]'
+          >
+            <img
+              src="https://res.cloudinary.com/duzr2cnth/image/upload/w_900,h_600,c_fill,f_auto,q_auto/v1770671361/3_zfoq3c.png"
+              alt="Restored Photo 2"
+              class="w-full h-56 object-cover"
+              loading="eager"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">Old Family Photo Restoration</h4>
+                <p class="text-sm text-white/80 mb-4">Restored Photos</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
+            data-category="restored"
+            data-gallery-images='[{"src":"https://res.cloudinary.com/duzr2cnth/image/upload/v1770671372/2_qvtoqu.png","alt":"Restored Photo 3"}]'
+          >
+            <img
+              src="https://res.cloudinary.com/duzr2cnth/image/upload/w_900,h_600,c_fill,f_auto,q_auto/v1770671372/2_qvtoqu.png"
+              alt="Restored Photo 3"
+              class="w-full h-56 object-cover"
+              loading="eager"
+            />
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+            >
+              <div class="text-center text-white px-4">
+                <h4 class="text-xl font-bold">Heritage Photo Restoration</h4>
+                <p class="text-sm text-white/80 mb-4">Restored Photos</p>
+                <button
+                  type="button"
+                  data-action="open-lightbox"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                >
+                  <i class="fas fa-search-plus mr-2"></i>View
+                </button>
+              </div>
+            </div>
+          </div>
+
           <!-- Graphic Designs Items -->
+
           <div
             class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
             data-category="graphic"
@@ -2645,32 +2738,6 @@
             >
               <div class="text-center text-white px-4">
                 <h4 class="text-xl font-bold">Creative Logo Design</h4>
-                <p class="text-sm text-white/80 mb-4">Graphic Design</p>
-                <button
-                  type="button"
-                  data-action="open-lightbox"
-                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition"
-                >
-                  <i class="fas fa-search-plus mr-2"></i>View
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="js-gallery-item group relative bg-white rounded-xl overflow-hidden shadow-lg border-2 border-blue-100 hover:border-blue-500 transition"
-            data-category="graphic"
-          >
-            <img
-              src="https://images.unsplash.com/photo-1600132806608-231446b2e7af?w=900&q=80"
-              alt="Event Poster Design"
-              class="w-full h-56 object-cover"
-            />
-            <div
-              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
-            >
-              <div class="text-center text-white px-4">
-                <h4 class="text-xl font-bold">Event Poster Design</h4>
                 <p class="text-sm text-white/80 mb-4">Graphic Design</p>
                 <button
                   type="button"
